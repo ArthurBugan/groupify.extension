@@ -1,0 +1,31 @@
+{
+  "name": "youtube-channels-manager",
+  "displayName": "Youtube channels manager",
+  "version": "0.0.1",
+  "description": "Manage youtube channels using folders and groups",
+  "author": "arthurbugan",
+  "scripts": {
+    "dev": "plasmo dev",
+    "build": "plasmo build",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "plasmo": "0.69.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.227",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.32",
+    "@types/react-dom": "18.0.11",
+    "prettier": "2.8.7",
+    "typescript": "5.0.3",
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.4"
+  },
+  "manifest": {
+    "host_permissions": [
+      "https://*/*"
+    ]
+  }
+}
