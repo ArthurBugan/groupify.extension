@@ -2,6 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
 import type { PlasmoGetInlineAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
+import { toast } from "react-hot-toast"
+import { Toaster } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
 import {
   FcAddColumn,
@@ -1398,14 +1400,29 @@ const ManageChannels = (props) => {
   })
 
   const onSubmit = async (group_data: Schema) => {
-    await supabase.auth.setSession({
-      access_token: session.access_token,
-      refresh_token: session.refresh_token
-    })
+    console.log(session.user.id)
 
-    await supabase
+    const { data: curSession, error: errorSession } =
+      await supabase.auth.getSession()
+
+    const { data, error } = await supabase
       .from("groups")
       .insert({ ...group_data, user_id: session.user.id })
+
+    if (!error) {
+      toast.custom((t) => (
+        <div
+          className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
+            t.visible ? "animate-enter" : "animate-leave"
+          }`}>
+          New Group created! ✅
+        </div>
+      ))
+
+      setTimeout(() => {
+        setOpen(false)
+      }, 200)
+    }
   }
 
   if (!modal) {
@@ -1414,6 +1431,8 @@ const ManageChannels = (props) => {
 
   return (
     <div className="h-screen flex items-center relative">
+      <Toaster position="top-left" />
+
       <Dialog open={modal} onOpenChange={setOpen}>
         <DialogContent>
           <div className="flex flex-col gap-y-5">
