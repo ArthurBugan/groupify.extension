@@ -10,6 +10,7 @@
     "package": "plasmo package"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@plasmohq/storage": "^1.5.0",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-popover": "^1.0.5",
@@ -24,9 +25,11 @@
     "plasmo": "0.69.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "tailwind-merge": "^1.12.0",
-    "tailwindcss-animate": "^1.0.5"
+    "tailwindcss-animate": "^1.0.5",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@plasmohq/prettier-plugin-sort-imports": "3.6.4",

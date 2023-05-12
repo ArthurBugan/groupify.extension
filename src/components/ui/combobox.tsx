@@ -2,6 +2,7 @@
 
 import { Check, ChevronsUpDown } from "lucide-react"
 import * as React from "react"
+import { useController, useFormContext } from "react-hook-form"
 
 import { Button } from "~components/ui/button"
 import {
@@ -14,36 +15,56 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
 import { cn } from "~lib/utils"
 
-export function ComboboxDemo({ items }) {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+interface ComboboxProps {
+  items: any[]
+  className: string
+  name: string
+}
 
-  console.log(value, "value")
+export function ComboboxDemo({ items, name, className }: ComboboxProps) {
+  const [open, setOpen] = React.useState(false)
+
+  const formContext = useFormContext()
+
+  const {
+    field,
+    fieldState: { invalid, isTouched, isDirty, error },
+    formState: { isSubmitting }
+  } = useController({ name })
+
+  if (!formContext || !name) {
+    const msg = !formContext
+      ? "ComboBox must be wrapped by the FormProvider"
+      : "Name must be defined"
+    console.error(msg)
+    return null
+  }
 
   const item = items.find(
-    (framework) => framework.value.toLowerCase() === value
+    (framework) => framework.value.toLowerCase() === field.value
   )
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger className="w-full" asChild>
+      <PopoverTrigger className={className} asChild>
         <Button
           variant="outline"
           size={"lg"}
           role="combobox"
           aria-expanded={open}
           className="justify-between text-primary w-full text-xl">
-          {value ? (
+          {field.value ? (
             <p className="flex flex-row items-center justify-center">
-              <span>{item.label}</span>
+              <span className="hidden">{item.label}</span>
               {item?.icon}
             </p>
           ) : (
-            "Select icon..."
+            "Icon..."
           )}
           <ChevronsUpDown className="ml-2 h-6 w-6 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
+
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
           <CommandInput placeholder="Search icon..." />
@@ -51,25 +72,22 @@ export function ComboboxDemo({ items }) {
           <CommandGroup>
             {items.map((framework) => (
               <CommandItem
-                className="w-full"
+                className="w-full justify-center items-center"
                 key={framework.value}
+                title={framework.label}
                 onSelect={(currentValue) => {
-                  setValue(
-                    currentValue === value.toLocaleLowerCase()
-                      ? ""
-                      : currentValue
-                  )
+                  field.onChange(currentValue)
                   setOpen(false)
                 }}>
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === framework.value.toLowerCase()
+                    field.value === framework.value.toLowerCase()
                       ? "opacity-100"
-                      : "opacity-0"
+                      : "hidden opacity-0"
                   )}
                 />
-                {framework.label}
+                <div className="hidden">{framework.label}</div>
                 {framework.icon}
               </CommandItem>
             ))}

@@ -1,5 +1,7 @@
+import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
 import type { PlasmoGetInlineAnchor } from "plasmo"
+import { FormProvider, useForm } from "react-hook-form"
 import { AiOutlineClose } from "react-icons/ai"
 import {
   FcAddColumn,
@@ -329,6 +331,7 @@ import {
   FcWiFiLogo,
   FcWikipedia
 } from "react-icons/fc"
+import * as z from "zod"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
@@ -337,11 +340,11 @@ import { ComboboxDemo } from "~components/ui/combobox"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle
 } from "~components/ui/dialog"
 import { Input } from "~components/ui/input"
+import { supabase } from "~core/store"
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
@@ -1376,8 +1379,34 @@ const icons = [
   }
 ]
 
+const schema = z.object({
+  name: z.string(),
+  icon: z.string()
+})
+
+export type Schema = z.infer<typeof schema>
+
 const ManageChannels = (props) => {
   const [modal, setOpen] = useStorage("channels-modal", false)
+  const [session] = useStorage("user-data")
+
+  const { ...methods } = useForm<Schema>({
+    mode: "all",
+    shouldFocusError: true,
+    shouldUnregister: true,
+    resolver: zodResolver(schema)
+  })
+
+  const onSubmit = async (group_data: Schema) => {
+    await supabase.auth.setSession({
+      access_token: session.access_token,
+      refresh_token: session.refresh_token
+    })
+
+    await supabase
+      .from("groups")
+      .insert({ ...group_data, user_id: session.user.id })
+  }
 
   if (!modal) {
     return null
@@ -1397,15 +1426,26 @@ const ManageChannels = (props) => {
               <DialogTitle>Add Group</DialogTitle>
             </DialogHeader>
 
-            <Input placeholder="Group Name" />
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(onSubmit)}>
+                <div className="flex flex-row gap-x-4">
+                  <Input
+                    name="name"
+                    className="flex-3"
+                    placeholder="Group Name"
+                  />
 
-            <ComboboxDemo items={icons} />
+                  <ComboboxDemo name="icon" className="flex-1" items={icons} />
+                </div>
 
-            <Button
-              className="w-full text-primary text-xl bg-transparent hover:bg-accent"
-              size="lg">
-              Submit
-            </Button>
+                <Button
+                  className="w-full text-primary text-xl bg-transparent hover:bg-accent"
+                  size="lg"
+                  disabled={methods.formState.isSubmitting}>
+                  Submit
+                </Button>
+              </form>
+            </FormProvider>
           </div>
         </DialogContent>
       </Dialog>

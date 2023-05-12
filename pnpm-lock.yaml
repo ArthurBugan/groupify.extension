@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@hookform/resolvers': ^3.1.0
   '@plasmohq/prettier-plugin-sort-imports': 3.6.4
   '@plasmohq/storage': ^1.5.0
   '@radix-ui/react-dialog': ^1.0.3
@@ -23,13 +24,16 @@ specifiers:
   prettier: 2.8.7
   react: 18.2.0
   react-dom: 18.2.0
+  react-hook-form: ^7.43.9
   react-icons: ^4.8.0
   tailwind-merge: ^1.12.0
   tailwindcss: ^3.3.2
   tailwindcss-animate: ^1.0.5
   typescript: 5.0.3
+  zod: ^3.21.4
 
 dependencies:
+  '@hookform/resolvers': 3.1.0_react-hook-form@7.43.9
   '@plasmohq/storage': 1.5.0_react@18.2.0
   '@radix-ui/react-dialog': 1.0.3_6hfup3cnntiu7o7txcf7sadj7u
   '@radix-ui/react-popover': 1.0.5_6hfup3cnntiu7o7txcf7sadj7u
@@ -44,9 +48,11 @@ dependencies:
   plasmo: 0.69.3_32xl2rsypatwxm4tslngv2ai6a
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.43.9_react@18.2.0
   react-icons: 4.8.0_react@18.2.0
   tailwind-merge: 1.12.0
   tailwindcss-animate: 1.0.5_tailwindcss@3.3.2
+  zod: 3.21.4
 
 devDependencies:
   '@plasmohq/prettier-plugin-sort-imports': 3.6.4_prettier@2.8.7
@@ -761,6 +767,14 @@ packages:
       use-isomorphic-layout-effect: 1.1.2_b7lksjcz5zr4rqebyeqormarua
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@hookform/resolvers/3.1.0_react-hook-form@7.43.9:
+    resolution: {integrity: sha512-z0A8K+Nxq+f83Whm/ajlwE6VtQlp/yPHZnXw7XWVPIGm1Vx0QV8KThU3BpbBRfAZ7/dYqCKKBNnQh85BkmBKkA==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.43.9_react@18.2.0
     dev: false
 
   /@jridgewell/gen-mapping/0.3.3:
@@ -5425,6 +5439,15 @@ packages:
     resolution: {integrity: sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==}
     dev: false
 
+  /react-hook-form/7.43.9_react@18.2.0:
+    resolution: {integrity: sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /react-icons/4.8.0_react@18.2.0:
     resolution: {integrity: sha512-N6+kOLcihDiAnj5Czu637waJqSnwlMNROzVZMhfX68V/9bu9qHaMIJC4UdozWoOk57gahFCNHwVvWzm0MTzRjg==}
     peerDependencies:
@@ -6356,4 +6379,8 @@ packages:
       archiver-utils: 2.1.0
       compress-commons: 4.1.1
       readable-stream: 3.6.2
+    dev: false
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
     dev: false

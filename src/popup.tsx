@@ -25,8 +25,6 @@ function IndexOptions() {
         }
       })
 
-      console.log(user)
-
       if (error) {
         alert("Error with auth: " + error.message)
       } else if (!user) {
