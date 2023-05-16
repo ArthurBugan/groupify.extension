@@ -17,7 +17,6 @@ export const DynamicIcon: React.FC<IDynamicIcon> = ({
   size = 20,
   className
 }) => {
-  console.log(lib, icon, returnLibraryIcons(lib))
   const Icon: IconType = (returnLibraryIcons(lib) as IconMap)[icon]
 
   return <Icon className={className} size={size} />

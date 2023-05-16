@@ -40,17 +40,11 @@ const Groups = () => {
   const [modal, setChannelsModal] = useStorage("channels-modal", false)
   const [groups, setGroups] = useState<GroupType[] | { [x: string]: any }[]>([])
 
-  const [session, setSession] = useStorage("user-data", null)
+  const [session] = useStorage("user-data", null)
 
   useEffect(() => {
     if (modal) {
       setChannelsModal(false)
-    }
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document
-        .querySelectorAll("plasmo-csui")
-        .forEach((e) => e.classList.add("dark"))
     }
 
     ;(async () => {
@@ -63,6 +57,12 @@ const Groups = () => {
         if (errorSession) {
           alert(errorSession)
           return
+        }
+
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          document
+            .querySelectorAll("plasmo-csui")
+            .forEach((e) => e.classList.add("dark"))
         }
 
         const { data: groups, error: groupsError } = await supabase

@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
-import type { PlasmoGetInlineAnchor } from "plasmo"
+import type { PlasmoGetOverlayAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { Toaster } from "react-hot-toast"
@@ -11,39 +11,25 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "~components/ui/button"
 import Combobox from "~components/ui/combobox"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle
-} from "~components/ui/dialog"
 import { Input } from "~components/ui/input"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "~components/ui/sheet"
 import { supabase } from "~core/store"
-import { sleep } from "~lib/utils"
 
 export const getStyle = () => {
   const style = document.createElement("style")
   style.textContent = cssText
-
-  style.textContent += `
-    #plasmo-shadow-container {
-      position: fixed !important;
-      left: 0px;
-      top: 0px;
-      height: auto;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-    }
-    #plasmo-inline {
-      left: -10vw;
-    }`
   return style
 }
 
-export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
-  await sleep(2000)
+export const getOverlayAnchor: PlasmoGetOverlayAnchor = async () => {
   return document.querySelector("body")
 }
 
@@ -66,9 +52,6 @@ const ManageChannels = (props) => {
   })
 
   const onSubmit = async (group_data: Schema) => {
-    console.log(group_data)
-
-    return
     const { data: curSession, error: errorSession } =
       await supabase.auth.getSession()
 
@@ -92,24 +75,25 @@ const ManageChannels = (props) => {
     }
   }
 
-  if (!modal) {
-    return null
-  }
+  if (!modal) return null
 
   return (
-    <div className="h-screen flex items-center relative">
+    <div className="h-screen w-screen">
       <Toaster position="top-left" />
 
-      <Dialog open={modal} onOpenChange={setOpen}>
-        <DialogContent className="flex flex-col gap-y-5">
-          <DialogHeader>
+      <Sheet open={modal}>
+        <SheetContent
+          size="sm"
+          position="right"
+          className="flex flex-col gap-y-5">
+          <SheetHeader>
             <AiOutlineClose
-              className="absolute right-4 cursor-pointer"
+              className="absolute right-4 cursor-pointer text-primary"
               size={18}
               onClick={() => setOpen(false)}
             />
-            <DialogTitle>Add Group</DialogTitle>
-          </DialogHeader>
+            <SheetTitle>Add Group</SheetTitle>
+          </SheetHeader>
 
           <FormProvider {...methods}>
             <form
@@ -125,16 +109,18 @@ const ManageChannels = (props) => {
                 <Combobox name="icon" className="flex-1" />
               </div>
 
-              <Button
-                className="w-full text-primary text-xl bg-transparent hover:bg-accent"
-                size="lg"
-                disabled={methods.formState.isSubmitting}>
-                Submit
-              </Button>
+              <SheetFooter>
+                <Button
+                  className="w-full text-xl"
+                  size="lg"
+                  disabled={methods.formState.isSubmitting}>
+                  Submit
+                </Button>
+              </SheetFooter>
             </form>
           </FormProvider>
-        </DialogContent>
-      </Dialog>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

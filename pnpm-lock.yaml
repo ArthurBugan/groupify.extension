@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@hookform/resolvers': ^3.1.0
   '@plasmohq/prettier-plugin-sort-imports': 3.6.4
-  '@plasmohq/storage': ^1.5.0
+  '@plasmohq/storage': ^1.6.0
   '@radix-ui/react-accordion': ^1.1.1
   '@radix-ui/react-collapsible': ^1.0.2
   '@radix-ui/react-dialog': ^1.0.3
@@ -11,6 +11,7 @@ specifiers:
   '@radix-ui/react-select': ^1.2.1
   '@radix-ui/react-slot': ^1.0.1
   '@supabase/supabase-js': ^2.21.0
+  '@tanstack/react-table': ^8.9.1
   '@thedutchcoder/postcss-rem-to-px': ^0.0.2
   '@types/chrome': 0.0.227
   '@types/node': 18.15.11
@@ -22,7 +23,7 @@ specifiers:
   cmdk: ^0.2.0
   hook: link:@plasmohq/storage/hook
   lucide-react: ^0.206.0
-  plasmo: 0.69.3
+  plasmo: 0.70.1
   postcss: ^8.4.23
   prettier: 2.8.7
   react: 18.2.0
@@ -39,7 +40,7 @@ specifiers:
 
 dependencies:
   '@hookform/resolvers': 3.1.0_react-hook-form@7.43.9
-  '@plasmohq/storage': 1.5.0_react@18.2.0
+  '@plasmohq/storage': 1.6.0_react@18.2.0
   '@radix-ui/react-accordion': 1.1.1_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-collapsible': 1.0.2_biqbaboplfbrettd7655fr4n2y
   '@radix-ui/react-dialog': 1.0.3_6hfup3cnntiu7o7txcf7sadj7u
@@ -47,13 +48,14 @@ dependencies:
   '@radix-ui/react-select': 1.2.1_6hfup3cnntiu7o7txcf7sadj7u
   '@radix-ui/react-slot': 1.0.1_react@18.2.0
   '@supabase/supabase-js': 2.21.0
+  '@tanstack/react-table': 8.9.1_biqbaboplfbrettd7655fr4n2y
   '@thedutchcoder/postcss-rem-to-px': 0.0.2_postcss@8.4.23
   class-variance-authority: 0.6.0_typescript@5.0.3
   clsx: 1.2.1
   cmdk: 0.2.0_6hfup3cnntiu7o7txcf7sadj7u
   hook: link:@plasmohq/storage/hook
   lucide-react: 0.206.0_react@18.2.0
-  plasmo: 0.69.3_32xl2rsypatwxm4tslngv2ai6a
+  plasmo: 0.70.1_32xl2rsypatwxm4tslngv2ai6a
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.43.9_react@18.2.0
@@ -1947,8 +1949,8 @@ packages:
       - whiskers
     dev: false
 
-  /@plasmohq/parcel-core/0.0.1:
-    resolution: {integrity: sha512-yh/VdY2jFSJd9OQoA0Qi5QvYbbnz+5vVH2zrjekOEga89fWqtiBHhKCz9d/TI4DzMrUOuSNEOtmPoIcmtUiXFQ==}
+  /@plasmohq/parcel-core/0.1.0:
+    resolution: {integrity: sha512-AKr6PThr2fYNIJLEXPeCC+Psa70jkKzgzThoLeX4zSHHiLSrKUEQRa7/20+/RLGoz0qmzrQt2/N4mnJZrpY9Vw==}
     engines: {parcel: '>= 2.7.0'}
     dependencies:
       '@parcel/cache': 2.8.3_@parcel+core@2.8.3
@@ -2181,8 +2183,8 @@ packages:
       - supports-color
     dev: true
 
-  /@plasmohq/storage/1.5.0_react@18.2.0:
-    resolution: {integrity: sha512-OJ9w5Umen/zD9Oba2G7xiLNBSiJhuD+Zshi+iQZq6HQmRfmT3NM+xq41CP0v/PE3tutRZZR+oxp4fszvxUi3vQ==}
+  /@plasmohq/storage/1.6.0_react@18.2.0:
+    resolution: {integrity: sha512-7IUEVxLT8aDfhlX5U8BKvJVHclJbtI2GN2yLw5ULs1R51mM7YkAoacHP6kGQof4JD15yb4dutLLZi+O2LArlcw==}
     peerDependencies:
       react: ^16.8.6 || ^17 || ^18
     peerDependenciesMeta:
@@ -2922,6 +2924,23 @@ packages:
     engines: {node: '>=14.16'}
     dependencies:
       defer-to-connect: 2.0.1
+    dev: false
+
+  /@tanstack/react-table/8.9.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-yHs2m6lk5J5RNcu2dNtsDGux66wNXZjEgzxos6MRCX8gL+nqxeW3ZglqP6eANN0bGElPnjvqiUHGQvdACOr3Cw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.9.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@tanstack/table-core/8.9.1:
+    resolution: {integrity: sha512-2+R83n8vMZND0q3W1lSiF7co9nFbeWbjAErFf27xwbeA9E0wtUu5ZDfgj+TZ6JzdAEQAgfxkk/QNFAKiS8E4MA==}
+    engines: {node: '>=12'}
     dev: false
 
   /@thedutchcoder/postcss-rem-to-px/0.0.2_postcss@8.4.23:
@@ -5210,8 +5229,8 @@ packages:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
 
-  /plasmo/0.69.3_32xl2rsypatwxm4tslngv2ai6a:
-    resolution: {integrity: sha512-fbM9rpS8WHdml8zTkjpl9U/xYDaffGGKs6E1Sio6cRHNpZZmEk9wX/tyG/v7vixa2Dv5CLgVPZCfJxcjyawIcg==}
+  /plasmo/0.70.1_32xl2rsypatwxm4tslngv2ai6a:
+    resolution: {integrity: sha512-UIufFVathe+t3bYb1nHWN3YIQMpTyjg1zTvMAaTwO6qEehTQoRB/zSTRLsRh1bmENcZ4p03IiocKB3cU2Fu60Q==}
     hasBin: true
     dependencies:
       '@expo/spawn-async': 1.7.2
@@ -5221,7 +5240,7 @@ packages:
       '@parcel/watcher': 2.1.0
       '@plasmohq/init': 0.6.3
       '@plasmohq/parcel-config': 0.34.2_32xl2rsypatwxm4tslngv2ai6a
-      '@plasmohq/parcel-core': 0.0.1
+      '@plasmohq/parcel-core': 0.1.0
       archiver: 5.3.1
       buffer: 6.0.3
       chalk: 5.2.0

@@ -94,7 +94,6 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
                     title={items[index]}
                     value={items[index]}
                     onSelect={() => {
-                      console.log(items[index])
                       field.onChange(items[index])
                       setOpen(false)
                     }}>

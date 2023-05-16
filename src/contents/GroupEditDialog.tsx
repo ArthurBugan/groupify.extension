@@ -9,41 +9,25 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "~components/ui/button"
 import Combobox from "~components/ui/combobox"
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle
-} from "~components/ui/dialog"
+import { DataTable } from "~components/ui/data-table"
 import { Input } from "~components/ui/input"
+import {
+  Sheet,
+  SheetContent,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle
+} from "~components/ui/sheet"
 import { supabase } from "~core/store"
-import { sleep } from "~lib/utils"
-
-import { returnLibraryIcons } from "../components/ui/icon"
+import { type Payment, columns } from "~lib/columns"
 
 export const getStyle = () => {
   const style = document.createElement("style")
   style.textContent = cssText
-
-  style.textContent += `
-    #plasmo-shadow-container {
-      position: fixed !important;
-      left: 0px;
-      top: 0px;
-      height: auto;
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-    }
-    #plasmo-inline {
-      left: -10vw;
-    }`
   return style
 }
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
-  await sleep(2000)
   return document.querySelector("body")
 }
 
@@ -57,8 +41,49 @@ export type Schema = z.infer<typeof schema>
 const EditManageChannels = (props) => {
   const [modal, setOpen] = useStorage("edit-channels-modal", false)
   const [session] = useStorage("user-data")
+  const [values] = useStorage("form-values", {})
+
+  const data = [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    },
+    {
+      id: "118ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    },
+    {
+      id: "728ed5as",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    },
+    {
+      id: "728ed5gg",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    },
+    {
+      id: "728edasd1",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    },
+    {
+      id: "72zzd52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com"
+    }
+  ]
 
   const { ...methods } = useForm<Schema>({
+    values,
     mode: "all",
     shouldFocusError: true,
     shouldUnregister: true,
@@ -66,7 +91,7 @@ const EditManageChannels = (props) => {
   })
 
   const onSubmit = async (group_data: Schema) => {
-    console.log(session.user.id)
+    console.log(values, group_data)
   }
 
   if (!modal) {
@@ -75,45 +100,56 @@ const EditManageChannels = (props) => {
 
   return (
     <div className="h-screen flex items-center relative">
-      <Dialog open={modal} onOpenChange={setOpen}>
-        <DialogContent>
+      <Sheet open={modal}>
+        <SheetContent size="sm">
           <div className="flex flex-col gap-y-5">
-            <DialogHeader>
+            <SheetHeader>
               <AiOutlineClose
                 className="absolute right-4 cursor-pointer"
                 size={18}
                 onClick={() => setOpen(false)}
               />
-              <DialogTitle>Add Group</DialogTitle>
-            </DialogHeader>
+              <SheetTitle>Edit Group</SheetTitle>
+            </SheetHeader>
 
             <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
-                <div className="flex flex-row gap-x-4">
-                  <Input
-                    name="name"
-                    className="flex-3"
-                    placeholder="Group Name"
-                  />
+              <form
+                className="flex flex-col gap-y-5"
+                onSubmit={methods.handleSubmit(onSubmit)}>
+                <div>
+                  <div className="flex flex-row gap-x-4">
+                    <Input
+                      name="name"
+                      className="flex-3"
+                      placeholder="Group Name"
+                    />
 
-                  <Combobox
-                    name="icon"
-                    className="flex-1"
-                    items={returnLibraryIcons("fc")}
-                  />
+                    <Combobox name="icon" className="flex-1" />
+                  </div>
                 </div>
 
-                <Button
-                  className="w-full text-primary text-xl bg-transparent hover:bg-accent"
-                  size="lg"
-                  disabled={methods.formState.isSubmitting}>
-                  Submit
-                </Button>
+                <DataTable columns={columns} data={data} />
+
+                <SheetFooter>
+                  <Button
+                    className="w-full text-xl"
+                    size="lg"
+                    disabled={methods.formState.isSubmitting}>
+                    Submit
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    className="w-full text-xl"
+                    size="lg"
+                    disabled={methods.formState.isSubmitting}>
+                    Delete group
+                  </Button>
+                </SheetFooter>
               </form>
             </FormProvider>
           </div>
-        </DialogContent>
-      </Dialog>
+        </SheetContent>
+      </Sheet>
     </div>
   )
 }

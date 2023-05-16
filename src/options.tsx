@@ -20,8 +20,6 @@ function IndexOptions() {
     })()
   }, [])
 
-  console.log(session?.user)
-
   return (
     <div
       style={{

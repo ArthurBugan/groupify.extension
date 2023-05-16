@@ -1,6 +1,8 @@
 import type { PlasmoGetInlineAnchor } from "plasmo"
 import { BiChevronRight, BiEdit } from "react-icons/bi"
 
+import { useStorage } from "@plasmohq/storage/hook"
+
 import { Button } from "~components/ui/button"
 import {
   Collapsible,
@@ -17,11 +19,23 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 const GroupItem: React.FC<GroupType> = (g) => {
+  const [modal, setOpen] = useStorage("edit-channels-modal", false)
+  const [values, setFormValues] = useStorage("form-values", {})
+
+  const toggleEditDialog = () => {
+    setOpen((p) => !p)
+  }
+
+  const editItem = () => {
+    setFormValues(g)
+    toggleEditDialog()
+  }
+
   return (
     <Collapsible className="w-full group/child">
       <div className="px-4 my-2 flex flex-row items-center justify-between">
         <CollapsibleTrigger>
-          <Button variant="ghost">
+          <Button onClick={toggleEditDialog} variant="ghost">
             <BiChevronRight
               size={16}
               className="transition-all text-primary group-data-[state='open']/child:rotate-90"
@@ -33,7 +47,11 @@ const GroupItem: React.FC<GroupType> = (g) => {
         <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
 
         <Button variant="ghost">
-          <BiEdit size={16} className="transition-all text-primary" />
+          <BiEdit
+            onClick={editItem}
+            size={16}
+            className="transition-all text-primary"
+          />
         </Button>
       </div>
       <CollapsibleContent>

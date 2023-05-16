@@ -39,12 +39,9 @@ function IndexOptions() {
         ))
       }
     } catch (error) {
-      console.log("error", error)
       alert(error.error_description || error)
     }
   }
-
-  console.log(session?.user, "session")
 
   return (
     <div
