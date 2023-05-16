@@ -1,5 +1,6 @@
 import type { Session } from "@supabase/supabase-js"
 import { useState } from "react"
+import { toast } from "react-hot-toast"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
@@ -28,7 +29,14 @@ function IndexOptions() {
       if (error) {
         alert("Error with auth: " + error.message)
       } else if (!user) {
-        alert("Signup successful, confirmation mail should be sent soon!")
+        toast.custom((t) => (
+          <div
+            className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
+              t.visible ? "animate-enter" : "animate-leave"
+            }`}>
+            Please verify your inbox! ✅
+          </div>
+        ))
       }
     } catch (error) {
       console.log("error", error)

@@ -1,8 +1,7 @@
-"use client"
-
 import { Check, ChevronsUpDown } from "lucide-react"
 import * as React from "react"
 import { useController, useFormContext } from "react-hook-form"
+import { GroupedVirtuoso } from "react-virtuoso"
 
 import { Button } from "~components/ui/button"
 import {
@@ -12,19 +11,40 @@ import {
   CommandInput,
   CommandItem
 } from "~components/ui/command"
+import {
+  DynamicIcon,
+  type Library,
+  LibraryIcons,
+  returnLibraryIcons
+} from "~components/ui/icon"
 import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
 import { cn } from "~lib/utils"
 
 interface ComboboxProps {
-  items: any[]
   className: string
   name: string
 }
 
-export function ComboboxDemo({ items, name, className }: ComboboxProps) {
+const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
   const [open, setOpen] = React.useState(false)
-
   const formContext = useFormContext()
+
+  const groups = React.useMemo(() => {
+    return Object.keys(LibraryIcons).map((framework) => framework)
+  }, [])
+
+  const groupsCount = React.useMemo(() => {
+    return Object.keys(LibraryIcons).map(
+      (framework) =>
+        Object.keys(returnLibraryIcons(framework as Library)).length
+    )
+  }, [])
+
+  const items = React.useMemo(() => {
+    return Object.keys(LibraryIcons)
+      .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
+      .flat()
+  }, [])
 
   const {
     field,
@@ -40,10 +60,6 @@ export function ComboboxDemo({ items, name, className }: ComboboxProps) {
     return null
   }
 
-  const item = items.find(
-    (framework) => framework.value.toLowerCase() === field.value
-  )
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger className={className} asChild>
@@ -55,8 +71,11 @@ export function ComboboxDemo({ items, name, className }: ComboboxProps) {
           className="justify-between text-primary w-full text-xl">
           {field.value ? (
             <p className="flex flex-row items-center justify-center">
-              <span className="hidden">{item.label}</span>
-              {item?.icon}
+              <span className="hidden">{field.value}</span>
+              <DynamicIcon
+                lib={field.value.slice(0, 2).toLowerCase()}
+                icon={field.value}
+              />
             </p>
           ) : (
             "Icon..."
@@ -69,31 +88,53 @@ export function ComboboxDemo({ items, name, className }: ComboboxProps) {
         <Command className="w-full">
           <CommandInput placeholder="Search icon..." />
           <CommandEmpty>No icon found.</CommandEmpty>
+
           <CommandGroup>
-            {items.map((framework) => (
-              <CommandItem
-                className="w-full justify-center items-center"
-                key={framework.value}
-                title={framework.label}
-                onSelect={(currentValue) => {
-                  field.onChange(currentValue)
-                  setOpen(false)
-                }}>
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    field.value === framework.value.toLowerCase()
-                      ? "opacity-100"
-                      : "hidden opacity-0"
-                  )}
-                />
-                <div className="hidden">{framework.label}</div>
-                {framework.icon}
-              </CommandItem>
-            ))}
+            <GroupedVirtuoso
+              groupCounts={groupsCount}
+              className="virtuoso-scroller"
+              overscan={1000}
+              groupContent={(index) => <div>{index}</div>}
+              itemContent={(index) => {
+                console.log(
+                  "itemContent",
+                  items[index],
+                  items[index].slice(0, 2)
+                )
+
+                return (
+                  <CommandItem
+                    className="w-full justify-center items-center"
+                    key={items[index]}
+                    title={items[index]}
+                    value={items[index]}
+                    onSelect={() => {
+                      console.log(items[index])
+                      field.onChange(items[index])
+                      setOpen(false)
+                    }}>
+                    <Check
+                      className={cn(
+                        "mr-2 h-4 w-4",
+                        field.value === items[index]
+                          ? "opacity-100"
+                          : "hidden opacity-0"
+                      )}
+                    />
+                    <DynamicIcon
+                      lib={items[index].slice(0, 2).toLowerCase() as Library}
+                      className="text-primary"
+                      icon={items[index]}
+                    />
+                  </CommandItem>
+                )
+              }}
+            />
           </CommandGroup>
         </Command>
       </PopoverContent>
     </Popover>
   )
 }
+
+export default ComboboxDemo

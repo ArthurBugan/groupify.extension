@@ -1,5 +1,5 @@
 import type { PlasmoGetInlineAnchor } from "plasmo"
-import { BiChevronRight } from "react-icons/bi"
+import { BiChevronRight, BiEdit } from "react-icons/bi"
 
 import { Button } from "~components/ui/button"
 import {
@@ -17,7 +17,7 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 const GroupItem: React.FC<GroupType> = (g) => {
   return (
     <Collapsible className="w-full group/child">
-      <div className="px-6 my-4 flex flex-row items-center">
+      <div className="px-6 my-4 flex flex-row items-center justify-between">
         <CollapsibleTrigger>
           <Button variant="ghost">
             <BiChevronRight
@@ -28,9 +28,15 @@ const GroupItem: React.FC<GroupType> = (g) => {
         </CollapsibleTrigger>
 
         <p className="text-primary text-2xl">{g.name}</p>
+
+        <Button variant="ghost">
+          <BiEdit size={20} className="transition-all text-primary" />
+        </Button>
       </div>
       <CollapsibleContent>
-        <p className="text-primary text-2xl">Lista de canais</p>
+        <div className="px-6 my-4 flex flex-row items-center justify-between">
+          <p className="text-primary text-2xl">Lista de canais</p>
+        </div>
       </CollapsibleContent>
     </Collapsible>
   )

@@ -29,6 +29,7 @@ specifiers:
   react-hook-form: ^7.43.9
   react-hot-toast: ^2.4.1
   react-icons: ^4.8.0
+  react-virtuoso: ^4.3.6
   tailwind-merge: ^1.12.0
   tailwindcss: ^3.3.2
   tailwindcss-animate: ^1.0.5
@@ -56,6 +57,7 @@ dependencies:
   react-hook-form: 7.43.9_react@18.2.0
   react-hot-toast: 2.4.1_biqbaboplfbrettd7655fr4n2y
   react-icons: 4.8.0_react@18.2.0
+  react-virtuoso: 4.3.6_biqbaboplfbrettd7655fr4n2y
   tailwind-merge: 1.12.0
   tailwindcss-animate: 1.0.5_tailwindcss@3.3.2
   zod: 3.21.4
@@ -5600,6 +5602,17 @@ packages:
       invariant: 2.2.4
       react: 18.2.0
       tslib: 2.5.0
+    dev: false
+
+  /react-virtuoso/4.3.6_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-t2yzA9QKwMrcECLytVfZcBZMusuQ9Ahgt62SL8uC/sYm9Sk/h14sYTJC0MVO6CAtl3BzKiLKSC79Vp+W3KOXMg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16 || >=17 || >= 18'
+      react-dom: '>=16 || >=17 || >= 18'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /react/18.2.0:

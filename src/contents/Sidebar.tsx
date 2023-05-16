@@ -13,6 +13,7 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { supabase } from "~core/store"
+import { sleep } from "~lib/utils"
 
 import GroupItem from "./GroupItem"
 
@@ -23,8 +24,6 @@ export interface GroupType {
   name: string
   user_id: string
 }
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -80,14 +79,6 @@ const Groups = () => {
   }, [session])
 
   const toggleChannels = () => {
-    toast.custom((t) => (
-      <div
-        className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
-          t.visible ? "animate-enter" : "animate-leave"
-        }`}>
-        New Group created! ✅
-      </div>
-    ))
     setChannelsModal((p) => !p)
   }
 
@@ -95,7 +86,7 @@ const Groups = () => {
     <div className="flex gap-y-4 w-full">
       <Collapsible className="w-full group">
         <div className="px-6 my-4 flex flex-row items-center justify-between">
-          <CollapsibleTrigger as="div">
+          <CollapsibleTrigger asChild>
             <Button variant="ghost">
               <BiChevronRight
                 size={20}
@@ -103,7 +94,7 @@ const Groups = () => {
               />
             </Button>
           </CollapsibleTrigger>
-          <p className="text-2xl text-primary">My </p>
+          <p className="text-2xl text-primary">My groups</p>
 
           <Button onClick={toggleChannels} variant="ghost">
             <BiFolderPlus size={20} className="text-primary" />

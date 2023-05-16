@@ -2,8 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
 import type { PlasmoGetInlineAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
-import { toast } from "react-hot-toast"
-import { Toaster } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
 import * as z from "zod"
 
@@ -20,6 +18,8 @@ import {
 import { Input } from "~components/ui/input"
 import { supabase } from "~core/store"
 import { sleep } from "~lib/utils"
+
+import { returnLibraryIcons } from "../components/ui/icon"
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -54,8 +54,8 @@ const schema = z.object({
 
 export type Schema = z.infer<typeof schema>
 
-const ManageChannels = (props) => {
-  const [modal, setOpen] = useStorage("channels-modal", false)
+const EditManageChannels = (props) => {
+  const [modal, setOpen] = useStorage("edit-channels-modal", false)
   const [session] = useStorage("user-data")
 
   const { ...methods } = useForm<Schema>({
@@ -66,30 +66,7 @@ const ManageChannels = (props) => {
   })
 
   const onSubmit = async (group_data: Schema) => {
-    console.log(group_data)
-
-    return
-    const { data: curSession, error: errorSession } =
-      await supabase.auth.getSession()
-
-    const { data, error } = await supabase
-      .from("groups")
-      .insert({ ...group_data, user_id: session.user.id })
-
-    if (!error) {
-      toast.custom((t) => (
-        <div
-          className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
-            t.visible ? "animate-enter" : "animate-leave"
-          }`}>
-          New Group created! ✅
-        </div>
-      ))
-
-      setTimeout(() => {
-        setOpen(false)
-      }, 200)
-    }
+    console.log(session.user.id)
   }
 
   if (!modal) {
@@ -98,8 +75,6 @@ const ManageChannels = (props) => {
 
   return (
     <div className="h-screen flex items-center relative">
-      <Toaster position="top-left" />
-
       <Dialog open={modal} onOpenChange={setOpen}>
         <DialogContent>
           <div className="flex flex-col gap-y-5">
@@ -121,7 +96,11 @@ const ManageChannels = (props) => {
                     placeholder="Group Name"
                   />
 
-                  <Combobox name="icon" className="flex-1" />
+                  <Combobox
+                    name="icon"
+                    className="flex-1"
+                    items={returnLibraryIcons("fc")}
+                  />
                 </div>
 
                 <Button
@@ -139,4 +118,4 @@ const ManageChannels = (props) => {
   )
 }
 
-export default ManageChannels
+export default EditManageChannels
