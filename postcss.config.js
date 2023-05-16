@@ -3,6 +3,9 @@
  */
 module.exports = {
   plugins: {
-    tailwindcss: {}
+    tailwindcss: {},
+    '@thedutchcoder/postcss-rem-to-px': {
+      baseValue: 12
+    },
   }
 }

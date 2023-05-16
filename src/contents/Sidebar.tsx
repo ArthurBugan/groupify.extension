@@ -85,19 +85,19 @@ const Groups = () => {
   return (
     <div className="flex gap-y-4 w-full">
       <Collapsible className="w-full group">
-        <div className="px-6 my-4 flex flex-row items-center justify-between">
+        <div className="px-4 my-3 flex flex-row items-center justify-between">
           <CollapsibleTrigger asChild>
             <Button variant="ghost">
               <BiChevronRight
-                size={20}
+                size={16}
                 className="transition-all text-primary group-data-[state='open']:rotate-90"
               />
             </Button>
           </CollapsibleTrigger>
-          <p className="text-2xl text-primary">My groups</p>
+          <p className="text-xl text-primary">My groups</p>
 
           <Button onClick={toggleChannels} variant="ghost">
-            <BiFolderPlus size={20} className="text-primary" />
+            <BiFolderPlus size={16} className="text-primary" />
           </Button>
         </div>
 

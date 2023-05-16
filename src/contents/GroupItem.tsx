@@ -7,6 +7,8 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "~components/ui/collapsible"
+import { DynamicIcon } from "~components/ui/icon"
+import { getFamily } from "~lib/utils"
 
 import type { GroupType } from "./Sidebar"
 
@@ -17,25 +19,26 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 const GroupItem: React.FC<GroupType> = (g) => {
   return (
     <Collapsible className="w-full group/child">
-      <div className="px-6 my-4 flex flex-row items-center justify-between">
+      <div className="px-4 my-2 flex flex-row items-center justify-between">
         <CollapsibleTrigger>
           <Button variant="ghost">
             <BiChevronRight
-              size={20}
+              size={16}
               className="transition-all text-primary group-data-[state='open']/child:rotate-90"
             />
           </Button>
         </CollapsibleTrigger>
 
-        <p className="text-primary text-2xl">{g.name}</p>
+        <p className="text-primary truncate text-lg">{g.name}</p>
+        <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
 
         <Button variant="ghost">
-          <BiEdit size={20} className="transition-all text-primary" />
+          <BiEdit size={16} className="transition-all text-primary" />
         </Button>
       </div>
       <CollapsibleContent>
-        <div className="px-6 my-4 flex flex-row items-center justify-between">
-          <p className="text-primary text-2xl">Lista de canais</p>
+        <div className="px-4 my-1 flex flex-row items-center justify-between">
+          <p className="text-primary text-xl">Lista de canais</p>
         </div>
       </CollapsibleContent>
     </Collapsible>

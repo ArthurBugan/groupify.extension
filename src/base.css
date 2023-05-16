@@ -11,10 +11,6 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  div[cmdk-group-items] div[data-viewport-type="element"] > div {
-    @apply grid grid-cols-6;
-  }
-
   .virtuoso-scroller {
     @apply h-80 !important;
   }

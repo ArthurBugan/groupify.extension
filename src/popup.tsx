@@ -31,7 +31,7 @@ function IndexOptions() {
       } else if (!user) {
         toast.custom((t) => (
           <div
-            className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
+            className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
               t.visible ? "animate-enter" : "animate-leave"
             }`}>
             Please verify your inbox! ✅

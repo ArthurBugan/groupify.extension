@@ -79,7 +79,7 @@ const ManageChannels = (props) => {
     if (!error) {
       toast.custom((t) => (
         <div
-          className={`bg-background px-6 py-4 shadow-md rounded-full text-2xl text-primary ${
+          className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
             t.visible ? "animate-enter" : "animate-leave"
           }`}>
           New Group created! ✅
@@ -101,38 +101,38 @@ const ManageChannels = (props) => {
       <Toaster position="top-left" />
 
       <Dialog open={modal} onOpenChange={setOpen}>
-        <DialogContent>
-          <div className="flex flex-col gap-y-5">
-            <DialogHeader>
-              <AiOutlineClose
-                className="absolute right-4 cursor-pointer"
-                size={18}
-                onClick={() => setOpen(false)}
-              />
-              <DialogTitle>Add Group</DialogTitle>
-            </DialogHeader>
+        <DialogContent className="flex flex-col gap-y-5">
+          <DialogHeader>
+            <AiOutlineClose
+              className="absolute right-4 cursor-pointer"
+              size={18}
+              onClick={() => setOpen(false)}
+            />
+            <DialogTitle>Add Group</DialogTitle>
+          </DialogHeader>
 
-            <FormProvider {...methods}>
-              <form onSubmit={methods.handleSubmit(onSubmit)}>
-                <div className="flex flex-row gap-x-4">
-                  <Input
-                    name="name"
-                    className="flex-3"
-                    placeholder="Group Name"
-                  />
+          <FormProvider {...methods}>
+            <form
+              className="flex flex-col gap-y-5"
+              onSubmit={methods.handleSubmit(onSubmit)}>
+              <div className="flex flex-row gap-x-4">
+                <Input
+                  name="name"
+                  className="flex-3"
+                  placeholder="Group Name"
+                />
 
-                  <Combobox name="icon" className="flex-1" />
-                </div>
+                <Combobox name="icon" className="flex-1" />
+              </div>
 
-                <Button
-                  className="w-full text-primary text-xl bg-transparent hover:bg-accent"
-                  size="lg"
-                  disabled={methods.formState.isSubmitting}>
-                  Submit
-                </Button>
-              </form>
-            </FormProvider>
-          </div>
+              <Button
+                className="w-full text-primary text-xl bg-transparent hover:bg-accent"
+                size="lg"
+                disabled={methods.formState.isSubmitting}>
+                Submit
+              </Button>
+            </form>
+          </FormProvider>
         </DialogContent>
       </Dialog>
     </div>

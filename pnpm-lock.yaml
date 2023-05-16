@@ -11,6 +11,7 @@ specifiers:
   '@radix-ui/react-select': ^1.2.1
   '@radix-ui/react-slot': ^1.0.1
   '@supabase/supabase-js': ^2.21.0
+  '@thedutchcoder/postcss-rem-to-px': ^0.0.2
   '@types/chrome': 0.0.227
   '@types/node': 18.15.11
   '@types/react': 18.0.32
@@ -46,6 +47,7 @@ dependencies:
   '@radix-ui/react-select': 1.2.1_6hfup3cnntiu7o7txcf7sadj7u
   '@radix-ui/react-slot': 1.0.1_react@18.2.0
   '@supabase/supabase-js': 2.21.0
+  '@thedutchcoder/postcss-rem-to-px': 0.0.2_postcss@8.4.23
   class-variance-authority: 0.6.0_typescript@5.0.3
   clsx: 1.2.1
   cmdk: 0.2.0_6hfup3cnntiu7o7txcf7sadj7u
@@ -2920,6 +2922,15 @@ packages:
     engines: {node: '>=14.16'}
     dependencies:
       defer-to-connect: 2.0.1
+    dev: false
+
+  /@thedutchcoder/postcss-rem-to-px/0.0.2_postcss@8.4.23:
+    resolution: {integrity: sha512-M2T3bJSTgLtZF8+KDYDtSDAFGuTlaxYfitpjkmNswnfJ8AjbQ/g7NC+bqgAAViYWFV9I3tdrQuQ3Bu8j7GrjwA==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      postcss: ^8.3.0
+    dependencies:
+      postcss: 8.4.23
     dev: false
 
   /@trysound/sax/0.2.0:

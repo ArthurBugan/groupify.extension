@@ -1,7 +1,7 @@
 import { Check, ChevronsUpDown } from "lucide-react"
 import * as React from "react"
 import { useController, useFormContext } from "react-hook-form"
-import { GroupedVirtuoso } from "react-virtuoso"
+import { VirtuosoGrid } from "react-virtuoso"
 
 import { Button } from "~components/ui/button"
 import {
@@ -18,7 +18,7 @@ import {
   returnLibraryIcons
 } from "~components/ui/icon"
 import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
-import { cn } from "~lib/utils"
+import { cn, getFamily } from "~lib/utils"
 
 interface ComboboxProps {
   className: string
@@ -29,15 +29,10 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
   const [open, setOpen] = React.useState(false)
   const formContext = useFormContext()
 
-  const groups = React.useMemo(() => {
-    return Object.keys(LibraryIcons).map((framework) => framework)
-  }, [])
-
-  const groupsCount = React.useMemo(() => {
-    return Object.keys(LibraryIcons).map(
-      (framework) =>
-        Object.keys(returnLibraryIcons(framework as Library)).length
-    )
+  const itemsCount = React.useMemo(() => {
+    return Object.keys(LibraryIcons)
+      .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
+      .flat().length
   }, [])
 
   const items = React.useMemo(() => {
@@ -72,10 +67,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
           {field.value ? (
             <p className="flex flex-row items-center justify-center">
               <span className="hidden">{field.value}</span>
-              <DynamicIcon
-                lib={field.value.slice(0, 2).toLowerCase()}
-                icon={field.value}
-              />
+              <DynamicIcon lib={getFamily(field.value)} icon={field.value} />
             </p>
           ) : (
             "Icon..."
@@ -90,18 +82,11 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
           <CommandEmpty>No icon found.</CommandEmpty>
 
           <CommandGroup>
-            <GroupedVirtuoso
-              groupCounts={groupsCount}
+            <VirtuosoGrid
               className="virtuoso-scroller"
-              overscan={1000}
-              groupContent={(index) => <div>{index}</div>}
+              listClassName="grid grid-cols-6"
+              totalCount={itemsCount}
               itemContent={(index) => {
-                console.log(
-                  "itemContent",
-                  items[index],
-                  items[index].slice(0, 2)
-                )
-
                 return (
                   <CommandItem
                     className="w-full justify-center items-center"
@@ -122,7 +107,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
                       )}
                     />
                     <DynamicIcon
-                      lib={items[index].slice(0, 2).toLowerCase() as Library}
+                      lib={getFamily(items[index])}
                       className="text-primary"
                       icon={items[index]}
                     />

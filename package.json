@@ -19,6 +19,7 @@
     "@radix-ui/react-select": "^1.2.1",
     "@radix-ui/react-slot": "^1.0.1",
     "@supabase/supabase-js": "^2.21.0",
+    "@thedutchcoder/postcss-rem-to-px": "^0.0.2",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
