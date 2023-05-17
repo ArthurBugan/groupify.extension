@@ -3,7 +3,6 @@ import cssText from "data-text:../base.css"
 import type { PlasmoGetOverlayAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
-import { Toaster } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
 import * as z from "zod"
 
@@ -15,11 +14,9 @@ import { Input } from "~components/ui/input"
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetTitle,
-  SheetTrigger
+  SheetTitle
 } from "~components/ui/sheet"
 import { supabase } from "~core/store"
 
@@ -43,21 +40,25 @@ export type Schema = z.infer<typeof schema>
 const ManageChannels = (props) => {
   const [modal, setOpen] = useStorage("channels-modal", false)
   const [session] = useStorage("user-data")
+  const [groups, setGroups] = useStorage("groups")
 
   const { ...methods } = useForm<Schema>({
+    defaultValues: {
+      icon: "FcFolder"
+    },
     mode: "all",
     shouldFocusError: true,
     shouldUnregister: true,
     resolver: zodResolver(schema)
   })
 
-  const onSubmit = async (group_data: Schema) => {
-    const { data: curSession, error: errorSession } =
-      await supabase.auth.getSession()
-
+  const onSubmit = async (groupData: Schema) => {
     const { data, error } = await supabase
       .from("groups")
-      .insert({ ...group_data, user_id: session.user.id })
+      .insert({ ...groupData, user_id: session.user.id })
+      .select()
+
+    setGroups([...groups, data[0]])
 
     if (!error) {
       toast.custom((t) => (
@@ -79,8 +80,6 @@ const ManageChannels = (props) => {
 
   return (
     <div className="h-screen w-screen">
-      <Toaster position="top-left" />
-
       <Sheet open={modal}>
         <SheetContent
           size="sm"

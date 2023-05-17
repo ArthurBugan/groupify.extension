@@ -1,4 +1,3 @@
-import type { User } from "@supabase/supabase-js"
 import { useEffect, useState } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
@@ -6,7 +5,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 import { supabase } from "~core/store"
 
 function IndexOptions() {
-  const [session, setSession] = useStorage("user-data", null)
+  const [session, setSession] = useStorage("user-data")
 
   useEffect(() => {
     ;(async () => {

@@ -1,6 +1,10 @@
 import { Check, ChevronsUpDown } from "lucide-react"
 import * as React from "react"
-import { useController, useFormContext } from "react-hook-form"
+import {
+  type UseFieldArrayAppend,
+  useController,
+  useFormContext
+} from "react-hook-form"
 import { VirtuosoGrid } from "react-virtuoso"
 
 import { Button } from "~components/ui/button"
@@ -11,40 +15,50 @@ import {
   CommandInput,
   CommandItem
 } from "~components/ui/command"
-import {
-  DynamicIcon,
-  type Library,
-  LibraryIcons,
-  returnLibraryIcons
-} from "~components/ui/icon"
 import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
-import { cn, getFamily } from "~lib/utils"
+import { cn } from "~lib/utils"
 
 interface ComboboxProps {
   className: string
   name: string
+  append: (param: any) => void
 }
 
-const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
+const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   const [open, setOpen] = React.useState(false)
   const formContext = useFormContext()
 
   const itemsCount = React.useMemo(() => {
-    return Object.keys(LibraryIcons)
-      .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
-      .flat().length
+    const items = JSON.parse(
+      document.querySelector("html").getAttribute("ysm-guide-data")
+    )
+
+    return (
+      items.items[1].guideSubscriptionsSectionRenderer.items[
+        items.items[1].guideSubscriptionsSectionRenderer.items.length - 1
+      ].guideCollapsibleEntryRenderer.expandableItems.length - 1
+    )
   }, [])
 
   const items = React.useMemo(() => {
-    return Object.keys(LibraryIcons)
-      .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
-      .flat()
+    const items = JSON.parse(
+      document.querySelector("html").getAttribute("ysm-guide-data")
+    )
+
+    const values =
+      items.items[1].guideSubscriptionsSectionRenderer.items[
+        items.items[1].guideSubscriptionsSectionRenderer.items.length - 1
+      ].guideCollapsibleEntryRenderer.expandableItems
+
+    values.pop()
+
+    return values
   }, [])
 
   const {
     field,
     fieldState: { invalid, isTouched, isDirty, error },
-    formState: { isSubmitting }
+    formState
   } = useController({ name })
 
   if (!formContext || !name) {
@@ -63,14 +77,13 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
           size={"lg"}
           role="combobox"
           aria-expanded={open}
-          className="justify-between text-primary w-full text-xl">
+          className="w-full items-center flex justify-between text-primary text-xl">
           {field.value ? (
             <p className="flex flex-row items-center justify-center">
               <span className="hidden">{field.value}</span>
-              <DynamicIcon lib={getFamily(field.value)} icon={field.value} />
             </p>
           ) : (
-            "Icon..."
+            <p className="h-14 flex items-center">Add a channel...</p>
           )}
           <ChevronsUpDown className="ml-2 h-6 w-6 shrink-0 opacity-50" />
         </Button>
@@ -78,23 +91,31 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
 
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
-          <CommandInput placeholder="Search icon..." />
-          <CommandEmpty>No icon found.</CommandEmpty>
+          <CommandInput placeholder="Search channel..." />
+          <CommandEmpty>No channel found.</CommandEmpty>
 
           <CommandGroup>
             <VirtuosoGrid
               className="virtuoso-scroller"
-              listClassName="grid grid-cols-4"
+              listClassName="grid grid-cols-1"
               totalCount={itemsCount}
               itemContent={(index) => {
+                const item = items[index].guideEntryRenderer
                 return (
                   <CommandItem
-                    className="w-full justify-center items-center"
-                    key={items[index]}
-                    title={items[index]}
-                    value={items[index]}
+                    className="px-4 gap-x-4 w-full flex justify-start items-center"
+                    key={item?.entryData?.guideEntryData?.guideEntryId}
+                    title={item}
                     onSelect={() => {
-                      field.onChange(items[index])
+                      append({
+                        id: item.entryData.guideEntryData.guideEntryId,
+                        name: item.formattedTitle?.simpleText,
+                        thumbnail: item?.thumbnail?.thumbnails[0].url,
+                        new_content:
+                          item.presentationStyle ===
+                          "GUIDE_ENTRY_PRESENTATION_STYLE_NEW_CONTENT"
+                      })
+
                       setOpen(false)
                     }}>
                     <Check
@@ -105,12 +126,11 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
                           : "hidden opacity-0"
                       )}
                     />
-                    <DynamicIcon
-                      size={24}
-                      lib={getFamily(items[index])}
-                      className="text-primary"
-                      icon={items[index]}
+                    <img
+                      src={item?.thumbnail?.thumbnails[0].url}
+                      className="h-10 w-10"
                     />
+                    <p>{item?.formattedTitle?.simpleText}</p>
                   </CommandItem>
                 )
               }}

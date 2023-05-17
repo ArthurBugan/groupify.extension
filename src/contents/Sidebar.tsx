@@ -1,7 +1,6 @@
 import cssText from "data-text:../base.css"
 import type { PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useState } from "react"
-import { toast } from "react-hot-toast"
+import { useEffect } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 
 import { useStorage } from "@plasmohq/storage/hook"
@@ -13,17 +12,10 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { supabase } from "~core/store"
+import { useSupabase } from "~lib/hooks"
 import { sleep } from "~lib/utils"
 
 import GroupItem from "./GroupItem"
-
-export interface GroupType {
-  created_at: string
-  icon: string
-  id: number
-  name: string
-  user_id: string
-}
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -38,9 +30,9 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 const Groups = () => {
   const [modal, setChannelsModal] = useStorage("channels-modal", false)
-  const [groups, setGroups] = useState<GroupType[] | { [x: string]: any }[]>([])
+  const [session] = useStorage("user-data")
 
-  const [session] = useStorage("user-data", null)
+  const { data } = useSupabase("groups")
 
   useEffect(() => {
     if (modal) {
@@ -48,7 +40,7 @@ const Groups = () => {
     }
 
     ;(async () => {
-      if (session !== null) {
+      if (session) {
         const { data, error: errorSession } = await supabase.auth.setSession({
           access_token: session.access_token,
           refresh_token: session.refresh_token
@@ -64,16 +56,6 @@ const Groups = () => {
             .querySelectorAll("plasmo-csui")
             .forEach((e) => e.classList.add("dark"))
         }
-
-        const { data: groups, error: groupsError } = await supabase
-          .from("groups")
-          .select()
-
-        if (groupsError) {
-          alert(groupsError)
-        }
-
-        setGroups(groups)
       }
     })()
   }, [session])
@@ -81,6 +63,8 @@ const Groups = () => {
   const toggleChannels = () => {
     setChannelsModal((p) => !p)
   }
+
+  console.log(data, "data")
 
   return (
     <div className="flex gap-y-4 w-full">
@@ -102,8 +86,15 @@ const Groups = () => {
         </div>
 
         <CollapsibleContent className="space-y-2">
-          {groups.map((g) => (
-            <GroupItem key={g.id} {...g} />
+          {!data.length && (
+            <span className="px-4 my-2 flex flex-row items-center justify-between text-primary text-sm">
+              No groups found
+            </span>
+          )}
+          {data.map((g) => (
+            <div key={g.id}>
+              <GroupItem {...g} />
+            </div>
           ))}
         </CollapsibleContent>
       </Collapsible>
