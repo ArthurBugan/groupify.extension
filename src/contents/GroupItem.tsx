@@ -1,8 +1,6 @@
 import type { PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { BiChevronRight, BiEdit } from "react-icons/bi"
-
-import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "~components/ui/button"
 import {
@@ -11,7 +9,7 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { DynamicIcon } from "~components/ui/icon"
-import { supabase } from "~core/store"
+import { supabase, useEditDialog, useFormState } from "~core/store"
 import { type GroupType, useSupabase } from "~lib/hooks"
 import { getFamily } from "~lib/utils"
 
@@ -20,26 +18,25 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 const GroupItem: React.FC<GroupType> = (g) => {
-  const [modal, setOpen] = useStorage("edit-channels-modal", false)
-  const [values, setFormValues] = useStorage("form-values", {})
+  const editDialog = useEditDialog()
+  const form = useFormState()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const { data, loading } = useSupabase("channels", ["group_id", g.id], isOpen)
 
-  const toggleEditDialog = () => {
-    setOpen((p) => !p)
-  }
-
   const editItem = async () => {
     if (!data.length) {
-      const { data } = await supabase
+      const { data: channels } = await supabase
         .from("channels")
         .select()
         .eq("group_id", g.id)
+
+      form.setForm({ channels, ...g })
+      return editDialog.toggleOpen()
     }
 
-    await setFormValues({ channels: data, ...g })
-    toggleEditDialog()
+    form.setForm({ channels: data, ...g })
+    editDialog.toggleOpen()
   }
 
   return (
@@ -47,7 +44,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
       open={isOpen}
       onOpenChange={setIsOpen}
       className="w-full group/child">
-      <div className="px-4 my-2 flex flex-row items-center justify-between">
+      <div className="px-4 gap-x-2 my-2 flex flex-row items-center justify-start">
         <CollapsibleTrigger asChild>
           <Button variant="ghost">
             <BiChevronRight
@@ -57,10 +54,10 @@ const GroupItem: React.FC<GroupType> = (g) => {
           </Button>
         </CollapsibleTrigger>
 
-        <p className="text-primary truncate text-lg">{g.name}</p>
         <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
+        <p className="text-primary truncate text-lg">{g.name}</p>
 
-        <Button variant="ghost">
+        <Button variant="ghost" className="ml-auto">
           <BiEdit
             onClick={editItem}
             size={16}

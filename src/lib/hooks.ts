@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import { useStorage } from "@plasmohq/storage/hook"
 import { supabase } from "~core/store"
+
+import { useGroups, useChannels } from '~core/store';
 
 export interface GroupType {
   created_at: string
@@ -11,8 +12,15 @@ export interface GroupType {
   user_id: string
 }
 
-export const useSupabase = (group, filter = null, renderControl = null) => {
-  const [data, setData] = useStorage(group, [])
+export type GroupTypes = "groups" | "channels"
+
+export const useSupabase = (groupType: GroupTypes, filter = null, renderControl = null) => {
+  const groupTypes = {
+    "groups": useGroups,
+    "channels": useChannels
+  }
+
+  const group = groupTypes[groupType]();
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
 
@@ -23,7 +31,7 @@ export const useSupabase = (group, filter = null, renderControl = null) => {
           setLoading(true);
 
           let query = supabase
-            .from(group)
+            .from(groupType)
             .select()
 
           if (filter) {
@@ -32,7 +40,7 @@ export const useSupabase = (group, filter = null, renderControl = null) => {
 
           const { data, error } = await query
 
-          setData(data)
+          group.create(data)
         } catch (err) {
           setError(err)
         } finally {
@@ -42,5 +50,5 @@ export const useSupabase = (group, filter = null, renderControl = null) => {
     )()
   }, [renderControl])
 
-  return { data, error, loading }
+  return { data: group.items, error, loading }
 }

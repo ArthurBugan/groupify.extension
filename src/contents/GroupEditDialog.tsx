@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
 import type { PlasmoGetInlineAnchor } from "plasmo"
+import { useEffect } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai"
@@ -19,6 +20,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "~components/ui/sheet"
+import { useEditDialog, useFormState } from "~core/store"
 import { supabase } from "~core/store"
 
 export const getStyle = () => {
@@ -50,17 +52,22 @@ const schema = z.object({
 export type Schema = z.infer<typeof schema>
 
 const EditManageChannels = (props) => {
-  const [modal, setOpen] = useStorage("edit-channels-modal", false)
+  const editDialog = useEditDialog()
+  const form = useFormState()
   const [session] = useStorage("user-data")
-  const [values] = useStorage("form-values", {})
 
   const { ...methods } = useForm<Schema>({
-    values,
     mode: "all",
     shouldFocusError: true,
     shouldUnregister: true,
     resolver: zodResolver(schema)
   })
+
+  useEffect(() => {
+    if (editDialog.isOpen) {
+      methods.reset(form.values)
+    }
+  }, [editDialog.isOpen])
 
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
@@ -97,23 +104,21 @@ const EditManageChannels = (props) => {
       ))
     }
 
-    setOpen(false)
+    editDialog.toggleOpen()
   }
 
-  console.log(methods.formState.errors, methods.getValues())
-
-  if (!modal) return null
+  if (!editDialog.isOpen) return null
 
   return (
     <div className="h-screen flex items-center relative">
-      <Sheet open={modal}>
+      <Sheet open={editDialog.isOpen}>
         <SheetContent size="sm">
           <div className="flex flex-col gap-y-5">
             <SheetHeader>
               <AiOutlineClose
                 className="absolute right-4 cursor-pointer text-primary"
                 size={18}
-                onClick={() => setOpen(false)}
+                onClick={editDialog.toggleOpen}
               />
               <SheetTitle>Edit Group</SheetTitle>
             </SheetHeader>
@@ -147,38 +152,43 @@ const EditManageChannels = (props) => {
                     Group channels
                   </div>
                 )}
-                {fields?.map((c, index) => (
-                  <div
-                    key={c.id}
-                    className="flex flex-row w-full items-center justify-between">
-                    <img src={c.thumbnail} className="h-10 w-10" />
-                    <p className="text-primary text-lg">{c.name}</p>
-                    <Button variant="secondary">
-                      <AiFillDelete size={20} onClick={() => remove(index)} />
-                    </Button>
-                  </div>
-                ))}
-
-                <SheetFooter>
-                  <Button
-                    className="w-full text-xl"
-                    size="lg"
-                    type="submit"
-                    onClick={methods.handleSubmit(onSubmit)}
-                    disabled={methods.formState.isSubmitting}>
-                    Submit
-                  </Button>
-                  <Button
-                    variant="secondary"
-                    className="w-full text-xl"
-                    size="lg"
-                    disabled={methods.formState.isSubmitting}>
-                    Delete group
-                  </Button>
-                </SheetFooter>
+                <div className="flex flex-col gap-y-5 max-h-[70vh] overflow-y-auto">
+                  {fields?.map((c, index) => (
+                    <div
+                      key={c.id}
+                      className="flex flex-row w-full items-center justify-between">
+                      <img
+                        src={c.thumbnail}
+                        className="rounded-full h-10 w-10"
+                      />
+                      <p className="text-primary text-lg">{c.name}</p>
+                      <Button variant="secondary">
+                        <AiFillDelete size={20} onClick={() => remove(index)} />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
               </form>
             </FormProvider>
           </div>
+
+          <SheetFooter className="mt-auto">
+            <Button
+              className="w-full text-xl"
+              size="lg"
+              type="submit"
+              onClick={methods.handleSubmit(onSubmit)}
+              disabled={methods.formState.isSubmitting}>
+              Submit
+            </Button>
+            <Button
+              variant="secondary"
+              className="w-full text-xl"
+              size="lg"
+              disabled={methods.formState.isSubmitting}>
+              Delete group
+            </Button>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </div>

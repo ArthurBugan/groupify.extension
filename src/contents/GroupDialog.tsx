@@ -18,7 +18,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "~components/ui/sheet"
-import { supabase } from "~core/store"
+import { supabase, useCreateDialog, useGroups } from "~core/store"
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -38,9 +38,9 @@ const schema = z.object({
 export type Schema = z.infer<typeof schema>
 
 const ManageChannels = (props) => {
-  const [modal, setOpen] = useStorage("channels-modal", false)
+  const dialog = useCreateDialog()
+  const groups = useGroups()
   const [session] = useStorage("user-data")
-  const [groups, setGroups] = useStorage("groups")
 
   const { ...methods } = useForm<Schema>({
     defaultValues: {
@@ -58,7 +58,7 @@ const ManageChannels = (props) => {
       .insert({ ...groupData, user_id: session.user.id })
       .select()
 
-    setGroups([...groups, data[0]])
+    groups.add(data[0])
 
     if (!error) {
       toast.custom((t) => (
@@ -70,17 +70,15 @@ const ManageChannels = (props) => {
         </div>
       ))
 
-      setTimeout(() => {
-        setOpen(false)
-      }, 200)
+      dialog.toggleOpen()
     }
   }
 
-  if (!modal) return null
+  if (!dialog.isOpen) return null
 
   return (
     <div className="h-screen w-screen">
-      <Sheet open={modal}>
+      <Sheet open={dialog.isOpen}>
         <SheetContent
           size="sm"
           position="right"
@@ -89,7 +87,7 @@ const ManageChannels = (props) => {
             <AiOutlineClose
               className="absolute right-4 cursor-pointer text-primary"
               size={18}
-              onClick={() => setOpen(false)}
+              onClick={dialog.toggleOpen}
             />
             <SheetTitle>Add Group</SheetTitle>
           </SheetHeader>

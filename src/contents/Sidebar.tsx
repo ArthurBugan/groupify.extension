@@ -11,7 +11,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "~components/ui/collapsible"
-import { supabase } from "~core/store"
+import { supabase, useCreateDialog } from "~core/store"
 import { useSupabase } from "~lib/hooks"
 import { sleep } from "~lib/utils"
 
@@ -29,17 +29,18 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 const Groups = () => {
-  const [modal, setChannelsModal] = useStorage("channels-modal", false)
   const [session] = useStorage("user-data")
-
   const { data } = useSupabase("groups")
+  const dialog = useCreateDialog()
 
   useEffect(() => {
-    if (modal) {
-      setChannelsModal(false)
-    }
-
     ;(async () => {
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document
+          .querySelectorAll("plasmo-csui")
+          .forEach((e) => e.classList.add("dark"))
+      }
+
       if (session) {
         const { data, error: errorSession } = await supabase.auth.setSession({
           access_token: session.access_token,
@@ -50,21 +51,9 @@ const Groups = () => {
           alert(errorSession)
           return
         }
-
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document
-            .querySelectorAll("plasmo-csui")
-            .forEach((e) => e.classList.add("dark"))
-        }
       }
     })()
   }, [session])
-
-  const toggleChannels = () => {
-    setChannelsModal((p) => !p)
-  }
-
-  console.log(data, "data")
 
   return (
     <div className="flex gap-y-4 w-full">
@@ -73,14 +62,14 @@ const Groups = () => {
           <CollapsibleTrigger asChild>
             <Button variant="ghost">
               <BiChevronRight
-                size={16}
+                size={18}
                 className="transition-all text-primary group-data-[state='open']:rotate-90"
               />
             </Button>
           </CollapsibleTrigger>
           <p className="text-xl text-primary">My groups</p>
 
-          <Button onClick={toggleChannels} variant="ghost">
+          <Button onClick={dialog.toggleOpen} variant="ghost">
             <BiFolderPlus size={16} className="text-primary" />
           </Button>
         </div>
