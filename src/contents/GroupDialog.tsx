@@ -93,9 +93,7 @@ const ManageChannels = (props) => {
           </SheetHeader>
 
           <FormProvider {...methods}>
-            <form
-              className="flex flex-col gap-y-5"
-              onSubmit={methods.handleSubmit(onSubmit)}>
+            <form className="flex flex-col gap-y-5">
               <div className="flex flex-row gap-x-4">
                 <Input
                   name="name"
@@ -105,17 +103,17 @@ const ManageChannels = (props) => {
 
                 <Combobox name="icon" className="flex-1" />
               </div>
-
-              <SheetFooter>
-                <Button
-                  className="w-full text-xl"
-                  size="lg"
-                  disabled={methods.formState.isSubmitting}>
-                  Submit
-                </Button>
-              </SheetFooter>
             </form>
           </FormProvider>
+          <SheetFooter className="mt-auto">
+            <Button
+              className="w-full text-xl"
+              size="lg"
+              onClick={methods.handleSubmit(onSubmit)}
+              disabled={methods.formState.isSubmitting}>
+              Submit
+            </Button>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </div>
