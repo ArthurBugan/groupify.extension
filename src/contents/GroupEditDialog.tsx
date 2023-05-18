@@ -20,8 +20,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "~components/ui/sheet"
-import { useEditDialog, useFormState } from "~core/store"
-import { supabase } from "~core/store"
+import { supabase, useEditDialog, useFormState, useGroups } from "~core/store"
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -54,6 +53,7 @@ export type Schema = z.infer<typeof schema>
 const EditManageChannels = (props) => {
   const editDialog = useEditDialog()
   const form = useFormState()
+  const group = useGroups()
   const [session] = useStorage("user-data")
 
   const { ...methods } = useForm<Schema>({
@@ -65,12 +65,14 @@ const EditManageChannels = (props) => {
 
   useEffect(() => {
     if (editDialog.isOpen) {
+      console.log("Dentro do isOpen")
       methods.reset(form.values)
     }
   }, [editDialog.isOpen])
 
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
+      keyName: "custom_id",
       control: methods.control,
       name: "channels"
     }
@@ -82,6 +84,10 @@ const EditManageChannels = (props) => {
       .update({ name: groupData.name, icon: groupData.icon })
       .eq("id", groupData.id)
 
+    let { data: groups } = await supabase.from("groups").select()
+
+    group.create(groups)
+
     const channels = groupData.channels.map((c) => ({
       id: c.id,
       name: c.name,
@@ -91,9 +97,9 @@ const EditManageChannels = (props) => {
       user_id: session.user.id
     }))
 
-    const { error } = await supabase.from("channels").insert(channels)
+    const { error } = await supabase.from("channels").upsert(channels)
 
-    if (!error && !error) {
+    if (!insertError && !error) {
       toast.custom((t) => (
         <div
           className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
@@ -108,6 +114,8 @@ const EditManageChannels = (props) => {
   }
 
   if (!editDialog.isOpen) return null
+
+  console.log(methods.formState.errors, methods.getValues())
 
   return (
     <div className="h-screen flex items-center relative">
@@ -162,8 +170,22 @@ const EditManageChannels = (props) => {
                         className="rounded-full h-10 w-10"
                       />
                       <p className="text-primary text-lg">{c.name}</p>
-                      <Button variant="secondary">
-                        <AiFillDelete size={20} onClick={() => remove(index)} />
+                      <Button variant="secondary" type="button">
+                        <AiFillDelete
+                          size={20}
+                          onClick={async () => {
+                            const { data, error } = await supabase
+                              .from("channels")
+                              .delete()
+                              .match({
+                                id: c.id,
+                                group_id: form.values.id,
+                                user_id: form.values.user_id
+                              })
+
+                            return remove(index)
+                          }}
+                        />
                       </Button>
                     </div>
                   ))}

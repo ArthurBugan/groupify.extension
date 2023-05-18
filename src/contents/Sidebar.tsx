@@ -12,6 +12,7 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { supabase, useCreateDialog } from "~core/store"
+import { useGroups } from "~core/store"
 import { useSupabase } from "~lib/hooks"
 import { sleep } from "~lib/utils"
 
@@ -30,7 +31,8 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 const Groups = () => {
   const [session] = useStorage("user-data")
-  const { data } = useSupabase("groups")
+  const groups = useGroups()
+  const { data } = useSupabase("groups", null)
   const dialog = useCreateDialog()
 
   useEffect(() => {
@@ -60,14 +62,18 @@ const Groups = () => {
       <Collapsible className="w-full group">
         <div className="px-4 my-3 flex flex-row items-center justify-between">
           <CollapsibleTrigger asChild>
-            <Button variant="ghost">
-              <BiChevronRight
-                size={18}
-                className="transition-all text-primary group-data-[state='open']:rotate-90"
-              />
+            <Button
+              className="w-full flex items-center justify-start"
+              variant="ghost">
+              <div className="gap-x-2 flex flex-row">
+                <BiChevronRight
+                  size={18}
+                  className="transition-all text-primary group-data-[state='open']:rotate-90"
+                />
+                <p className="text-xl text-primary">My groups</p>
+              </div>
             </Button>
           </CollapsibleTrigger>
-          <p className="text-xl text-primary">My groups</p>
 
           <Button onClick={dialog.toggleOpen} variant="ghost">
             <BiFolderPlus size={16} className="text-primary" />

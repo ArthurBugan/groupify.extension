@@ -25,18 +25,13 @@ const GroupItem: React.FC<GroupType> = (g) => {
   const { data, loading } = useSupabase("channels", ["group_id", g.id], isOpen)
 
   const editItem = async () => {
-    if (!data.length) {
-      const { data: channels } = await supabase
-        .from("channels")
-        .select()
-        .eq("group_id", g.id)
+    const { data: channels } = await supabase
+      .from("channels")
+      .select()
+      .eq("group_id", g.id)
 
-      form.setForm({ channels, ...g })
-      return editDialog.toggleOpen()
-    }
-
-    form.setForm({ channels: data, ...g })
-    editDialog.toggleOpen()
+    form.setForm({ channels, ...g })
+    return editDialog.toggleOpen()
   }
 
   return (
@@ -46,16 +41,21 @@ const GroupItem: React.FC<GroupType> = (g) => {
       className="w-full group/child">
       <div className="px-4 gap-x-2 my-2 flex flex-row items-center justify-start">
         <CollapsibleTrigger asChild>
-          <Button variant="ghost">
+          <Button
+            className="w-full flex items-center justify-start"
+            variant="ghost">
             <BiChevronRight
               size={16}
               className="transition-all text-primary group-data-[state='open']/child:rotate-90"
             />
+            <div className="gap-x-2 flex flex-row">
+              <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
+              <p className="line-clamp-1 text-primary truncate text-lg">
+                {g.name}
+              </p>
+            </div>
           </Button>
         </CollapsibleTrigger>
-
-        <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
-        <p className="text-primary truncate text-lg">{g.name}</p>
 
         <Button variant="ghost" className="ml-auto">
           <BiEdit

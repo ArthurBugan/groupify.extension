@@ -26,7 +26,7 @@
     "cmdk": "^0.2.0",
     "hook": "link:@plasmohq/storage/hook",
     "lucide-react": "^0.206.0",
-    "plasmo": "0.70.1",
+    "plasmo": "0.71.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.43.9",

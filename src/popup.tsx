@@ -27,17 +27,25 @@ function IndexOptions() {
       })
 
       if (error) {
-        alert("Error with auth: " + error.message)
-      } else if (!user) {
         toast.custom((t) => (
           <div
             className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
               t.visible ? "animate-enter" : "animate-leave"
             }`}>
-            Please verify your inbox! ✅
+            Erro: {error.message} ❌
           </div>
         ))
+        return
       }
+
+      toast.custom((t) => (
+        <div
+          className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
+            t.visible ? "animate-enter" : "animate-leave"
+          }`}>
+          Please verify your inbox! ✅
+        </div>
+      ))
     } catch (error) {
       alert(error.error_description || error)
     }
