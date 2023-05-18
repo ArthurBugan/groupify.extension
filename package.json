@@ -24,7 +24,6 @@
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
-    "hook": "link:@plasmohq/storage/hook",
     "lucide-react": "^0.206.0",
     "plasmo": "0.71.0",
     "react": "18.2.0",
@@ -39,6 +38,7 @@
     "zustand": "^4.3.8"
   },
   "devDependencies": {
+    "@plasmohq/bms": "^2.3.1",
     "@plasmohq/prettier-plugin-sort-imports": "3.6.4",
     "@types/chrome": "0.0.227",
     "@types/node": "18.15.11",
@@ -52,7 +52,7 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "*://*.youtube.com/*"
     ],
     "key": "$CRX_KEY",
     "web_accessible_resources": [
