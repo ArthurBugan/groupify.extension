@@ -1,5 +1,5 @@
 import cssText from "data-text:../base.css"
-import type { PlasmoGetInlineAnchor } from "plasmo"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 
@@ -22,6 +22,11 @@ export const getStyle = () => {
   const style = document.createElement("style")
   style.textContent = cssText
   return style
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*"],
+  all_frames: true
 }
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {

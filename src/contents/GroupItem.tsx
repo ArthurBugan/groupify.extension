@@ -1,4 +1,4 @@
-import type { PlasmoGetInlineAnchor } from "plasmo"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useState } from "react"
 import { BiChevronRight, BiEdit } from "react-icons/bi"
 
@@ -15,6 +15,11 @@ import { getFamily } from "~lib/utils"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return null
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*"],
+  all_frames: true
 }
 
 const GroupItem: React.FC<GroupType> = (g) => {

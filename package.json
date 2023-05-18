@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "groupify",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Manage youtube channels using folders and groups",
   "author": "arthurbugan",
   "scripts": {
@@ -52,9 +52,19 @@
   },
   "manifest": {
     "host_permissions": [
-      "*://*.youtube.com/*"
+      "https://youtube.com/*"
     ],
-    "key": "$CRX_KEY",
+    "permissions": [
+      "storage"
+    ],
+    "content_scripts": [
+      {
+        "matches": [
+          "https://youtube.com/*"
+        ],
+        "run_at": "document_end"
+      }
+    ],
     "web_accessible_resources": [
       {
         "resources": [

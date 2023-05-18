@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
-import type { PlasmoGetOverlayAnchor } from "plasmo"
+import type { PlasmoCSConfig, PlasmoGetOverlayAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
@@ -24,6 +24,11 @@ export const getStyle = () => {
   const style = document.createElement("style")
   style.textContent = cssText
   return style
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*"],
+  all_frames: true
 }
 
 export const getOverlayAnchor: PlasmoGetOverlayAnchor = async () => {

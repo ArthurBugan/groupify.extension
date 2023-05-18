@@ -1,9 +1,14 @@
 import cssText from "data-text:../base.css"
-import type { PlasmoGetOverlayAnchor } from "plasmo"
+import type { PlasmoCSConfig, PlasmoGetOverlayAnchor } from "plasmo"
 import { Toaster } from "react-hot-toast"
 
 export const getOverlayAnchor: PlasmoGetOverlayAnchor = async () => {
   return document.querySelector("body")
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*"],
+  all_frames: true
 }
 
 export const getStyle = () => {

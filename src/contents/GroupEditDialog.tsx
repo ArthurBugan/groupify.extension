@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
-import type { PlasmoGetInlineAnchor } from "plasmo"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
@@ -26,6 +26,11 @@ export const getStyle = () => {
   const style = document.createElement("style")
   style.textContent = cssText
   return style
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*"],
+  all_frames: true
 }
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
