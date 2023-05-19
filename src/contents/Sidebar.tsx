@@ -1,6 +1,7 @@
 import cssText from "data-text:../base.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect } from "react"
+import { toast } from "react-hot-toast"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 
 import { useStorage } from "@plasmohq/storage/hook"
@@ -25,7 +26,7 @@ export const getStyle = () => {
 }
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://youtube.com/*"],
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
   all_frames: true
 }
 
@@ -36,7 +37,6 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 const Groups = () => {
   const [session] = useStorage("user-data")
-  const groups = useGroups()
   const { data } = useSupabase("groups", null)
   const dialog = useCreateDialog()
 
@@ -86,12 +86,12 @@ const Groups = () => {
         </div>
 
         <CollapsibleContent className="space-y-2">
-          {!data.length && (
+          {!data?.length && (
             <span className="px-4 my-2 flex flex-row items-center justify-between text-primary text-sm">
               No groups found
             </span>
           )}
-          {data.map((g) => (
+          {data?.map((g) => (
             <div key={g.id}>
               <GroupItem {...g} />
             </div>

@@ -1,8 +1,14 @@
+import type { PlasmoCSConfig } from "plasmo"
 import { useEffect } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { supabase } from "~core/store"
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
+  all_frames: true
+}
 
 function IndexOptions() {
   const [session, setSession] = useStorage("user-data")

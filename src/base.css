@@ -16,7 +16,8 @@
   }
 }
 
-:host(plasmo-csui) {
+:host(plasmo-csui),
+html {
   --background: 0 0% 100%;
   --foreground: 222.2 47.4% 11.2%;
 
@@ -49,7 +50,8 @@
   --radius: 0.5rem;
 }
 
-:host(plasmo-csui.dark) {
+:host(plasmo-csui.dark),
+html.dark {
   --background: 224 71% 4%;
   --foreground: 213 31% 91%;
 

@@ -29,7 +29,7 @@ export const getStyle = () => {
 }
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://youtube.com/*"],
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
   all_frames: true
 }
 
@@ -41,7 +41,7 @@ const schema = z.object({
   created_at: z.string(),
   icon: z.string(),
   id: z.number(),
-  name: z.string(),
+  name: z.string().min(2, { message: "Group name is required" }),
   user_id: z.string().uuid(),
   channels: z.array(
     z.object({
@@ -146,7 +146,7 @@ const EditManageChannels = (props) => {
                   <div className="flex flex-row gap-x-4">
                     <Input
                       name="name"
-                      className="flex-3"
+                      className="w-full"
                       placeholder="Group Name"
                     />
 

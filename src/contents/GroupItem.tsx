@@ -18,7 +18,7 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://youtube.com/*"],
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
   all_frames: true
 }
 

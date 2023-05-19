@@ -1,25 +1,57 @@
+import { zodResolver } from "@hookform/resolvers/zod"
 import type { Session } from "@supabase/supabase-js"
-import { useState } from "react"
-import { toast } from "react-hot-toast"
+import type { PlasmoCSConfig } from "plasmo"
+import { FormProvider, useForm } from "react-hook-form"
+import * as z from "zod"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
+import { Button } from "~components/ui/button"
+
 import { supabase } from "./core/store"
+
+import "~base.css"
+
+import { useEffect } from "react"
+
+import { Input } from "~components/ui/input"
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
+  all_frames: true
+}
+
+const schema = z.object({
+  email: z.string().email()
+})
+
+export type Schema = z.infer<typeof schema>
 
 function IndexOptions() {
   const [session] = useStorage<Session>("user-data", (userData: Session) =>
     typeof userData === "undefined" ? null : userData
   )
 
-  const [email, setEmail] = useState("")
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.querySelector("html").classList.add("dark")
+    }
+  }, [])
 
-  const handleLogin = async (type: "LOGIN" | "SIGNUP", email: string) => {
+  const { ...methods } = useForm<Schema>({
+    mode: "all",
+    shouldFocusError: true,
+    shouldUnregister: true,
+    resolver: zodResolver(schema)
+  })
+
+  const onSubmit = async (groupData: Schema) => {
     try {
       const {
         error,
         data: { user, session }
       } = await supabase.auth.signInWithOtp({
-        email: email,
+        email: groupData.email,
         options: {
           emailRedirectTo:
             "chrome-extension://eigbphlpbefiaehoamaanpjpmmgcnaam/options.html"
@@ -27,70 +59,54 @@ function IndexOptions() {
       })
 
       if (error) {
-        toast.custom((t) => (
-          <div
-            className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
-              t.visible ? "animate-enter" : "animate-leave"
-            }`}>
-            Erro: {error.message} ❌
-          </div>
-        ))
+        alert(`Erro: {error.message} ❌`)
         return
       }
 
-      toast.custom((t) => (
-        <div
-          className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
-            t.visible ? "animate-enter" : "animate-leave"
-          }`}>
-          Please verify your inbox! ✅
-        </div>
-      ))
+      alert("Please verify your inbox! ✅")
     } catch (error) {
       alert(error.error_description || error)
     }
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        padding: 16
-      }}>
+    <div className="flex flex-col w-72 m-5">
       {session?.user && (
         <div>
           {session?.user.email} - {session?.user?.id}
         </div>
       )}
+
       {!session && (
         <div>
           <div className="mb-4">
-            <label className="font-bold text-grey-darker block mb-2">
-              Email
-            </label>
-            <input
-              type="text"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
+            <FormProvider {...methods}>
+              <form>
+                <div className="flex flex-col gap-y-5">
+                  <div>
+                    <Input type="text" name="email" placeholder="Email" />
+                  </div>
 
-          <div className="flex flex-col gap-2">
-            <button
-              onClick={(e) => {
-                e.preventDefault()
-                handleLogin("SIGNUP", email)
-              }}
-              className="bg-indigo-700 hover:bg-teal text-white py-2 px-4 rounded text-center transition duration-150 hover:bg-indigo-600 hover:text-white">
-              Enter with magic link!
-            </button>
-            <a
-              href="#"
-              onClick={() => window.open("https://ko-fi.com/scriptingarthur")}>
-              Support me
-            </a>
+                  <Button
+                    onClick={methods.handleSubmit(onSubmit)}
+                    type="button"
+                    variant="default"
+                    className="w-full text-xl">
+                    Login with magic link
+                  </Button>
+
+                  <Button
+                    onClick={() =>
+                      window.open("https://ko-fi.com/scriptingarthur")
+                    }
+                    type="button"
+                    variant="ghost"
+                    className="w-full text-xl">
+                    Support me
+                  </Button>
+                </div>
+              </form>
+            </FormProvider>
           </div>
         </div>
       )}

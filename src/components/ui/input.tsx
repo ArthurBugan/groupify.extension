@@ -25,19 +25,25 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     }
 
     return (
-      <input
-        name={name}
-        onChange={field.onChange}
-        onBlur={field.onBlur}
-        value={field.value || ""}
-        type={type}
-        className={cn(
-          "flex h-14 w-full rounded-md border border-input bg-transparent px-3 text-primary py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-xl file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          className
+      <div className={className}>
+        <input
+          name={name}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+          value={field.value || ""}
+          type={type}
+          className={cn(
+            "flex h-14 w-full rounded-md border border-input bg-transparent px-3 text-primary py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-xl file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          )}
+          ref={ref}
+          {...props}
+        />
+        {error && (
+          <span className="my-1 font-regular text-red-400">
+            {error?.message}
+          </span>
         )}
-        ref={ref}
-        {...props}
-      />
+      </div>
     )
   }
 )

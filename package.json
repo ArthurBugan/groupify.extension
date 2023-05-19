@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "groupify",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "description": "Manage youtube channels using folders and groups",
   "author": "arthurbugan",
   "scripts": {
@@ -56,14 +56,6 @@
     ],
     "permissions": [
       "storage"
-    ],
-    "content_scripts": [
-      {
-        "matches": [
-          "https://youtube.com/*"
-        ],
-        "run_at": "document_end"
-      }
     ],
     "web_accessible_resources": [
       {

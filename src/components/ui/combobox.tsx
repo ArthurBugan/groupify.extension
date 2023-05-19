@@ -21,7 +21,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
 import { cn, getFamily } from "~lib/utils"
 
 interface ComboboxProps {
-  className: string
+  className?: string
   name: string
 }
 

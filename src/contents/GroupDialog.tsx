@@ -27,7 +27,7 @@ export const getStyle = () => {
 }
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://youtube.com/*"],
+  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
   all_frames: true
 }
 
@@ -36,7 +36,7 @@ export const getOverlayAnchor: PlasmoGetOverlayAnchor = async () => {
 }
 
 const schema = z.object({
-  name: z.string(),
+  name: z.string().min(2, { message: "Group name is required" }),
   icon: z.string()
 })
 
@@ -102,7 +102,7 @@ const ManageChannels = (props) => {
               <div className="flex flex-row gap-x-4">
                 <Input
                   name="name"
-                  className="flex-3"
+                  className="w-full"
                   placeholder="Group Name"
                 />
 
