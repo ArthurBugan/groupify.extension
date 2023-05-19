@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../base.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai"
@@ -20,6 +20,12 @@ import {
   SheetHeader,
   SheetTitle
 } from "~components/ui/sheet"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "~components/ui/tooltip"
 import { supabase, useEditDialog, useFormState, useGroups } from "~core/store"
 
 export const getStyle = () => {
@@ -55,11 +61,14 @@ const schema = z.object({
 
 export type Schema = z.infer<typeof schema>
 
+let timer
 const EditManageChannels = (props) => {
   const editDialog = useEditDialog()
   const form = useFormState()
   const group = useGroups()
   const [session] = useStorage("user-data")
+
+  const [isOpened, setOpenedTooltip] = useState(false)
 
   const { ...methods } = useForm<Schema>({
     mode: "all",
@@ -110,7 +119,7 @@ const EditManageChannels = (props) => {
           className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
             t.visible ? "animate-enter" : "animate-leave"
           }`}>
-          Group Edited! ✅
+          {chrome.i18n.getMessage("group_dialog_edit_success")}
         </div>
       ))
     }
@@ -118,9 +127,48 @@ const EditManageChannels = (props) => {
     editDialog.toggleOpen()
   }
 
+  const toggleTooltip = () => {
+    setOpenedTooltip((p) => !p)
+  }
+
+  const deleteGroupTimer = () => {
+    timer = setTimeout(async () => {
+      try {
+        const { data, error } = await supabase.from("groups").delete().match({
+          id: form.values.id,
+          user_id: form.values.user_id
+        })
+
+        if (error) {
+          throw error
+        }
+
+        group.remove(form.values.id)
+
+        toast.custom((t) => (
+          <div
+            className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
+              t.visible ? "animate-enter" : "animate-leave"
+            }`}>
+            {chrome.i18n.getMessage("group_dialog_edit_delete_success")}
+          </div>
+        ))
+
+        editDialog.toggleOpen()
+      } catch (error) {
+        alert(error.error_description || error)
+      }
+    }, 3000)
+  }
+
+  const deleteGroup = () => {
+    clearTimeout(timer)
+    console.log("clicou")
+  }
+
   if (!editDialog.isOpen) return null
 
-  console.log(methods.formState.errors, methods.getValues())
+  console.log(methods.formState.errors, methods.getValues(), timer)
 
   return (
     <div className="h-screen flex items-center relative">
@@ -210,15 +258,29 @@ const EditManageChannels = (props) => {
               type="submit"
               onClick={methods.handleSubmit(onSubmit)}
               disabled={methods.formState.isSubmitting}>
-              {chrome.i18n.getMessage("group_dialog_submit_group")}
+              {chrome.i18n.getMessage("group_dialog_edit_group")}
             </Button>
-            <Button
-              variant="secondary"
-              className="w-full text-xl"
-              size="lg"
-              disabled={methods.formState.isSubmitting}>
-              {chrome.i18n.getMessage("group_dialog_delete_group")}
-            </Button>
+
+            <TooltipProvider>
+              <Tooltip open={isOpened}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant="secondary"
+                    className="w-full text-xl"
+                    size="lg"
+                    onMouseOver={toggleTooltip}
+                    onMouseLeave={() => setOpenedTooltip(false)}
+                    onMouseUp={deleteGroup}
+                    onMouseDown={deleteGroupTimer}
+                    disabled={methods.formState.isSubmitting}>
+                    {chrome.i18n.getMessage("group_dialog_delete_group")}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{chrome.i18n.getMessage("tooltip_delete")}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </SheetFooter>
         </SheetContent>
       </Sheet>

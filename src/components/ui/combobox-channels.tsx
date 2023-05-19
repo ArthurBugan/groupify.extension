@@ -84,7 +84,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
             </p>
           ) : (
             <p className="h-14 flex items-center">
-              {chrome.i18n.getMessage("combobox_placeholder")}
+              {chrome.i18n.getMessage("combobox_channels_placeholder")}
             </p>
           )}
           <ChevronsUpDown className="ml-2 h-6 w-6 shrink-0 opacity-50" />
@@ -94,10 +94,12 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
           <CommandInput
-            placeholder={chrome.i18n.getMessage("combobox_placeholder")}
+            placeholder={chrome.i18n.getMessage(
+              "combobox_channels_placeholder"
+            )}
           />
           <CommandEmpty>
-            {chrome.i18n.getMessage("combobox_no_items_found")}
+            {chrome.i18n.getMessage("combobox_channels_no_items_found")}
           </CommandEmpty>
 
           <CommandGroup>

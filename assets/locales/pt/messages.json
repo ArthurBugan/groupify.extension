@@ -31,6 +31,10 @@
     "message": "Novo grupo criado com sucesso! ✅",
     "description": "Mensagem para exibir quando um novo grupo é adicionado"
   },
+  "group_dialog_edit_success": {
+    "message": "Grupo editado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um grupe é editado"
+  },
   "group_dialog_add_group": {
     "message": "Adicionar grupo",
     "description": "Titulo para modal Criar grupo"
@@ -51,16 +55,20 @@
     "message": "Canais do meu grupo",
     "description": "Titulo para texto do grupo dos canais Editar grupo"
   },
+  "group_dialog_edit_delete_success": {
+    "message": "Grupo apagado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um grupo é excluido"
+  },
   "group_dialog_delete_group": {
     "message": "Apagar grupo",
     "description": "Titulo para botão Deletar na modal Editar grupo"
   },
   "combobox_placeholder": {
-    "message": "Procurar icone",
+    "message": "Procurar icone...",
     "description": "Placeholder para combobox"
   },
   "combobox_no_items_found": {
-    "message": "Nenhum icone encontrado",
+    "message": "Nenhum icone encontrado...",
     "description": "Texto para empty state do combobox"
   },
   "combobox_channels_placeholder": {
@@ -69,6 +77,10 @@
   },
   "combobox_channels_no_items_found": {
     "message": "Nenhum canal encontrado...",
-    "description": "Text for empty state to combobox-channels"
+    "description": "Text para empty state do combobox-channels"
+  },
+  "tooltip_delete": {
+    "message": "Segure o botão por 3 segundos para confirmar",
+    "description": "Texto para o tooltip de deleção"
   }
 }

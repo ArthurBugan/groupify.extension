@@ -58,14 +58,17 @@ const ManageChannels = (props) => {
   })
 
   const onSubmit = async (groupData: Schema) => {
-    const { data, error } = await supabase
-      .from("groups")
-      .insert({ ...groupData, user_id: session.user.id })
-      .select()
+    try {
+      const { data, error } = await supabase
+        .from("groups")
+        .insert({ ...groupData, user_id: session.user.id })
+        .select()
 
-    groups.add(data[0])
+      groups.add(data[0])
 
-    if (!error) {
+      if (error) {
+        throw error
+      }
       toast.custom((t) => (
         <div
           className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
@@ -75,7 +78,9 @@ const ManageChannels = (props) => {
         </div>
       ))
 
-      dialog.toggleOpen()
+      return dialog.toggleOpen()
+    } catch (error) {
+      alert(error.error_description || error)
     }
   }
 

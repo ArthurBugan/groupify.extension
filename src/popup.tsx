@@ -59,7 +59,7 @@ function IndexOptions() {
       })
 
       if (error) {
-        alert(`Erro: {error.message} ❌`)
+        alert(`Erro: ${error.message} ❌`)
         return
       }
 

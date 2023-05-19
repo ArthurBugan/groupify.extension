@@ -31,6 +31,10 @@
     "message": "New Group created! ✅",
     "description": "Message to show when a new group is created"
   },
+  "group_dialog_edit_success": {
+    "message": "Group edited successful! ✅",
+    "description": "Message to show when a group is edited"
+  },
   "group_dialog_add_group": {
     "message": "Add group",
     "description": "Title for group dialog"
@@ -51,6 +55,10 @@
     "message": "My group channels",
     "description": "Title for My groups Edit dialog"
   },
+  "group_dialog_edit_delete_success": {
+    "message": "Group deleted successful! ✅",
+    "description": "Message to show when a group is deleted"
+  },
   "group_dialog_delete_group": {
     "message": "Delete Group",
     "description": "Title for delete button on Edit dialog"
@@ -70,5 +78,9 @@
   "combobox_channels_no_items_found": {
     "message": "No channel found...",
     "description": "Text for empty state to combobox-channels"
+  },
+  "tooltip_delete": {
+    "message": "Hold the click for 3 seconds to confirm",
+    "description": "Text to delete tooltip"
   }
 }
