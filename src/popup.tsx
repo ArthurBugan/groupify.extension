@@ -92,7 +92,7 @@ function IndexOptions() {
                     type="button"
                     variant="default"
                     className="w-full text-xl">
-                    Login with magic link
+                    {chrome.i18n.getMessage("popup_btn")}
                   </Button>
 
                   <Button
@@ -102,7 +102,7 @@ function IndexOptions() {
                     type="button"
                     variant="ghost"
                     className="w-full text-xl">
-                    Support me
+                    {chrome.i18n.getMessage("popup_support")}
                   </Button>
                 </div>
               </form>

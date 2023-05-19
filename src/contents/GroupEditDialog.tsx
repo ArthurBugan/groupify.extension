@@ -133,7 +133,9 @@ const EditManageChannels = (props) => {
                 size={18}
                 onClick={editDialog.toggleOpen}
               />
-              <SheetTitle>Edit Group</SheetTitle>
+              <SheetTitle>
+                {chrome.i18n.getMessage("group_dialog_edit_group")}
+              </SheetTitle>
             </SheetHeader>
 
             <FormProvider {...methods}>
@@ -147,7 +149,9 @@ const EditManageChannels = (props) => {
                     <Input
                       name="name"
                       className="w-full"
-                      placeholder="Group Name"
+                      placeholder={chrome.i18n.getMessage(
+                        "group_dialog_group_name"
+                      )}
                     />
 
                     <Combobox name="icon" className="flex-1" />
@@ -162,7 +166,7 @@ const EditManageChannels = (props) => {
 
                 {fields?.length > 0 && (
                   <div className="text-primary font-bold text-2xl">
-                    Group channels
+                    {chrome.i18n.getMessage("group_dialog_edit_group_items")}
                   </div>
                 )}
                 <div className="flex flex-col gap-y-5 max-h-[70vh] overflow-y-auto">
@@ -206,14 +210,14 @@ const EditManageChannels = (props) => {
               type="submit"
               onClick={methods.handleSubmit(onSubmit)}
               disabled={methods.formState.isSubmitting}>
-              Submit
+              {chrome.i18n.getMessage("group_dialog_submit_group")}
             </Button>
             <Button
               variant="secondary"
               className="w-full text-xl"
               size="lg"
               disabled={methods.formState.isSubmitting}>
-              Delete group
+              {chrome.i18n.getMessage("group_dialog_delete_group")}
             </Button>
           </SheetFooter>
         </SheetContent>

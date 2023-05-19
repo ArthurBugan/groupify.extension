@@ -75,7 +75,9 @@ const Groups = () => {
                   size={18}
                   className="transition-all text-primary group-data-[state='open']:rotate-90"
                 />
-                <p className="text-xl text-primary">My groups</p>
+                <p className="text-xl text-primary">
+                  {chrome.i18n.getMessage("sidebar_groups")}
+                </p>
               </div>
             </Button>
           </CollapsibleTrigger>
@@ -88,7 +90,7 @@ const Groups = () => {
         <CollapsibleContent className="space-y-2">
           {!data?.length && (
             <span className="px-4 my-2 flex flex-row items-center justify-between text-primary text-sm">
-              No groups found
+              {chrome.i18n.getMessage("sidebar_groups_not_found")}
             </span>
           )}
           {data?.map((g) => (

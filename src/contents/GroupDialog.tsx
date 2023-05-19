@@ -71,7 +71,7 @@ const ManageChannels = (props) => {
           className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
             t.visible ? "animate-enter" : "animate-leave"
           }`}>
-          New Group created! ✅
+          {chrome.i18n.getMessage("group_dialog_success")}
         </div>
       ))
 
@@ -94,7 +94,9 @@ const ManageChannels = (props) => {
               size={18}
               onClick={dialog.toggleOpen}
             />
-            <SheetTitle>Add Group</SheetTitle>
+            <SheetTitle>
+              {chrome.i18n.getMessage("group_dialog_add_group")}
+            </SheetTitle>
           </SheetHeader>
 
           <FormProvider {...methods}>
@@ -103,7 +105,9 @@ const ManageChannels = (props) => {
                 <Input
                   name="name"
                   className="w-full"
-                  placeholder="Group Name"
+                  placeholder={chrome.i18n.getMessage(
+                    "group_dialog_group_name"
+                  )}
                 />
 
                 <Combobox name="icon" className="flex-1" />
@@ -116,7 +120,7 @@ const ManageChannels = (props) => {
               size="lg"
               onClick={methods.handleSubmit(onSubmit)}
               disabled={methods.formState.isSubmitting}>
-              Submit
+              {chrome.i18n.getMessage("group_dialog_submit_group")}
             </Button>
           </SheetFooter>
         </SheetContent>

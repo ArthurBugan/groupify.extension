@@ -70,7 +70,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
               <DynamicIcon lib={getFamily(field.value)} icon={field.value} />
             </p>
           ) : (
-            "Icon..."
+            chrome.i18n.getMessage("combobox_placeholder")
           )}
           <ChevronsUpDown className="ml-2 h-6 w-6 shrink-0 opacity-50" />
         </Button>
@@ -78,8 +78,12 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
 
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
-          <CommandInput placeholder="Search icon..." />
-          <CommandEmpty>No icon found.</CommandEmpty>
+          <CommandInput
+            placeholder={chrome.i18n.getMessage("combobox_placeholder")}
+          />
+          <CommandEmpty>
+            {chrome.i18n.getMessage("combobox_no_items_found")}
+          </CommandEmpty>
 
           <CommandGroup>
             <VirtuosoGrid

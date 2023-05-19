@@ -92,7 +92,9 @@ const GroupItem: React.FC<GroupType> = (g) => {
             </svg>
           )}
           {!loading && !data.length && (
-            <span className="text-primary text-sm">No channels found</span>
+            <span className="text-primary text-sm">
+              {chrome.i18n.getMessage("group_item_not_found")}
+            </span>
           )}
           {!loading &&
             data.map((c) => (

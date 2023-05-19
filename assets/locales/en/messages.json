@@ -1,0 +1,74 @@
+{
+  "extensionName": {
+    "message": "Groupify",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Group your subscriptions and organize into easy to access groups",
+    "description": "Description of the extension."
+  },
+  "popup_btn": {
+    "message": "Login with magic link",
+    "description": "Popup button text"
+  },
+  "popup_support": {
+    "message": "Support me",
+    "description": "Popup button text"
+  },
+  "sidebar_groups": {
+    "message": "My groups",
+    "description": "Sidebar main text"
+  },
+  "sidebar_groups_not_found": {
+    "message": "No groups found",
+    "description": "Sidebar no groups found"
+  },
+  "group_item_not_found": {
+    "message": "No channels found",
+    "description": "Group item no channels found"
+  },
+  "group_dialog_success": {
+    "message": "New Group created! ✅",
+    "description": "Message to show when a new group is created"
+  },
+  "group_dialog_add_group": {
+    "message": "Add group",
+    "description": "Title for group dialog"
+  },
+  "group_dialog_group_name": {
+    "message": "Group name",
+    "description": "Placeholder for group dialog"
+  },
+  "group_dialog_submit_group": {
+    "message": "Submit",
+    "description": "Button text to submit group dialog"
+  },
+  "group_dialog_edit_group": {
+    "message": "Edit group",
+    "description": "Title for Edit group dialog"
+  },
+  "group_dialog_edit_group_items": {
+    "message": "My group channels",
+    "description": "Title for My groups Edit dialog"
+  },
+  "group_dialog_delete_group": {
+    "message": "Delete Group",
+    "description": "Title for delete button on Edit dialog"
+  },
+  "combobox_placeholder": {
+    "message": "Search icon...",
+    "description": "Placeholder to combobox"
+  },
+  "combobox_no_items_found": {
+    "message": "No icon found...",
+    "description": "Text for empty state to combobox"
+  },
+  "combobox_channels_placeholder": {
+    "message": "Search channels...",
+    "description": "Placeholder to combobox-channels"
+  },
+  "combobox_channels_no_items_found": {
+    "message": "No channel found...",
+    "description": "Text for empty state to combobox-channels"
+  }
+}

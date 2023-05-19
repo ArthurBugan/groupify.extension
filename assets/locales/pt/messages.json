@@ -1,0 +1,74 @@
+{
+  "extensionName": {
+    "message": "Groupify",
+    "description": "Nome da extensão."
+  },
+  "extensionDescription": {
+    "message": "Group your subscriptions and organize into easy to access groups",
+    "description": "Descrição da extensão."
+  },
+  "popup_btn": {
+    "message": "Entrar com magic link",
+    "description": "Text botão entrar popup"
+  },
+  "popup_support": {
+    "message": "Doar",
+    "description": "Text botão doar popup"
+  },
+  "sidebar_groups": {
+    "message": "Meus grupos",
+    "description": "Text principal da barra lateral"
+  },
+  "sidebar_groups_not_found": {
+    "message": "Adicione grupos para exibi-los aqui",
+    "description": "Grupos não encontrados"
+  },
+  "group_item_not_found": {
+    "message": "Adicione canais ao seu grupo",
+    "description": "Group item no channels found"
+  },
+  "group_dialog_success": {
+    "message": "Novo grupo criado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um novo grupo é adicionado"
+  },
+  "group_dialog_add_group": {
+    "message": "Adicionar grupo",
+    "description": "Titulo para modal Criar grupo"
+  },
+  "group_dialog_group_name": {
+    "message": "Nome do grupo",
+    "description": "Placeholder para a modal Criar grupo"
+  },
+  "group_dialog_submit_group": {
+    "message": "Criar grupo",
+    "description": "Text do botão para Criar grupo"
+  },
+  "group_dialog_edit_group": {
+    "message": "Editar grupo",
+    "description": "Titulo para modal Editar grupo"
+  },
+  "group_dialog_edit_group_items": {
+    "message": "Canais do meu grupo",
+    "description": "Titulo para texto do grupo dos canais Editar grupo"
+  },
+  "group_dialog_delete_group": {
+    "message": "Apagar grupo",
+    "description": "Titulo para botão Deletar na modal Editar grupo"
+  },
+  "combobox_placeholder": {
+    "message": "Procurar icone",
+    "description": "Placeholder para combobox"
+  },
+  "combobox_no_items_found": {
+    "message": "Nenhum icone encontrado",
+    "description": "Texto para empty state do combobox"
+  },
+  "combobox_channels_placeholder": {
+    "message": "Procurar canais...",
+    "description": "Placeholder to combobox-channels"
+  },
+  "combobox_channels_no_items_found": {
+    "message": "Nenhum canal encontrado...",
+    "description": "Text for empty state to combobox-channels"
+  }
+}
