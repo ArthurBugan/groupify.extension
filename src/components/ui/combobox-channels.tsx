@@ -28,32 +28,77 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   const [open, setOpen] = React.useState(false)
   const formContext = useFormContext()
 
-  const itemsCount = React.useMemo(() => {
-    const items = JSON.parse(
-      document.querySelector("html").getAttribute("ysm-guide-data")
-    )
+  const dbRef = React.useRef(null)
+  const itemsRef = React.useRef(null)
 
-    return (
-      items.items[1].guideSubscriptionsSectionRenderer.items[
-        items.items[1].guideSubscriptionsSectionRenderer.items.length - 1
-      ].guideCollapsibleEntryRenderer.expandableItems.length - 1
+  React.useEffect(() => {
+    indexedDB.databases().then((databases) => {
+      const database = databases
+        .filter((d) => d.name.includes("yt-it-response-store"))
+        .sort((a, b) => a.name.length - b.name.length)[0]
+
+      let db
+      const request = indexedDB.open(database.name)
+
+      request.onerror = (event) => {
+        console.error("Why didn't you allow my web app to use IndexedDB?!")
+      }
+
+      request.onsuccess = (event) => {
+        db = event.target.result
+
+        const transaction = db.transaction(["ResponseStore"], "readwrite")
+        const objectStore = transaction.objectStore("ResponseStore")
+
+        const objectStoreRequest = objectStore.get([
+          "service:guide:fallback",
+          1
+        ])
+
+        objectStoreRequest.onsuccess = (event) => {
+          const result =
+            event.target.result.innertubeResponse.items[1]
+              .guideSubscriptionsSectionRenderer.items
+
+          dbRef.current =
+            result[
+              result.length - 1
+            ].guideCollapsibleEntryRenderer.expandableItems
+        }
+      }
+    })
+
+    itemsRef.current = JSON.parse(
+      document.querySelector("html").getAttribute("ysm-guide-data")
     )
   }, [])
 
-  const items = React.useMemo(() => {
-    const items = JSON.parse(
-      document.querySelector("html").getAttribute("ysm-guide-data")
+  const itemsCount = React.useMemo(() => {
+    if (itemsRef.current == null) {
+      return dbRef.current?.length || 0
+    }
+
+    const item =
+      itemsRef.current.items[1].guideSubscriptionsSectionRenderer.items
+    return (
+      item[item.length - 1].guideCollapsibleEntryRenderer.expandableItems
+        .length - 1
     )
+  }, [itemsRef.current, dbRef.current])
 
+  const items = React.useMemo(() => {
+    if (itemsRef.current == null) {
+      return dbRef.current
+    }
+
+    const item =
+      itemsRef.current.items[1].guideSubscriptionsSectionRenderer.items
     const values =
-      items.items[1].guideSubscriptionsSectionRenderer.items[
-        items.items[1].guideSubscriptionsSectionRenderer.items.length - 1
-      ].guideCollapsibleEntryRenderer.expandableItems
-
+      item[item.length - 1].guideCollapsibleEntryRenderer.expandableItems
     values.pop()
 
     return values
-  }, [])
+  }, [itemsRef.current, dbRef.current])
 
   const {
     field,
