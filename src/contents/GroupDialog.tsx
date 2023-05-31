@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
-import { toast } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
 import * as z from "zod"
 
@@ -69,15 +68,8 @@ const ManageChannels = (props) => {
       if (error) {
         throw error
       }
-      toast.custom((t) => (
-        <div
-          className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
-            t.visible ? "animate-enter" : "animate-leave"
-          }`}>
-          {chrome.i18n.getMessage("group_dialog_success")}
-        </div>
-      ))
 
+      alert(chrome.i18n.getMessage("group_dialog_success"))
       return dialog.toggleOpen()
     } catch (error) {
       alert(error.error_description || error)

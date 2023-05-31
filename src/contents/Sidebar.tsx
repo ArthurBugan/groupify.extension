@@ -33,7 +33,7 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return document.querySelector("ytd-guide-entry-renderer:nth-child(3)")
 }
 
-const Groups = () => {
+const Sidebar = () => {
   const [session] = useStorage("user-data")
   const { data } = useSupabase("groups", null)
   const dialog = useCreateDialog()
@@ -102,4 +102,4 @@ const Groups = () => {
   )
 }
 
-export default Groups
+export default Sidebar

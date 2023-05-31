@@ -3,7 +3,6 @@ import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
-import { toast } from "react-hot-toast"
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai"
 import * as z from "zod"
 
@@ -77,19 +76,18 @@ const EditManageChannels = (props) => {
     resolver: zodResolver(schema)
   })
 
+  const { fields, append, replace, remove } = useFieldArray({
+    keyName: "custom_id",
+    control: methods.control,
+    name: "channels"
+  })
+
   useEffect(() => {
     if (editDialog.isOpen) {
       methods.reset(form.values)
+      replace(form.values.channels)
     }
   }, [editDialog.isOpen])
-
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      keyName: "custom_id",
-      control: methods.control,
-      name: "channels"
-    }
-  )
 
   const onSubmit = async (groupData: Schema) => {
     const { data, error: insertError } = await supabase
@@ -113,14 +111,7 @@ const EditManageChannels = (props) => {
     const { error } = await supabase.from("channels").upsert(channels)
 
     if (!insertError && !error) {
-      toast.custom((t) => (
-        <div
-          className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
-            t.visible ? "animate-enter" : "animate-leave"
-          }`}>
-          {chrome.i18n.getMessage("group_dialog_edit_success")}
-        </div>
-      ))
+      alert(chrome.i18n.getMessage("group_dialog_edit_success"))
     }
 
     editDialog.toggleOpen()
@@ -144,15 +135,7 @@ const EditManageChannels = (props) => {
 
         group.remove(form.values.id)
 
-        toast.custom((t) => (
-          <div
-            className={`bg-background px-6 py-4 shadow-md rounded-full text-xl text-primary ${
-              t.visible ? "animate-enter" : "animate-leave"
-            }`}>
-            {chrome.i18n.getMessage("group_dialog_edit_delete_success")}
-          </div>
-        ))
-
+        alert(chrome.i18n.getMessage("group_dialog_edit_delete_success"))
         editDialog.toggleOpen()
       } catch (error) {
         alert(error.error_description || error)
