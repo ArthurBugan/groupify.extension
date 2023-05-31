@@ -54,7 +54,11 @@ const GroupItem: React.FC<GroupType> = (g) => {
               className="transition-all text-primary group-data-[state='open']/child:rotate-90"
             />
             <div className="gap-x-2 flex flex-row">
-              <DynamicIcon lib={getFamily(g.icon)} icon={g.icon} />
+              <DynamicIcon
+                className="text-secondary"
+                lib={getFamily(g.icon)}
+                icon={g.icon}
+              />
               <p className="line-clamp-1 text-primary truncate text-lg">
                 {g.name}
               </p>
