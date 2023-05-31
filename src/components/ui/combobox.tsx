@@ -7,9 +7,8 @@ import { Button } from "~components/ui/button"
 import {
   Command,
   CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem
+  CommandItem,
+  CommandList
 } from "~components/ui/command"
 import {
   DynamicIcon,
@@ -27,19 +26,39 @@ interface ComboboxProps {
 
 const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
   const [open, setOpen] = React.useState(false)
+  const [filter, setFilter] = React.useState<string>("")
   const formContext = useFormContext()
+  const timer = React.useRef(null)
 
   const itemsCount = React.useMemo(() => {
+    if (filter.length > 0) {
+      return Object.keys(LibraryIcons)
+        .map((framework) =>
+          Object.keys(returnLibraryIcons(framework as Library))
+        )
+        .flat()
+        .filter((i) => i.toLowerCase().includes(filter.toLowerCase())).length
+    }
+
     return Object.keys(LibraryIcons)
       .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
       .flat().length
-  }, [])
+  }, [filter])
 
   const items = React.useMemo(() => {
+    if (filter.length > 0) {
+      return Object.keys(LibraryIcons)
+        .map((framework) =>
+          Object.keys(returnLibraryIcons(framework as Library))
+        )
+        .flat()
+        .filter((i) => i.toLowerCase().includes(filter.toLowerCase()))
+    }
+
     return Object.keys(LibraryIcons)
       .map((framework) => Object.keys(returnLibraryIcons(framework as Library)))
       .flat()
-  }, [])
+  }, [filter])
 
   const {
     field,
@@ -78,14 +97,23 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
 
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
-          <CommandInput
+          <input
+            className="flex h-14 w-full rounded-md border border-input bg-transparent px-3 text-primary py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-xl file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            onChange={(e) => {
+              clearTimeout(timer.current)
+
+              timer.current = setTimeout(() => {
+                setFilter(e.target.value)
+                clearTimeout(timer.current)
+              }, 500)
+            }}
             placeholder={chrome.i18n.getMessage("combobox_placeholder")}
           />
-          <CommandEmpty>
-            {chrome.i18n.getMessage("combobox_no_items_found")}
-          </CommandEmpty>
 
-          <CommandGroup>
+          <CommandList>
+            <CommandEmpty>
+              {chrome.i18n.getMessage("combobox_no_items_found")}
+            </CommandEmpty>
             <VirtuosoGrid
               className="virtuoso-scroller"
               listClassName="grid grid-cols-4"
@@ -119,7 +147,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
                 )
               }}
             />
-          </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>

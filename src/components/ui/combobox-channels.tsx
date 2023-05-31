@@ -11,9 +11,8 @@ import { Button } from "~components/ui/button"
 import {
   Command,
   CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem
+  CommandItem,
+  CommandList
 } from "~components/ui/command"
 import { Popover, PopoverContent, PopoverTrigger } from "~components/ui/popover"
 import { cn } from "~lib/utils"
@@ -26,7 +25,9 @@ interface ComboboxProps {
 
 const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   const [open, setOpen] = React.useState(false)
+  const [filter, setFilter] = React.useState<string>("")
   const formContext = useFormContext()
+  const timer = React.useRef(null)
 
   const dbRef = React.useRef(null)
   const itemsRef = React.useRef(null)
@@ -74,21 +75,20 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   }, [])
 
   const itemsCount = React.useMemo(() => {
-    if (itemsRef.current == null) {
-      return dbRef.current?.length || 0
+    const filterCount = (items) => {
+      return items.filter((i) =>
+        i.guideEntryRenderer.formattedTitle.simpleText
+          .toLowerCase()
+          .includes(filter.toLowerCase())
+      ).length
     }
 
-    const item =
-      itemsRef.current.items[1].guideSubscriptionsSectionRenderer.items
-    return (
-      item[item.length - 1].guideCollapsibleEntryRenderer.expandableItems
-        .length - 1
-    )
-  }, [itemsRef.current, dbRef.current])
-
-  const items = React.useMemo(() => {
     if (itemsRef.current == null) {
-      return dbRef.current
+      if (filter.length > 0) {
+        return filterCount(dbRef.current)
+      }
+
+      return dbRef.current?.length || 0
     }
 
     const item =
@@ -97,8 +97,43 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
       item[item.length - 1].guideCollapsibleEntryRenderer.expandableItems
     values.pop()
 
+    if (filter.length > 0) {
+      return filterCount(values)
+    }
+
+    return values.length
+  }, [itemsRef.current, dbRef.current, filter])
+
+  const items = React.useMemo(() => {
+    const filterCount = (items) => {
+      return items.filter((i) =>
+        i.guideEntryRenderer.formattedTitle.simpleText
+          .toLowerCase()
+          .includes(filter.toLowerCase())
+      )
+    }
+
+    if (itemsRef.current == null) {
+      if (filter.length > 0) {
+        return filterCount(dbRef.current)
+      }
+
+      return dbRef.current
+    }
+
+    const item =
+      itemsRef.current.items[1].guideSubscriptionsSectionRenderer.items
+
+    const values =
+      item[item.length - 1].guideCollapsibleEntryRenderer.expandableItems
+    values.pop()
+
+    if (filter.length > 0) {
+      return filterCount(values)
+    }
+
     return values
-  }, [itemsRef.current, dbRef.current])
+  }, [itemsRef.current, dbRef.current, , filter])
 
   const {
     field,
@@ -138,16 +173,25 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
 
       <PopoverContent className="w-[290px] p-0 bg-primary">
         <Command className="w-full">
-          <CommandInput
+          <input
+            className="flex h-14 w-full rounded-md border border-input bg-transparent px-3 text-primary py-2 text-xl ring-offset-background file:border-0 file:bg-transparent file:text-xl file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            onChange={(e) => {
+              clearTimeout(timer.current)
+
+              timer.current = setTimeout(() => {
+                setFilter(e.target.value)
+                clearTimeout(timer.current)
+              }, 500)
+            }}
             placeholder={chrome.i18n.getMessage(
               "combobox_channels_placeholder"
             )}
           />
-          <CommandEmpty>
-            {chrome.i18n.getMessage("combobox_channels_no_items_found")}
-          </CommandEmpty>
 
-          <CommandGroup>
+          <CommandList>
+            <CommandEmpty>
+              {chrome.i18n.getMessage("combobox_channels_no_items_found")}
+            </CommandEmpty>
             <VirtuosoGrid
               className="virtuoso-scroller"
               listClassName="grid grid-cols-1"
@@ -158,7 +202,7 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
                   <CommandItem
                     className="px-4 gap-x-4 w-full flex justify-start items-center"
                     key={item?.entryData?.guideEntryData?.guideEntryId}
-                    title={item}
+                    title={item?.formattedTitle?.simpleText}
                     onSelect={() => {
                       append({
                         id: item.entryData.guideEntryData.guideEntryId,
@@ -181,14 +225,14 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
                     />
                     <img
                       src={item?.thumbnail?.thumbnails[0].url}
-                      className="h-10 w-10"
+                      className="h-10 w-10 rounded-full"
                     />
                     <p>{item?.formattedTitle?.simpleText}</p>
                   </CommandItem>
                 )
               }}
             />
-          </CommandGroup>
+          </CommandList>
         </Command>
       </PopoverContent>
     </Popover>

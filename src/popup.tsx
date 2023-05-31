@@ -11,6 +11,7 @@ import { Button } from "~components/ui/button"
 import { supabase } from "./core/store"
 
 import "~base.css"
+import "~style.css"
 
 import { useEffect } from "react"
 

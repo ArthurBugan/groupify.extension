@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import cssText from "data-text:../base.css"
+import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { FormProvider, useFieldArray, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai"
@@ -79,7 +79,6 @@ const EditManageChannels = (props) => {
 
   useEffect(() => {
     if (editDialog.isOpen) {
-      console.log("Dentro do isOpen")
       methods.reset(form.values)
     }
   }, [editDialog.isOpen])
@@ -163,12 +162,9 @@ const EditManageChannels = (props) => {
 
   const deleteGroup = () => {
     clearTimeout(timer)
-    console.log("clicou")
   }
 
   if (!editDialog.isOpen) return null
-
-  console.log(methods.formState.errors, methods.getValues(), timer)
 
   return (
     <div className="h-screen flex items-center relative">

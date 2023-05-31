@@ -1,7 +1,6 @@
-import cssText from "data-text:../base.css"
+import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect } from "react"
-import { toast } from "react-hot-toast"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 
 import { useStorage } from "@plasmohq/storage/hook"
@@ -13,7 +12,6 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { supabase, useCreateDialog } from "~core/store"
-import { useGroups } from "~core/store"
 import { useSupabase } from "~lib/hooks"
 import { sleep } from "~lib/utils"
 
@@ -32,7 +30,7 @@ export const config: PlasmoCSConfig = {
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   await sleep(2000)
-  return document.querySelector("#sections > .style-scope")
+  return document.querySelector("ytd-guide-entry-renderer:nth-child(3)")
 }
 
 const Groups = () => {

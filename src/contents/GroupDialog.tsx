@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import cssText from "data-text:../base.css"
-import type { PlasmoCSConfig, PlasmoGetOverlayAnchor } from "plasmo"
+import cssText from "data-text:../style.css"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { FormProvider, useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { AiOutlineClose } from "react-icons/ai"
@@ -31,7 +31,7 @@ export const config: PlasmoCSConfig = {
   all_frames: true
 }
 
-export const getOverlayAnchor: PlasmoGetOverlayAnchor = async () => {
+export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return document.querySelector("body")
 }
 
