@@ -75,7 +75,12 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ name, className }) => {
   }
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover
+      open={open}
+      onOpenChange={(isOpened) => {
+        setOpen(isOpened)
+        setFilter("")
+      }}>
       <PopoverTrigger className={className} asChild>
         <Button
           variant="outline"

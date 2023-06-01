@@ -108,10 +108,14 @@ const EditManageChannels = (props) => {
       user_id: session.user.id
     }))
 
-    const { error } = await supabase.from("channels").upsert(channels)
+    const { error } = await supabase
+      .from("channels")
+      .upsert(channels, { ignoreDuplicates: true })
 
     if (!insertError && !error) {
       alert(chrome.i18n.getMessage("group_dialog_edit_success"))
+    } else {
+      alert(error.message)
     }
 
     editDialog.toggleOpen()

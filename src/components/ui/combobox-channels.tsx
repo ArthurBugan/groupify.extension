@@ -150,7 +150,12 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   }
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover
+      open={open}
+      onOpenChange={(isOpened) => {
+        setOpen(isOpened)
+        setFilter("")
+      }}>
       <PopoverTrigger className={className} asChild>
         <Button
           variant="outline"
@@ -197,7 +202,9 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
               listClassName="grid grid-cols-1"
               totalCount={itemsCount}
               itemContent={(index) => {
-                const item = items[index].guideEntryRenderer
+                const item = items[index]?.guideEntryRenderer || null
+                if (item == null) return null
+
                 return (
                   <CommandItem
                     className="px-4 gap-x-4 w-full flex justify-start items-center"
