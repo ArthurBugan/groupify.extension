@@ -19,6 +19,10 @@
     "message": "My groups",
     "description": "Sidebar main text"
   },
+  "sidebar_groups_shortcut": {
+    "message": "To group",
+    "description": "Shortcut add text"
+  },
   "sidebar_groups_not_found": {
     "message": "No groups found",
     "description": "Sidebar no groups found"

@@ -19,6 +19,10 @@
     "message": "Meus grupos",
     "description": "Text principal da barra lateral"
   },
+  "sidebar_groups_shortcut": {
+    "message": "Ao grupo",
+    "description": "Atalho adicionar ao grupo"
+  },
   "sidebar_groups_not_found": {
     "message": "Adicione grupos para exibi-los aqui",
     "description": "Grupos não encontrados"

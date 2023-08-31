@@ -40,7 +40,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     ;(async () => {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      if (document.querySelector("html[dark]") != null) {
         document
           .querySelectorAll("plasmo-csui")
           .forEach((e) => e.classList.add("dark"))
@@ -53,7 +53,7 @@ const Sidebar = () => {
         })
 
         if (errorSession) {
-          alert(errorSession)
+          console.log(errorSession)
           return
         }
       }

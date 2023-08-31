@@ -55,7 +55,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
             />
             <div className="gap-x-2 flex flex-row">
               <DynamicIcon
-                className="text-secondary"
+                className="text-primary"
                 lib={getFamily(g.icon)}
                 icon={g.icon}
               />

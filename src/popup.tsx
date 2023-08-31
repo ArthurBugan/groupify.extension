@@ -34,7 +34,7 @@ function IndexOptions() {
   )
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (document.querySelector("html[dark]") != null) {
       document.querySelector("html").classList.add("dark")
     }
   }, [])
@@ -60,13 +60,13 @@ function IndexOptions() {
       })
 
       if (error) {
-        alert(`Erro: ${error.message} ❌`)
+        console.log(`Erro: ${error.message} ❌`)
         return
       }
 
-      alert("Please verify your inbox! ✅")
+      console.log("Please verify your inbox! ✅")
     } catch (error) {
-      alert(error.error_description || error)
+      console.log(error.error_description || error)
     }
   }
 

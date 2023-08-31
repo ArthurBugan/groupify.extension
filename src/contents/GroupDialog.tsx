@@ -50,8 +50,8 @@ const ManageChannels = (props) => {
     defaultValues: {
       icon: "FcFolder"
     },
-    mode: "all",
-    shouldFocusError: true,
+    mode: "onBlur",
+    shouldFocusError: false,
     shouldUnregister: true,
     resolver: zodResolver(schema)
   })
@@ -69,10 +69,10 @@ const ManageChannels = (props) => {
         throw error
       }
 
-      alert(chrome.i18n.getMessage("group_dialog_success"))
+      console.log(chrome.i18n.getMessage("group_dialog_success"))
       return dialog.toggleOpen()
     } catch (error) {
-      alert(error.error_description || error)
+      console.log(error.error_description || error)
     }
   }
 

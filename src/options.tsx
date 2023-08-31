@@ -17,14 +17,16 @@ function IndexOptions() {
   const [session, setSession] = useStorage("user-data")
 
   useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      document.querySelector("html").classList.add("dark")
+    if (document.querySelector("html[dark]") != null) {
+      document
+        .querySelectorAll("plasmo-csui")
+        .forEach((e) => e.classList.add("dark"))
     }
 
     ;(async () => {
       const { data, error } = await supabase.auth.getSession()
       if (error) {
-        alert(error)
+        console.log(error)
         return setSession(error)
       }
 

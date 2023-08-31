@@ -33,6 +33,7 @@ export const useSupabase = (groupType: GroupTypes, filter = null, renderControl 
           let query = supabase
             .from(groupType)
             .select()
+            .order('id', { ascending: true })
 
           if (filter) {
             { query = query.eq(filter[0], filter[1]) }

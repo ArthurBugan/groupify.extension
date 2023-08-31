@@ -70,7 +70,7 @@ const EditManageChannels = (props) => {
   const [isOpened, setOpenedTooltip] = useState(false)
 
   const { ...methods } = useForm<Schema>({
-    mode: "all",
+    mode: "onBlur",
     shouldFocusError: true,
     shouldUnregister: true,
     resolver: zodResolver(schema)
@@ -113,9 +113,9 @@ const EditManageChannels = (props) => {
       .upsert(channels, { ignoreDuplicates: true })
 
     if (!insertError && !error) {
-      alert(chrome.i18n.getMessage("group_dialog_edit_success"))
+      console.log(chrome.i18n.getMessage("group_dialog_edit_success"))
     } else {
-      alert(error.message)
+      console.log(error.message)
     }
 
     editDialog.toggleOpen()
@@ -139,10 +139,10 @@ const EditManageChannels = (props) => {
 
         group.remove(form.values.id)
 
-        alert(chrome.i18n.getMessage("group_dialog_edit_delete_success"))
+        console.log(chrome.i18n.getMessage("group_dialog_edit_delete_success"))
         editDialog.toggleOpen()
       } catch (error) {
-        alert(error.error_description || error)
+        console.log(error.error_description || error)
       }
     }, 3000)
   }
