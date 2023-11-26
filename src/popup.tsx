@@ -28,7 +28,7 @@ const schema = z.object({
 
 export type Schema = z.infer<typeof schema>
 
-function IndexOptions() {
+function Popup() {
   const [session] = useStorage<Session>("user-data", (userData: Session) =>
     typeof userData === "undefined" ? null : userData
   )
@@ -37,7 +37,29 @@ function IndexOptions() {
     if (document.querySelector("html[dark]") != null) {
       document.querySelector("html").classList.add("dark")
     }
-  }, [])
+
+    (async () => {
+      if (session === null) {
+        window.open("chrome-extension://dmdgaegnpjnnkcbdngfgkhlehlccbija/options.html")
+      }
+
+      if (session) {
+        const { data, error } = await supabase.auth.refreshSession()
+        const { session, user } = data
+
+        //const { data, error: errorSession } = await supabase.auth.setSession({
+        //  access_token: session.access_token,
+        //  refresh_token: session.refresh_token
+        //})
+
+        console.log("sidebar", session, user)
+        if (error) {
+          console.error(error)
+          return
+        }
+      }
+    })()
+  }, [session])
 
   const { ...methods } = useForm<Schema>({
     mode: "all",
@@ -83,6 +105,9 @@ function IndexOptions() {
           <div className="mb-4">
             <FormProvider {...methods}>
               <form>
+                <p className="text-center font-bold text-xl">
+                  Login
+                </p>
                 <div className="flex flex-col gap-y-5">
                   <div>
                     <Input type="text" name="email" placeholder="Email" />
@@ -115,4 +140,4 @@ function IndexOptions() {
   )
 }
 
-export default IndexOptions
+export default Popup;

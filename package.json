@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "Groupify - Organize youtube subscriptions",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "Organize your youtube channels into groups and lists. Access them from Youtube the sidebar, and have fun.",
   "author": "arthurbugan",
   "scripts": {
@@ -28,7 +28,7 @@
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
     "lucide-react": "^0.206.0",
-    "plasmo": "0.74.2",
+    "plasmo": "0.84.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.43.9",

@@ -90,6 +90,11 @@ const EditManageChannels = (props) => {
   }, [editDialog.isOpen])
 
   const onSubmit = async (groupData: Schema) => {
+    if (session === null) {
+      window.open("chrome-extension://dmdgaegnpjnnkcbdngfgkhlehlccbija/options.html")
+      return
+    }
+
     const { data, error: insertError } = await supabase
       .from("groups")
       .update({ name: groupData.name, icon: groupData.icon })

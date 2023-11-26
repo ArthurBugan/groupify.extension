@@ -57,6 +57,11 @@ const ManageChannels = (props) => {
   })
 
   const onSubmit = async (groupData: Schema) => {
+    if (session === null) {
+      window.open("chrome-extension://dmdgaegnpjnnkcbdngfgkhlehlccbija/options.html")
+      return
+    }
+
     try {
       const { data, error } = await supabase
         .from("groups")

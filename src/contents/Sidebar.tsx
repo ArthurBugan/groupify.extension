@@ -34,7 +34,7 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 const Sidebar = () => {
-  const [session] = useStorage("user-data")
+  const [session, setSession] = useStorage("user-data")
   const { data } = useSupabase("groups", null)
   const dialog = useCreateDialog()
 
@@ -45,15 +45,21 @@ const Sidebar = () => {
           .querySelectorAll("plasmo-csui")
           .forEach((e) => e.classList.add("dark"))
       }
+      
+      if (session && (session.expires_at < Math.floor(Date.now() / 1000))) {
+        console.log(session.expires_at, Math.floor(Date.now() / 1000), session.expires_at < Math.floor(Date.now() / 1000))
 
-      if (session) {
-        const { data, error: errorSession } = await supabase.auth.setSession({
-          access_token: session.access_token,
-          refresh_token: session.refresh_token
-        })
+        const { data, error } = await supabase.auth.refreshSession()
+        const { session: innerSession, user } = data
+        setSession(innerSession);
 
-        if (errorSession) {
-          console.log(errorSession)
+        const { error: errorSession } = await supabase.auth.setSession({
+          access_token: innerSession.access_token,
+          refresh_token: innerSession.refresh_token
+        });
+
+        if (error) {
+          console.error(error)
           return
         }
       }
