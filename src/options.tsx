@@ -1,16 +1,13 @@
+import { zodResolver } from "@hookform/resolvers/zod"
 import type { PlasmoCSConfig } from "plasmo"
 import { useEffect } from "react"
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProvider, useForm } from "react-hook-form";
-import * as z from "zod";
+import { FormProvider, useForm } from "react-hook-form"
+import * as z from "zod"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { supabase } from "~core/store"
-
-import { Input } from "~components/ui/input"
 import { Button } from "~components/ui/button"
+import { Input } from "~components/ui/input"
 
 import "~base.css"
 import "~style.css"
@@ -27,7 +24,7 @@ export const config: PlasmoCSConfig = {
 }
 
 function Options() {
-  const [session, setSession] = useStorage("user-data")
+  const [session] = useStorage("authorization")
 
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
@@ -35,106 +32,97 @@ function Options() {
         .querySelectorAll("plasmo-csui")
         .forEach((e) => e.classList.add("dark"))
     }
+  }, [])
 
-    ;(async () => {
-      const { data, error } = await supabase.auth.getSession();
-      console.log("options", data)
-
-      if (error) {
-        console.log(error)
-        return setSession(error)
-      } else {
-        setSession(data.session)
-      }
-    })()
-  }, []);
-
-  const { ...methods } = useForm<Schema>({
-    mode: "all",
-    shouldFocusError: true,
-    shouldUnregister: true,
-    resolver: zodResolver(schema)
-  });
-
-  const onSubmit = async (groupData: Schema) => {
-    try {
-      const {
-        error,
-        data: { user, session }
-      } = await supabase.auth.signInWithOtp({
-        email: groupData.email,
-        options: {
-          emailRedirectTo:
-            "chrome-extension://eigbphlpbefiaehoamaanpjpmmgcnaam/options.html"
-        }
-      })
-
-      if (error) {
-        console.log(`Erro: ${error.message} ❌`)
-        return
-      }
-
-      alert("Please verify your inbox! ✅")
-    } catch (error) {
-      console.log(error.error_description || error)
-    }
-  };
+  if (!session) {
+    return (
+      <div className="dark">
+        <Button
+          variant="destructive"
+          className="text-4xl text-primary m-auto"
+          onClick={() =>
+            window.open("https://groupify.dev/dashboard/channels")
+          }>
+          {chrome.i18n.getMessage("sidebar_unauthorized")}
+        </Button>
+      </div>
+    )
+  }
 
   return (
-    <div className="bg-secondary w-screen p-20 h-screen">
-      {session?.user && (
-        <div>
-          <p className="font-bold text-xl mb-4">
-            Welcome {session.user?.email}
+    <div className="flex h-screen w-full items-center justify-center bg-primary">
+      <div className="w-full max-w-lg rounded-lg p-6 shadow-lg bg-secondary">
+        <div className="space-y-2 text-center">
+          <h1 className="text-4xl font-bold tracking-tight hover:text-gray-700 text-primary">
+            Support Groupify through Donations
+          </h1>
+          <p className="text-primary text-[1.4rem]">
+            Groupify is a completely open-source YouTube extension that makes it
+            easy to manage your subscriptions. Consider supporting our project
+            through a donation.
           </p>
-          <Button
-            onClick={() =>
-              window.open("https://ko-fi.com/scriptingarthur")
-            }
-            type="button"
-            className="w-full text-xl">
-            {chrome.i18n.getMessage("popup_support")}
-          </Button>
         </div>
-      )}
-      {!session && (
-        <div className="dark">
-          <p className="mb-4 text-center font-bold text-xl">
-            Login!
-          </p>
-          <div className="mb-4">
-            <FormProvider {...methods}>
-              <form>
-                <div className="flex flex-col gap-y-5">
-                  <div>
-                    <Input type="text" name="email" placeholder="Email" />
-                  </div>
-
-                  <Button
-                    onClick={methods.handleSubmit(onSubmit)}
-                    type="button"
-                    variant="default"
-                    className="w-full text-xl">
-                    {chrome.i18n.getMessage("popup_btn")}
-                  </Button>
-
-                  <Button
-                    onClick={() =>
-                      window.open("https://ko-fi.com/scriptingarthur")
-                    }
-                    type="button"
-                    variant="ghost"
-                    className="w-full text-xl">
-                    {chrome.i18n.getMessage("popup_support")}
-                  </Button>
-                </div>
-              </form>
-            </FormProvider>
+        <div className="space-y-8">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Button className="w-full my-5" variant="secondary">
+              <a
+                className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 text-primary"
+                target="_blank"
+                href="https://ko-fi.com/scriptingarthur">
+                {chrome.i18n.getMessage("popup_support")}
+              </a>
+            </Button>
+            <Button className="w-full my-5" variant="secondary">
+              <a
+                className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 text-primary"
+                target="_blank"
+                href="https://groupify.dev/dashboard/groups">
+                Manage Subscriptions
+              </a>
+            </Button>
+          </div>
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold">Groupify Features:</h2>
+            <ul className="space-y-2 text-primary text-[1.4rem]">
+              <li>
+                <strong className="font-bold text-primary">
+                  Organize your YouTube subscriptions
+                </strong>{" "}
+                into custom collections for easy access.
+              </li>
+              <li>
+                <strong className="font-bold text-primary">
+                  Discover new content
+                </strong>{" "}
+                from your favorite creators in a clean, distraction-free layout.
+              </li>
+              <li>
+                <strong className="font-bold text-primary">
+                  Stay up-to-date
+                </strong>{" "}
+                with the latest videos from your subscribed channels.
+              </li>
+              <li>
+                <strong className="font-bold text-primary">
+                  Completely open-source
+                </strong>{" "}
+                and free to use.
+              </li>
+            </ul>
+          </div>
+          <div className="text-center text-smtext-primary text-[1.4rem]">
+            Need help?
+            <a
+              className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 text-primary"
+              href="mailto:admin@groupify.dev">
+              {" "}
+              Contact Support
+            </a>
           </div>
         </div>
-      )}
+      </div>
     </div>
   )
 }
 
-export default Options;
+export default Options
