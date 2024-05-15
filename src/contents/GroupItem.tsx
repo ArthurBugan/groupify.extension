@@ -90,7 +90,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
             data.map((c) => (
               <a
                 key={c.id}
-                href={`/channel/${c.id}/videos`}
+                href={`/channel/${c.channelId}/videos`}
                 data-external-id={c.id}
                 className="cursor-pointer flex flex-row gap-x-2 items-center justify-start"
                 id={c.id}>
