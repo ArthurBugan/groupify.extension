@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react';
-
-import { supabase } from "~core/store"
-
 import { useGroups, useChannels } from '~core/store';
 
 export interface GroupType {
@@ -14,7 +11,7 @@ export interface GroupType {
 
 export type GroupTypes = "groups" | "channels"
 
-export const useSupabase = (groupType: GroupTypes, filter = null, renderControl = null) => {
+export const useGroupifyStorage = (groupType: GroupTypes, filter = null, renderControl = null) => {
   const groupTypes = {
     "groups": useGroups,
     "channels": useChannels
@@ -27,21 +24,33 @@ export const useSupabase = (groupType: GroupTypes, filter = null, renderControl 
   useEffect(() => {
     (
       async () => {
+        if (!renderControl) {
+          return;
+        }
+
         try {
           setLoading(true);
 
-          let query = supabase
-            .from(groupType)
-            .select()
-            .order('id', { ascending: true })
+          console.log(groupType)
+
+          let url = `https://api.groupify.dev/${groupType}`;
+
 
           if (filter) {
-            { query = query.eq(filter[0], filter[1]) }
+            url = `${url}/${filter}`
           }
 
-          const { data, error } = await query
+          let query = await fetch(url, {
+            credentials: 'include',
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json"
+            }
+          });
 
-          group.create(data)
+          let groups = await query.json();
+
+          group.create(groups);
         } catch (err) {
           setError(err)
         } finally {

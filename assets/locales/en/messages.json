@@ -15,6 +15,10 @@
     "message": "Support me",
     "description": "Popup button text"
   },
+  "sidebar_unauthorized": {
+    "message": "Login to Groupify",
+    "description": "Text to indicate that the User needs to login"
+  },
   "sidebar_groups": {
     "message": "My groups",
     "description": "Sidebar main text"

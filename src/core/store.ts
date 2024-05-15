@@ -1,21 +1,10 @@
-import { createClient } from "@supabase/supabase-js"
 import { create } from 'zustand'
-import { type Schema } from '~contents/GroupEditDialog'
-
-export const supabase = createClient(
-  process.env.PLASMO_PUBLIC_SUPABASE_URL,
-  process.env.PLASMO_PUBLIC_SUPABASE_KEY
-)
 
 interface EditDialogStore {
   isOpen: boolean;
   toggleOpen: () => void;
 }
 
-interface FormStore {
-  values: Schema
-  setForm: (values) => void;
-}
 
 interface GroupStore {
   items: any[],
@@ -32,13 +21,6 @@ export const useCreateDialog = create<EditDialogStore>((set) => ({
 export const useEditDialog = create<EditDialogStore>((set) => ({
   isOpen: false,
   toggleOpen: () => set((state) => ({ isOpen: !state.isOpen })),
-}))
-
-export const useFormState = create<FormStore>((set) => ({
-  values: {
-    channels: []
-  },
-  setForm: (data) => set(() => ({ values: data })),
 }))
 
 export const useGroups = create<GroupStore>((set) => ({

@@ -9,8 +9,7 @@ import {
   CollapsibleTrigger
 } from "~components/ui/collapsible"
 import { DynamicIcon } from "~components/ui/icon"
-import { supabase, useEditDialog, useFormState } from "~core/store"
-import { type GroupType, useSupabase } from "~lib/hooks"
+import { type GroupType, useGroupifyStorage } from "~lib/hooks"
 import { getFamily } from "~lib/utils"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
@@ -23,21 +22,8 @@ export const config: PlasmoCSConfig = {
 }
 
 const GroupItem: React.FC<GroupType> = (g) => {
-  const editDialog = useEditDialog()
-  const form = useFormState()
-
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const { data, loading } = useSupabase("channels", ["group_id", g.id], isOpen)
-
-  const editItem = async () => {
-    const { data: channels } = await supabase
-      .from("channels")
-      .select()
-      .eq("group_id", g.id)
-
-    form.setForm({ channels, ...g })
-    return editDialog.toggleOpen()
-  }
+  const { data, loading } = useGroupifyStorage("channels", g.id, isOpen)
 
   return (
     <Collapsible
@@ -68,7 +54,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
 
         <Button variant="ghost" className="ml-auto">
           <BiEdit
-            onClick={editItem}
+            onClick={() => window.open("https://groupify.dev/dashboard/groups")}
             size={16}
             className="transition-all text-primary"
           />

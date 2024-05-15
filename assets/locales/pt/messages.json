@@ -15,6 +15,10 @@
     "message": "Doar",
     "description": "Text botão doar popup"
   },
+  "sidebar_unauthorized": {
+    "message": "Login p/ usar Groupify.",
+    "description": "Texto para indicar que o usuário precisa fazer login"
+  },
   "sidebar_groups": {
     "message": "Meus grupos",
     "description": "Text principal da barra lateral"

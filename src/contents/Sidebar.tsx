@@ -1,6 +1,6 @@
 import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 
 import { useStorage } from "@plasmohq/storage/hook"
@@ -11,8 +11,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "~components/ui/collapsible"
-import { supabase, useCreateDialog } from "~core/store"
-import { useSupabase } from "~lib/hooks"
+import { useGroupifyStorage } from "~lib/hooks"
 import { sleep } from "~lib/utils"
 
 import GroupItem from "./GroupItem"
@@ -34,9 +33,8 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 }
 
 const Sidebar = () => {
-  const [session, setSession] = useStorage("user-data")
-  const { data } = useSupabase("groups", null)
-  const dialog = useCreateDialog()
+  const [session] = useStorage("authorization")
+  const { data } = useGroupifyStorage("groups", null, session)
 
   useEffect(() => {
     ;(async () => {
@@ -45,26 +43,31 @@ const Sidebar = () => {
           .querySelectorAll("plasmo-csui")
           .forEach((e) => e.classList.add("dark"))
       }
-      
-      if (session && (session.expires_at < Math.floor(Date.now() / 1000))) {
-        console.log(session.expires_at, Math.floor(Date.now() / 1000), session.expires_at < Math.floor(Date.now() / 1000))
-
-        const { data, error } = await supabase.auth.refreshSession()
-        const { session: innerSession, user } = data
-        setSession(innerSession);
-
-        const { error: errorSession } = await supabase.auth.setSession({
-          access_token: innerSession.access_token,
-          refresh_token: innerSession.refresh_token
-        });
-
-        if (error) {
-          console.error(error)
-          return
-        }
-      }
     })()
   }, [session])
+
+  console.log("session sidebar", session)
+
+  if (!session) {
+    return (
+      <div className="w-full flex flex-col">
+        <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 mb-3" />
+
+        <div className="flex gap-y-4 w-full">
+          <div className="w-full px-4 my-3 flex items-center">
+            <Button
+              variant="destructive"
+              className="text-xl text-primary m-auto"
+              onClick={() =>
+                window.open("https://groupify.dev/dashboard/channels")
+              }>
+              {chrome.i18n.getMessage("sidebar_unauthorized")}
+            </Button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="flex gap-y-4 w-full">
@@ -86,7 +89,9 @@ const Sidebar = () => {
             </Button>
           </CollapsibleTrigger>
 
-          <Button onClick={dialog.toggleOpen} variant="ghost">
+          <Button
+            onClick={() => window.open("https://groupify.dev/dashboard/groups")}
+            variant="ghost">
             <BiFolderPlus size={16} className="text-primary" />
           </Button>
         </div>

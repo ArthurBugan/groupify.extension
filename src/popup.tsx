@@ -1,143 +1,102 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import type { Session } from "@supabase/supabase-js"
 import type { PlasmoCSConfig } from "plasmo"
-import { FormProvider, useForm } from "react-hook-form"
-import * as z from "zod"
+import { MdOutlineSecurity } from "react-icons/md"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "~components/ui/button"
-
-import { supabase } from "./core/store"
 
 import "~base.css"
 import "~style.css"
 
 import { useEffect } from "react"
 
-import { Input } from "~components/ui/input"
-
 export const config: PlasmoCSConfig = {
-  matches: ["https://youtube.com/*", "https://www.youtube.com/*"],
+  matches: [
+    "https://youtube.com/*",
+    "https://www.youtube.com/*",
+    "https://www.groupify.dev/*",
+    "https://groupify.dev/*"
+  ],
   all_frames: true
 }
 
-const schema = z.object({
-  email: z.string().email()
-})
-
-export type Schema = z.infer<typeof schema>
-
 function Popup() {
-  const [session] = useStorage<Session>("user-data", (userData: Session) =>
-    typeof userData === "undefined" ? null : userData
-  )
+  const [session] = useStorage("authorization")
+
+  console.log("session", session)
 
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
       document.querySelector("html").classList.add("dark")
     }
 
-    (async () => {
+    ;(async () => {
       if (session === null) {
-        window.open("chrome-extension://dmdgaegnpjnnkcbdngfgkhlehlccbija/options.html")
+        window.open("https://groupify.dev/dashboard/groups")
       }
 
       if (session) {
-        const { data, error } = await supabase.auth.refreshSession()
-        const { session, user } = data
-
-        //const { data, error: errorSession } = await supabase.auth.setSession({
-        //  access_token: session.access_token,
-        //  refresh_token: session.refresh_token
-        //})
-
-        console.log("sidebar", session, user)
-        if (error) {
-          console.error(error)
-          return
-        }
+        console.log("sidebar", session)
       }
     })()
   }, [session])
 
-  const { ...methods } = useForm<Schema>({
-    mode: "all",
-    shouldFocusError: true,
-    shouldUnregister: true,
-    resolver: zodResolver(schema)
-  })
-
-  const onSubmit = async (groupData: Schema) => {
-    try {
-      const {
-        error,
-        data: { user, session }
-      } = await supabase.auth.signInWithOtp({
-        email: groupData.email,
-        options: {
-          emailRedirectTo:
-            "chrome-extension://eigbphlpbefiaehoamaanpjpmmgcnaam/options.html"
-        }
-      })
-
-      if (error) {
-        console.log(`Erro: ${error.message} ❌`)
-        return
-      }
-
-      console.log("Please verify your inbox! ✅")
-    } catch (error) {
-      console.log(error.error_description || error)
-    }
+  if (!session) {
+    return (
+      <div className="flex h-96 w-96 flex-col items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-800">
+        <div className="mx-4 space-y-4 w-full max-w-md rounded-lg items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-900 sm:p-8">
+          <MdOutlineSecurity size={24} className="dark:text-gray-50 m-auto" />
+          <div className="space-y-2 text-center">
+            <h1 className="text-2xl font-bold tracking-tight hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300">
+              Please login to continue
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400 text-xl">
+              You need to authenticate to access this information.
+            </p>
+          </div>
+          <div>
+            <Button variant="default" className="w-full">
+              <a
+                className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300"
+                target="_blank"
+                href="https://groupify.dev/login">
+                Login
+              </a>
+            </Button>
+            <div className="text-center text-lg text-gray-500 dark:text-gray-400">
+              Don't have an account?{" "}
+              <a
+                className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300"
+                target="_blank"
+                href="https://groupify.dev/register">
+                Sign up
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="flex flex-col w-72 m-5">
-      {session?.user && (
-        <div>
-          {session?.user.email} - {session?.user?.id}
-        </div>
-      )}
-
-      {!session && (
-        <div>
-          <div className="mb-4">
-            <FormProvider {...methods}>
-              <form>
-                <p className="text-center font-bold text-xl">
-                  Login
-                </p>
-                <div className="flex flex-col gap-y-5">
-                  <div>
-                    <Input type="text" name="email" placeholder="Email" />
-                  </div>
-
-                  <Button
-                    onClick={methods.handleSubmit(onSubmit)}
-                    type="button"
-                    variant="default"
-                    className="w-full text-xl">
-                    {chrome.i18n.getMessage("popup_btn")}
-                  </Button>
-
-                  <Button
-                    onClick={() =>
-                      window.open("https://ko-fi.com/scriptingarthur")
-                    }
-                    type="button"
-                    variant="ghost"
-                    className="w-full text-xl">
-                    {chrome.i18n.getMessage("popup_support")}
-                  </Button>
-                </div>
-              </form>
-            </FormProvider>
-          </div>
-        </div>
-      )}
+    <div className="flex h-80 w-80 flex-col items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-800">
+      <div className="space-y-4 text-center">
+        <h1 className="text-2xl font-bold tracking-tight hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300">
+          You are authenticated!
+        </h1>
+        <p className="text-lg text-gray-500 dark:text-gray-400">
+          You can now organize your subscriptions
+        </p>
+      </div>
+      <Button
+        className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300"
+        variant="link">
+        <a target="_blank" href="https://groupify.dev/dashboard/groups">
+          Go to Dashboard
+        </a>
+      </Button>
     </div>
   )
 }
 
-export default Popup;
+export default Popup
