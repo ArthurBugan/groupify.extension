@@ -33,7 +33,7 @@ export const useGroupifyStorage = (groupType: GroupTypes, filter = null, renderC
 
           console.log(groupType)
 
-          let url = `https://api.groupify.dev/${groupType}`;
+          let url = `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/${groupType}`;
 
 
           if (filter) {

@@ -36,15 +36,19 @@ function Options() {
 
   if (!session) {
     return (
-      <div className="dark">
-        <Button
-          variant="destructive"
-          className="text-4xl text-primary m-auto"
-          onClick={() =>
-            window.open("https://groupify.dev/dashboard/channels")
-          }>
-          {chrome.i18n.getMessage("sidebar_unauthorized")}
-        </Button>
+      <div className="flex h-screen w-full items-center justify-center bg-primary">
+        <div className="shadow-lg bg-primary">
+          <Button
+            variant="secondary"
+            className="h-24 w-40"
+            onClick={() =>
+              window.open("https://groupify.dev/dashboard/channels")
+            }>
+            <span className="text-3xl">
+              {chrome.i18n.getMessage("sidebar_unauthorized")}
+            </span>
+          </Button>
+        </div>
       </div>
     )
   }
