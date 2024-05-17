@@ -32,48 +32,6 @@ const ComboboxDemo: React.FC<ComboboxProps> = ({ append, name, className }) => {
   const dbRef = React.useRef(null)
   const itemsRef = React.useRef(null)
 
-  React.useEffect(() => {
-    indexedDB.databases().then((databases) => {
-      const database = databases
-        .filter((d) => d.name.includes("yt-it-response-store"))
-        .sort((a, b) => a.name.length - b.name.length)[0]
-
-      let db
-      const request = indexedDB.open(database.name)
-
-      request.onerror = (event) => {
-        console.error("Why didn't you allow my web app to use IndexedDB?!")
-      }
-
-      request.onsuccess = (event) => {
-        db = event.target.result
-
-        const transaction = db.transaction(["ResponseStore"], "readwrite")
-        const objectStore = transaction.objectStore("ResponseStore")
-
-        const objectStoreRequest = objectStore.get([
-          "service:guide:fallback",
-          1
-        ])
-
-        objectStoreRequest.onsuccess = (event) => {
-          const result =
-            event.target.result.innertubeResponse.items[1]
-              .guideSubscriptionsSectionRenderer.items
-
-          dbRef.current =
-            result[
-              result.length - 1
-            ].guideCollapsibleEntryRenderer.expandableItems
-        }
-      }
-    })
-
-    itemsRef.current = JSON.parse(
-      document.querySelector("html").getAttribute("ysm-guide-data")
-    )
-  }, [])
-
   const itemsCount = React.useMemo(() => {
     const filterCount = (items) => {
       return items.filter((i) =>

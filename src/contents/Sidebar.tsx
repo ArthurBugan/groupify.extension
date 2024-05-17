@@ -1,7 +1,8 @@
 import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
+import { v4 } from "uuid"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
@@ -43,6 +44,76 @@ const Sidebar = () => {
           .querySelectorAll("plasmo-csui")
           .forEach((e) => e.classList.add("dark"))
       }
+
+      if (!session) {
+        return
+      }
+
+      indexedDB.databases().then((databases) => {
+        console.log("dentro do indexedDB")
+        const database = databases
+          .filter((d) => d.name.includes("yt-it-response-store"))
+          .sort((a, b) => a.name.length - b.name.length)[0]
+
+        let db
+        const request = indexedDB.open(database.name)
+
+        request.onerror = (event) => {
+          console.error("Why didn't you allow my web app to use IndexedDB?!")
+        }
+
+        request.onsuccess = (event) => {
+          db = event.target.result
+
+          const transaction = db.transaction(["ResponseStore"], "readwrite")
+          const objectStore = transaction.objectStore("ResponseStore")
+
+          const objectStoreRequest = objectStore.get([
+            "service:guide:fallback",
+            1
+          ])
+
+          objectStoreRequest.onsuccess = (event) => {
+            const result =
+              event.target.result.innertubeResponse.items[1]
+                .guideSubscriptionsSectionRenderer.items
+
+            let items =
+              result[result.length - 1].guideCollapsibleEntryRenderer
+                .expandableItems
+
+            items.pop()
+            console.log(items)
+
+            items = items.map(({ guideEntryRenderer: item }, index) => {
+              console.log(item, index)
+              return {
+                channelId: item.entryData.guideEntryData.guideEntryId,
+                id: item.entryData.guideEntryData.guideEntryId,
+                name: item.formattedTitle?.simpleText,
+                thumbnail: item?.thumbnail?.thumbnails[0].url,
+                newContent:
+                  item.presentationStyle ===
+                  "GUIDE_ENTRY_PRESENTATION_STYLE_NEW_CONTENT"
+              }
+            })
+
+            fetch(
+              `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/youtube-channels`,
+              {
+                credentials: "include",
+                method: "POST",
+                body: JSON.stringify(items),
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              }
+            )
+
+            console.log("items", items)
+          }
+        }
+      })
     })()
   }, [session])
 
