@@ -23,8 +23,6 @@ export const config: PlasmoCSConfig = {
 function Popup() {
   const [session] = useStorage("authorization")
 
-  console.log("session", session)
-
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
       document.querySelector("html").classList.add("dark")
@@ -33,10 +31,6 @@ function Popup() {
     ;(async () => {
       if (session === null) {
         window.open("https://groupify.dev/dashboard/groups")
-      }
-
-      if (session) {
-        console.log("sidebar", session)
       }
     })()
   }, [session])

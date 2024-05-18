@@ -1,6 +1,6 @@
 import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
 import { v4 } from "uuid"
 
@@ -35,6 +35,7 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 const Sidebar = () => {
   const [session] = useStorage("authorization")
+  const [isUploading, setUploading] = useState(false)
   const { data } = useGroupifyStorage("groups", null, session)
 
   useEffect(() => {
@@ -50,7 +51,6 @@ const Sidebar = () => {
       }
 
       indexedDB.databases().then((databases) => {
-        console.log("dentro do indexedDB")
         const database = databases
           .filter((d) => d.name.includes("yt-it-response-store"))
           .sort((a, b) => a.name.length - b.name.length)[0]
@@ -83,10 +83,8 @@ const Sidebar = () => {
                 .expandableItems
 
             items.pop()
-            console.log(items)
 
             items = items.map(({ guideEntryRenderer: item }, index) => {
-              console.log(item, index)
               return {
                 channelId: item.entryData.guideEntryData.guideEntryId,
                 id: item.entryData.guideEntryData.guideEntryId,
@@ -98,6 +96,7 @@ const Sidebar = () => {
               }
             })
 
+            setUploading(true)
             fetch(
               `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/youtube-channels`,
               {
@@ -108,16 +107,33 @@ const Sidebar = () => {
                   "Content-Type": "application/json"
                 }
               }
-            )
-
-            console.log("items", items)
+            ).then(() => {
+              setUploading(false)
+            })
           }
         }
       })
     })()
   }, [session])
 
-  console.log("session sidebar", session)
+  if (isUploading) {
+    return (
+      <div className="w-full flex flex-col">
+        <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 mb-3" />
+
+        <div className="flex gap-y-4 w-full">
+          <div className="w-full px-4 my-3 flex items-center">
+            <div className="flex items-center justify-center">
+              <div className="w-8 h-8 border-4 border-gray-300 border-t-gray-900 rounded-full animate-spin" />
+            </div>
+            <p className="text-xl text-primary m-auto">
+              {chrome.i18n.getMessage("sidebar_loading")}
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (!session) {
     return (
