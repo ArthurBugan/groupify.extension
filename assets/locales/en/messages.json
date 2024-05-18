@@ -19,6 +19,10 @@
     "message": "Login to Groupify",
     "description": "Text to indicate that the User needs to login"
   },
+  "sidebar_loading": {
+    "message": "Loading channels",
+    "description": "Text to indicate that the app is loading the channels"
+  },
   "sidebar_groups": {
     "message": "My groups",
     "description": "Sidebar main text"

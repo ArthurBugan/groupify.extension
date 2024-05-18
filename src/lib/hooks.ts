@@ -30,9 +30,6 @@ export const useGroupifyStorage = (groupType: GroupTypes, filter = null, renderC
 
         try {
           setLoading(true);
-
-          console.log(groupType)
-
           let url = `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/${groupType}`;
 
 
