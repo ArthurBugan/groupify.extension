@@ -1,10 +1,11 @@
+import * as Fa6Icons from "react-icons/fa6"
 import * as FcIcons from "react-icons/fc"
 import * as HeroIcons2 from "react-icons/hi2"
 import type { IconType } from "react-icons/lib"
 import * as LuIcons from "react-icons/lu"
 
 export type IconMap = Record<string, IconType>
-export type Library = "fc" | "hi" | "lu"
+export type Library = "fc" | "hi" | "lu" | "fa"
 
 interface IDynamicIcon {
   lib: Library
@@ -25,6 +26,7 @@ export const DynamicIcon: React.FC<IDynamicIcon> = ({
 }
 
 export const LibraryIcons = {
+  fa: Fa6Icons,
   fc: FcIcons,
   hi: HeroIcons2,
   lu: LuIcons
