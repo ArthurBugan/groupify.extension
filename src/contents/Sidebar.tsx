@@ -118,7 +118,7 @@ const Sidebar = () => {
 
   if (isUploading) {
     return (
-      <div className="w-full flex flex-col">
+      <div className="w-full flex flex-col mt-2">
         <hr className="h-px bg-gray-200 border-0 dark:bg-gray-700 mb-3" />
 
         <div className="flex gap-y-4 w-full">
