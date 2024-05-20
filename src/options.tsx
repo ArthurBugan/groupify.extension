@@ -42,7 +42,7 @@ function Options() {
             variant="secondary"
             className="h-24 w-40"
             onClick={() =>
-              window.open("https://groupify.dev/dashboard/channels")
+              window.open("https://groupify.dev/dashboard/groups")
             }>
             <span className="text-3xl">
               {chrome.i18n.getMessage("sidebar_unauthorized")}

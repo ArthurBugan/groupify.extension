@@ -146,7 +146,7 @@ const Sidebar = () => {
               variant="destructive"
               className="text-xl text-primary m-auto"
               onClick={() =>
-                window.open("https://groupify.dev/dashboard/channels")
+                window.open("https://groupify.dev/dashboard/groups")
               }>
               {chrome.i18n.getMessage("sidebar_unauthorized")}
             </Button>
