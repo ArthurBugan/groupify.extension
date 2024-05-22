@@ -32,6 +32,12 @@ const GroupItem: React.FC<GroupType> = (g) => {
     }
   }, [loading])
 
+  useEffect(() => {
+    if (!isOpen) {
+      setLocalData([])
+    }
+  }, [isOpen])
+
   return (
     <Collapsible
       open={isOpen}
@@ -99,7 +105,9 @@ const GroupItem: React.FC<GroupType> = (g) => {
             localData.map((c) => (
               <a
                 key={c.id}
-                href={`/channel/${c.channelId}/videos`}
+                href={`/channel/${
+                  c.channelId?.split("/")[1] || c.channelId
+                }/videos`}
                 data-external-id={c.id}
                 className="hover:bg-accent flex-1 w-full rounded-lg cursor-pointer"
                 id={c.id}>
