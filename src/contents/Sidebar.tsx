@@ -2,10 +2,11 @@ import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect, useState } from "react"
 import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
-import { v4 } from "uuid"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
+import { useToast } from "~/components/ui/use-toast"
+import { useCreateDialog } from "~/core/store"
 import { Button } from "~components/ui/button"
 import {
   Collapsible,
@@ -36,6 +37,8 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 const Sidebar = () => {
   const [session] = useStorage("authorization")
   const [isUploading, setUploading] = useState(false)
+  const { toast, dismiss } = useToast()
+  const toggleOpen = useCreateDialog((state) => state.toggleOpen)
   const { data } = useGroupifyStorage("groups", null, session)
 
   useEffect(() => {
@@ -96,7 +99,13 @@ const Sidebar = () => {
               }
             })
 
-            setUploading(true)
+            const time = setTimeout(() => {
+              toast({
+                title: "Please wait",
+                description: "Syncing Youtube channels with Groupify"
+              })
+            }, 500)
+            toggleOpen()
             fetch(
               `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/youtube-channels`,
               {
@@ -109,6 +118,9 @@ const Sidebar = () => {
               }
             ).then(() => {
               setUploading(false)
+              dismiss()
+              toggleOpen()
+              clearTimeout(time)
             })
           }
         }
