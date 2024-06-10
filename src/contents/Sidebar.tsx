@@ -89,6 +89,8 @@ const Sidebar = () => {
 
             items = items.map(({ guideEntryRenderer: item }, index) => {
               return {
+                url: item?.navigationEndpoint?.commandMetadata
+                  ?.webCommandMetadata?.url,
                 channelId: item.entryData.guideEntryData.guideEntryId,
                 id: item.entryData.guideEntryData.guideEntryId,
                 name: item.formattedTitle?.simpleText,
