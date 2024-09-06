@@ -105,9 +105,13 @@ const GroupItem: React.FC<GroupType> = (g) => {
             localData.map((c) => (
               <a
                 key={c.id}
-                href={`/channel/${
-                  c.channelId?.split("/")[1] || c.channelId
-                }/videos`}
+                href={
+                  c.channelId.includes("@")
+                    ? `@${c.channelId?.split("@")[1]}/videos`
+                    : `/channel/${
+                        c.channelId?.split("/")[1] || c.channelId
+                      }/videos`
+                }
                 data-external-id={c.id}
                 className="hover:bg-accent flex-1 w-full rounded-lg cursor-pointer"
                 id={c.id}>
