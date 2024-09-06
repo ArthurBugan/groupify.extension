@@ -101,13 +101,48 @@ const Sidebar = () => {
               }
             })
 
+            document.querySelector("#expander-item").click()
+            document.querySelector("#collapser-item").click()
+
+            let subscriptions = []
+
+            subscriptions = document
+              .querySelector(
+                "#items.style-scope.ytd-guide-section-renderer #expandable-items"
+              )
+              .querySelectorAll("a[href*='@']")
+
+            if (+(items.length - subscriptions.length) > 9) {
+              subscriptions = Array.from(subscriptions)
+
+              subscriptions.pop()
+              subscriptions.pop()
+
+              items = subscriptions?.map((s, index) => {
+                return {
+                  url: "@" + subscriptions[index]?.href.split("@")[1],
+                  channelId: "@" + subscriptions[index]?.href.split("@")[1],
+                  id: subscriptions[index]?.href,
+                  name: subscriptions[index]?.title,
+                  thumbnail: JSON.parse(
+                    subscriptions[index]
+                      ?.querySelector("yt-icon")
+                      .getAttribute("disable-upgrade")
+                  )?.thumbnails[0].url,
+                  newContent: false
+                }
+              })
+            }
+
             const time = setTimeout(() => {
               toast({
                 title: "Please wait",
                 description: "Syncing Youtube channels with Groupify"
               })
             }, 500)
+
             toggleOpen()
+
             fetch(
               `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/youtube-channels`,
               {
