@@ -107,17 +107,11 @@ const Sidebar = () => {
             let subscriptions = []
 
             subscriptions = document
-              .querySelector(
-                "#items.style-scope.ytd-guide-section-renderer #expandable-items"
-              )
+              .querySelectorAll("#sections ytd-guide-section-renderer")[1]
               .querySelectorAll("a[href*='@']")
 
-            if (+(items.length - subscriptions.length) > 9) {
+            if (Math.abs(items.length - subscriptions.length) > 5) {
               subscriptions = Array.from(subscriptions)
-
-              subscriptions.pop()
-              subscriptions.pop()
-
               items = subscriptions?.map((s, index) => {
                 return {
                   url: "@" + subscriptions[index]?.href.split("@")[1],
