@@ -1336,10 +1336,10 @@
   dependencies:
     "@parcel/plugin" "2.9.3"
 
-"@plasmohq/parcel-config@0.40.7":
-  version "0.40.7"
-  resolved "https://registry.npmjs.org/@plasmohq/parcel-config/-/parcel-config-0.40.7.tgz"
-  integrity sha512-M1nOXLI8lPcI/ZS1G+UCfuXe0MWb4+sCnG5xTakm8eDRjH0Paq4pWYKXqi1Bl5V76quK9I3gjezgqEihUTAynQ==
+"@plasmohq/parcel-config@0.41.0":
+  version "0.41.0"
+  resolved "https://registry.npmjs.org/@plasmohq/parcel-config/-/parcel-config-0.41.0.tgz"
+  integrity sha512-MHtuEyjSCqVT0J584KF4ZrnNF1KTGz3+0+wEBgYiiWEW+WW91/Hv/5pboBrPH4tu/knxSQjzE9zlY5Rq2xh9Rg==
   dependencies:
     "@parcel/compressor-raw" "2.9.3"
     "@parcel/config-default" "2.9.3"
@@ -1370,10 +1370,10 @@
     "@plasmohq/parcel-packager" "0.6.14"
     "@plasmohq/parcel-resolver" "0.14.0"
     "@plasmohq/parcel-resolver-post" "0.4.4"
-    "@plasmohq/parcel-runtime" "0.23.1"
+    "@plasmohq/parcel-runtime" "0.25.0"
     "@plasmohq/parcel-transformer-inject-env" "0.2.11"
     "@plasmohq/parcel-transformer-inline-css" "0.3.11"
-    "@plasmohq/parcel-transformer-manifest" "0.18.0"
+    "@plasmohq/parcel-transformer-manifest" "0.19.0"
     "@plasmohq/parcel-transformer-svelte" "0.6.0"
     "@plasmohq/parcel-transformer-vue" "0.5.0"
 
@@ -1469,13 +1469,14 @@
     fs-extra "11.1.1"
     got "13.0.0"
 
-"@plasmohq/parcel-runtime@0.23.1":
-  version "0.23.1"
-  resolved "https://registry.npmjs.org/@plasmohq/parcel-runtime/-/parcel-runtime-0.23.1.tgz"
-  integrity sha512-EiBjAJcJjVFarUmiIqywKd+MHGIThWTkcZe5IYfR7ecaJRNhhZF1B/gPgoAwv1nLcxfvRIC2CF9z9frwQvrOYQ==
+"@plasmohq/parcel-runtime@0.25.0":
+  version "0.25.0"
+  resolved "https://registry.npmjs.org/@plasmohq/parcel-runtime/-/parcel-runtime-0.25.0.tgz"
+  integrity sha512-jtb77WDCYhKDPi/jRweSNX9GEe/REQUQU50d18YkDpQDyo/enVTyWVeYqfo3Q21iGLX8x9E5nF2rXtIVtoOAmw==
   dependencies:
     "@parcel/core" "2.9.3"
     "@parcel/plugin" "2.9.3"
+    "@types/trusted-types" "2.0.7"
     react-refresh "0.14.0"
 
 "@plasmohq/parcel-transformer-inject-env@0.2.11":
@@ -1498,10 +1499,10 @@
     browserslist "4.22.1"
     lightningcss "1.21.8"
 
-"@plasmohq/parcel-transformer-manifest@0.18.0":
-  version "0.18.0"
-  resolved "https://registry.npmjs.org/@plasmohq/parcel-transformer-manifest/-/parcel-transformer-manifest-0.18.0.tgz"
-  integrity sha512-6X6ubo37Ic7u1y3MjY+vt23Gb3ULtOsH1MbKw3jZMiG8nLGXqXRfiHSyNxJWAdpk7N7ASE8dHnZ+5g3E57bldA==
+"@plasmohq/parcel-transformer-manifest@0.19.0":
+  version "0.19.0"
+  resolved "https://registry.npmjs.org/@plasmohq/parcel-transformer-manifest/-/parcel-transformer-manifest-0.19.0.tgz"
+  integrity sha512-cDmca0jPVFVnRQPqCWcsPPwre27/yAGxSF1+JmPVUeXZYMCrg5wdNepRDSw+/dDBO2VmNHh/Tv+Hgj1fLIM8CQ==
   dependencies:
     "@mischnic/json-sourcemap" "0.1.0"
     "@parcel/core" "2.9.3"
@@ -2280,29 +2281,29 @@
   resolved "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.82.tgz"
   integrity sha512-JfsyDW34gVKD3uE0OUpUqYvAD3yseEaicnFP6pB292THtLJb0IKBBnK50vV/RzEJtc1bR3g1kNfxo2PeurZTrA==
 
-"@swc/core-darwin-arm64@1.5.5":
-  version "1.5.5"
-  resolved "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.5.5.tgz"
-  integrity sha512-Ol5ZwZYdTOZsv2NwjcT/qVVALKzVFeh+IJ4GNarr3P99+38Dkwi81OqCI1o/WaDXQYKAQC/V+CzMbkEuJJfq9Q==
+"@swc/core-darwin-arm64@1.7.0":
+  version "1.7.0"
+  resolved "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.7.0.tgz"
+  integrity sha512-2ylhM7f0HwUwLrFYZAe/dse8PCbPsYcJS3Dt7Q8NT3PUn7vy6QOMxNcOPPuDrnmaXqQQO3oxdmRapguTxaat9g==
 
 "@swc/core@^1", "@swc/core@^1.3.36":
-  version "1.5.5"
-  resolved "https://registry.npmjs.org/@swc/core/-/core-1.5.5.tgz"
-  integrity sha512-M8O22EEgdSONLd+7KRrXj8pn+RdAZZ7ISnPjE9KCQQlI0kkFNEquWR+uFdlFxQfwlyCe/Zb6uGXGDvtcov4IMg==
+  version "1.7.0"
+  resolved "https://registry.npmjs.org/@swc/core/-/core-1.7.0.tgz"
+  integrity sha512-d4vMzH6ICllDwlPuhset2h8gu/USHdbyfJim+2hQEdxC0UONtfpmu38XBgNqRjStrji1Q5M10jfeUZL3cu1i8g==
   dependencies:
-    "@swc/counter" "^0.1.2"
-    "@swc/types" "^0.1.5"
+    "@swc/counter" "^0.1.3"
+    "@swc/types" "^0.1.9"
   optionalDependencies:
-    "@swc/core-darwin-arm64" "1.5.5"
-    "@swc/core-darwin-x64" "1.5.5"
-    "@swc/core-linux-arm-gnueabihf" "1.5.5"
-    "@swc/core-linux-arm64-gnu" "1.5.5"
-    "@swc/core-linux-arm64-musl" "1.5.5"
-    "@swc/core-linux-x64-gnu" "1.5.5"
-    "@swc/core-linux-x64-musl" "1.5.5"
-    "@swc/core-win32-arm64-msvc" "1.5.5"
-    "@swc/core-win32-ia32-msvc" "1.5.5"
-    "@swc/core-win32-x64-msvc" "1.5.5"
+    "@swc/core-darwin-arm64" "1.7.0"
+    "@swc/core-darwin-x64" "1.7.0"
+    "@swc/core-linux-arm-gnueabihf" "1.7.0"
+    "@swc/core-linux-arm64-gnu" "1.7.0"
+    "@swc/core-linux-arm64-musl" "1.7.0"
+    "@swc/core-linux-x64-gnu" "1.7.0"
+    "@swc/core-linux-x64-musl" "1.7.0"
+    "@swc/core-win32-arm64-msvc" "1.7.0"
+    "@swc/core-win32-ia32-msvc" "1.7.0"
+    "@swc/core-win32-x64-msvc" "1.7.0"
 
 "@swc/core@1.3.82":
   version "1.3.82"
@@ -2322,22 +2323,22 @@
     "@swc/core-win32-ia32-msvc" "1.3.82"
     "@swc/core-win32-x64-msvc" "1.3.82"
 
-"@swc/counter@^0.1.2", "@swc/counter@^0.1.3":
+"@swc/counter@^0.1.3":
   version "0.1.3"
   resolved "https://registry.npmjs.org/@swc/counter/-/counter-0.1.3.tgz"
   integrity sha512-e2BR4lsJkkRlKZ/qCHPw9ZaSxc0MVUd7gtbtaB7aMvHeJVYe8sOB8DBZkP2DtISHGSku9sCK6T6cnY0CtXrOCQ==
 
-"@swc/helpers@^0.5.0":
-  version "0.5.11"
-  resolved "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.11.tgz"
-  integrity sha512-YNlnKRWF2sVojTpIyzwou9XoTNbzbzONwRhOoniEioF1AtaitTvVZblaQRrAzChWQ1bLYyYSWzM18y4WwgzJ+A==
+"@swc/helpers@*", "@swc/helpers@^0.5.0":
+  version "0.5.12"
+  resolved "https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.12.tgz"
+  integrity sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==
   dependencies:
     tslib "^2.4.0"
 
-"@swc/types@^0.1.4", "@swc/types@^0.1.5":
-  version "0.1.6"
-  resolved "https://registry.npmjs.org/@swc/types/-/types-0.1.6.tgz"
-  integrity sha512-/JLo/l2JsT/LRd80C3HfbmVpxOAJ11FO2RCEslFrgzLltoP9j8XIbsyDcfCt2WWyX+CM96rBoNM+IToAkFOugg==
+"@swc/types@^0.1.4", "@swc/types@^0.1.9":
+  version "0.1.12"
+  resolved "https://registry.npmjs.org/@swc/types/-/types-0.1.12.tgz"
+  integrity sha512-wBJA+SdtkbFhHjTMYH+dEH1y4VpfGdAc2Kw/LK09i9bXd/K6j6PkDcFCEzb6iVfZMkPRrl/q0e3toqTAJdkIVA==
   dependencies:
     "@swc/counter" "^0.1.3"
 
@@ -2446,6 +2447,11 @@
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.8.tgz"
   integrity sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==
 
+"@types/trusted-types@2.0.7":
+  version "2.0.7"
+  resolved "https://registry.npmjs.org/@types/trusted-types/-/trusted-types-2.0.7.tgz"
+  integrity sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==
+
 "@vue/compiler-core@3.3.4":
   version "3.3.4"
   resolved "https://registry.npmjs.org/@vue/compiler-core/-/compiler-core-3.3.4.tgz"
@@ -2542,9 +2548,9 @@ abortcontroller-polyfill@^1.1.9, abortcontroller-polyfill@1.7.5:
   integrity sha512-JMJ5soJWP18htbbxJjG7bG6yuI6pRhgJ0scHHTfkUjf6wjP912xZWvM+A4sJK3gqd9E8fcPbDnOefbA9Th/FIQ==
 
 acorn@^8.10.0, acorn@^8.9.0:
-  version "8.11.3"
-  resolved "https://registry.npmjs.org/acorn/-/acorn-8.11.3.tgz"
-  integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
+  version "8.12.1"
+  resolved "https://registry.npmjs.org/acorn/-/acorn-8.12.1.tgz"
+  integrity sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==
 
 ansi-escapes@^4.3.2:
   version "4.3.2"
@@ -2627,11 +2633,9 @@ autoprefixer@^10.4.14:
     postcss-value-parser "^4.2.0"
 
 axobject-query@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/axobject-query/-/axobject-query-3.2.1.tgz"
-  integrity sha512-jsyHu61e6N4Vbz/v18DHwWYKK0bSWLqn47eeDSKPB7m8tqMHF9YJ+mhIk2lVteyZrY8tnSj/jHOv4YiTCuCJgg==
-  dependencies:
-    dequal "^2.0.3"
+  version "3.2.4"
+  resolved "https://registry.npmjs.org/axobject-query/-/axobject-query-3.2.4.tgz"
+  integrity sha512-aPTElBrbifBU1krmZxGZOlBkslORe7Ll7+BDnI50Wy4LgOt69luMgevkDfTq1O/ZgprooPCtWpjCwKSZw/iZ4A==
 
 b4a@^1.6.4:
   version "1.6.4"
@@ -2736,9 +2740,9 @@ buffer@6.0.3:
     ieee754 "^1.2.1"
 
 bundle-require@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/bundle-require/-/bundle-require-4.1.0.tgz"
-  integrity sha512-FeArRFM+ziGkRViKRnSTbHZc35dgmR9yNog05Kn0+ItI59pOAISGvnnIwW1WgFZQW59IxD9QpJnUPkdIPfZuXg==
+  version "4.2.1"
+  resolved "https://registry.npmjs.org/bundle-require/-/bundle-require-4.2.1.tgz"
+  integrity sha512-7Q/6vkyYAwOmQNRw75x+4yRtZCZJXUDmHHlFdkiV0wgv/reNjtJwpu1jPJ0w2kbEpIM0uoKI3S4/f39dU7AjSA==
   dependencies:
     load-tsconfig "^0.2.3"
 
@@ -3698,9 +3702,9 @@ graphql-import-macro@^1.0.0:
     graphql "^15.0.0"
 
 graphql@^15.0.0:
-  version "15.8.0"
-  resolved "https://registry.npmjs.org/graphql/-/graphql-15.8.0.tgz"
-  integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
+  version "15.9.0"
+  resolved "https://registry.npmjs.org/graphql/-/graphql-15.9.0.tgz"
+  integrity sha512-GCOQdvm7XxV1S4U4CGrsdlEN37245eC8P9zaYCMr6K1BG0IPGy5lUwmJsEOGyl1GD6HXjOtl2keCP9asRBwNvA==
 
 has-flag@^3.0.0:
   version "3.0.0"
@@ -3803,9 +3807,9 @@ image-size@~0.5.0:
   integrity sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ==
 
 immutable@^4.0.0:
-  version "4.3.5"
-  resolved "https://registry.npmjs.org/immutable/-/immutable-4.3.5.tgz"
-  integrity sha512-8eabxkth9gZatlwl5TBuJnCsoTADlL6ftEr7A4qgdaTsPyreilDSnUk57SO+jfKcNtxPa22U5KK6DSeAYhpBJw==
+  version "4.3.6"
+  resolved "https://registry.npmjs.org/immutable/-/immutable-4.3.6.tgz"
+  integrity sha512-Ju0+lEMyzMVZarkTn/gqRpdqd5dOPaz1mCZ0SH3JV6iFw81PldE/PEB1hWVEA288HPt4WXW8O7AWxB10M+03QQ==
 
 import-fresh@^3.2.1, import-fresh@^3.3.0:
   version "3.3.0"
@@ -4085,27 +4089,27 @@ lightningcss-darwin-arm64@1.21.8:
   resolved "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.21.8.tgz"
   integrity sha512-BOMoGfcgkk2f4ltzsJqmkjiqRtlZUK+UdwhR+P6VgIsnpQBV3G01mlL6GzYxYqxq+6/3/n/D+4oy2NeknmADZw==
 
-lightningcss-darwin-arm64@1.24.1:
-  version "1.24.1"
-  resolved "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.24.1.tgz"
-  integrity sha512-1jQ12jBy+AE/73uGQWGSafK5GoWgmSiIQOGhSEXiFJSZxzV+OXIx+a9h2EYHxdJfX864M+2TAxWPWb0Vv+8y4w==
+lightningcss-darwin-arm64@1.25.1:
+  version "1.25.1"
+  resolved "https://registry.npmjs.org/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.25.1.tgz"
+  integrity sha512-G4Dcvv85bs5NLENcu/s1f7ehzE3D5ThnlWSDwE190tWXRQCQaqwcuHe+MGSVI/slm0XrxnaayXY+cNl3cSricw==
 
 lightningcss@^1.16.1:
-  version "1.24.1"
-  resolved "https://registry.npmjs.org/lightningcss/-/lightningcss-1.24.1.tgz"
-  integrity sha512-kUpHOLiH5GB0ERSv4pxqlL0RYKnOXtgGtVe7shDGfhS0AZ4D1ouKFYAcLcZhql8aMspDNzaUCumGHZ78tb2fTg==
+  version "1.25.1"
+  resolved "https://registry.npmjs.org/lightningcss/-/lightningcss-1.25.1.tgz"
+  integrity sha512-V0RMVZzK1+rCHpymRv4URK2lNhIRyO8g7U7zOFwVAhJuat74HtkjIQpQRKNCwFEYkRGpafOpmXXLoaoBcyVtBg==
   dependencies:
     detect-libc "^1.0.3"
   optionalDependencies:
-    lightningcss-darwin-arm64 "1.24.1"
-    lightningcss-darwin-x64 "1.24.1"
-    lightningcss-freebsd-x64 "1.24.1"
-    lightningcss-linux-arm-gnueabihf "1.24.1"
-    lightningcss-linux-arm64-gnu "1.24.1"
-    lightningcss-linux-arm64-musl "1.24.1"
-    lightningcss-linux-x64-gnu "1.24.1"
-    lightningcss-linux-x64-musl "1.24.1"
-    lightningcss-win32-x64-msvc "1.24.1"
+    lightningcss-darwin-arm64 "1.25.1"
+    lightningcss-darwin-x64 "1.25.1"
+    lightningcss-freebsd-x64 "1.25.1"
+    lightningcss-linux-arm-gnueabihf "1.25.1"
+    lightningcss-linux-arm64-gnu "1.25.1"
+    lightningcss-linux-arm64-musl "1.25.1"
+    lightningcss-linux-x64-gnu "1.25.1"
+    lightningcss-linux-x64-musl "1.25.1"
+    lightningcss-win32-x64-msvc "1.25.1"
 
 lightningcss@1.21.8:
   version "1.21.8"
@@ -4650,10 +4654,10 @@ pirates@^4.0.1:
   resolved "https://registry.npmjs.org/pirates/-/pirates-4.0.6.tgz"
   integrity sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==
 
-plasmo@0.86.2:
-  version "0.86.2"
-  resolved "https://registry.npmjs.org/plasmo/-/plasmo-0.86.2.tgz"
-  integrity sha512-oFC8nQmhiule876jyehfZVUBPZV9YWUyfiRBHERBOlW+ezGtyZx/wvWWKE9MHmgE2Cm48H5+U9KcN+pYZNzB5g==
+plasmo@0.88.0:
+  version "0.88.0"
+  resolved "https://registry.npmjs.org/plasmo/-/plasmo-0.88.0.tgz"
+  integrity sha512-pL0xA9Y4zZuqQTyOwt0rQ8cahFMZI9toGMCa3aosB3dtzRztSe2rm3LA8hS52UdvnAUXm2A4ecmTlweaGN69Uw==
   dependencies:
     "@expo/spawn-async" "1.7.2"
     "@parcel/core" "2.9.3"
@@ -4661,7 +4665,7 @@ plasmo@0.86.2:
     "@parcel/package-manager" "2.9.3"
     "@parcel/watcher" "2.2.0"
     "@plasmohq/init" "0.7.0"
-    "@plasmohq/parcel-config" "0.40.7"
+    "@plasmohq/parcel-config" "0.41.0"
     "@plasmohq/parcel-core" "0.1.8"
     buffer "6.0.3"
     chalk "5.3.0"
@@ -5056,18 +5060,18 @@ safe-buffer@^5.0.1, safe-buffer@~5.2.0:
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
 sass@^1.38.0:
-  version "1.77.1"
-  resolved "https://registry.npmjs.org/sass/-/sass-1.77.1.tgz"
-  integrity sha512-OMEyfirt9XEfyvocduUIOlUSkWOXS/LAt6oblR/ISXCTukyavjex+zQNm51pPCOiFKY1QpWvEH1EeCkgyV3I6w==
+  version "1.77.8"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.77.8.tgz"
+  integrity sha512-4UHg6prsrycW20fqLGPShtEvo/WyHRVRHwOP4DzkUrObWoWI05QBSfzU71TVB7PFaL104TwNaHpjlWXAZbQiNQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
 sax@^1.2.4:
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/sax/-/sax-1.3.0.tgz"
-  integrity sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/sax/-/sax-1.4.1.tgz"
+  integrity sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==
 
 scheduler@^0.23.0:
   version "0.23.0"

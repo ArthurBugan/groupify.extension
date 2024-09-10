@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "Groupify - Organize youtube subscriptions",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Organize your youtube channels into groups and lists. Access them from Youtube the sidebar, and have fun.",
   "author": "arthurbugan",
   "scripts": {
