@@ -8,9 +8,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "~components/ui/collapsible"
-import { DynamicIcon } from "~components/ui/icon"
 import { type GroupType, useGroupifyStorage } from "~lib/hooks"
-import { getFamily } from "~lib/utils"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return null
@@ -39,26 +37,25 @@ const GroupItem: React.FC<GroupType> = (g) => {
   }, [isOpen])
 
   return (
-    <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
-      className="w-full group/child">
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="group/child">
       <div className="px-4 gap-x-2 my-2 flex flex-row items-center justify-start">
         <CollapsibleTrigger asChild>
           <Button
-            className="w-full flex items-center justify-start"
+            className="dark:hover:bg-slate-900 w-full flex items-center justify-start"
             variant="ghost">
             <BiChevronRight
               size={16}
-              className="transition-all text-primary group-data-[state='open']/child:rotate-90"
+              className="text-black dark:text-white transition-all text-primary group-data-[state='open']/child:rotate-90"
             />
             <div className="gap-x-2 flex flex-row">
-              <DynamicIcon
-                className="text-primary"
-                lib={getFamily(g.icon)}
-                icon={g.icon}
+              <img
+                className={"text-2xl text-primary text-black dark:text-white"}
+                src={`https://api.iconify.design/${g.icon.replace(
+                  ":",
+                  "/"
+                )}.svg`}
               />
-              <p className="line-clamp-1 text-primary truncate text-lg">
+              <p className="text-black dark:text-white line-clamp-1 text-primary truncate text-lg">
                 {g.name}
               </p>
             </div>
@@ -69,7 +66,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
           <BiEdit
             onClick={() => window.open("https://groupify.dev/dashboard/groups")}
             size={16}
-            className="transition-all text-primary"
+            className="transition-all dark:hover:bg-slate-900 text-primary text-black dark:text-white"
           />
         </Button>
       </div>
@@ -77,7 +74,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
         <div className="pl-8 pr-2 my-1 gap-y-1 flex flex-col items-start justify-between">
           {loading && (
             <svg
-              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-black dark:text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24">
@@ -96,7 +93,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
           )}
 
           {!loading && !data.length && (
-            <span className="text-primary text-sm">
+            <span className="text-primary text-sm text-black dark:text-white">
               {chrome.i18n.getMessage("group_item_not_found")}
             </span>
           )}
@@ -106,18 +103,31 @@ const GroupItem: React.FC<GroupType> = (g) => {
               <a
                 key={c.id}
                 href={
-                  c.channelId.includes("@")
-                    ? `@${c.channelId?.split("@")[1]}/videos`
-                    : `/channel/${
+                  /iPad|iPhone/.test(navigator.platform)
+                    ? `youtube://${
+                        c.channelId.includes("@")
+                          ? `/@${c.channelId?.split("@")[1]}/videos`
+                          : `/channel/${
+                              c.channelId?.split("/")[1] || c.channelId
+                            }/videos`
+                      }`
+                    : c.channelId.includes("@")
+                    ? `https://youtube.com/@${
+                        c.channelId?.split("@")[1]
+                      }/videos`
+                    : `https://youtube.com/channel/${
                         c.channelId?.split("/")[1] || c.channelId
                       }/videos`
                 }
+                target="_blank"
                 data-external-id={c.id}
-                className="hover:bg-accent flex-1 w-full rounded-lg cursor-pointer"
+                className="hover:bg-accent dark:hover:bg-slate-900 flex-1 w-full rounded-lg cursor-pointer text-black dark:text-white"
                 id={c.id}>
                 <div className="px-2 gap-x-2 my-2 flex flex-row items-center justify-start">
                   <img className="rounded-full w-6 h-6" src={c.thumbnail} />
-                  <p className="text-primary text-xl">{c.name}</p>
+                  <p className="text-primary text-xl text-black dark:text-white">
+                    {c.name}
+                  </p>
                 </div>
               </a>
             ))}

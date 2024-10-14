@@ -1,0 +1,1045 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14E1B7E62CA2595C00B8ED7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7E52CA2595C00B8ED7A /* AppDelegate.swift */; };
+		14E1B7E82CA2595C00B8ED7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7E72CA2595C00B8ED7A /* SceneDelegate.swift */; };
+		14E1B7EB2CA2595C00B8ED7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7E92CA2595C00B8ED7A /* LaunchScreen.storyboard */; };
+		14E1B7EE2CA2595C00B8ED7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7EC2CA2595C00B8ED7A /* Main.storyboard */; };
+		14E1B7F72CA2595C00B8ED7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7F62CA2595C00B8ED7A /* AppDelegate.swift */; };
+		14E1B7FA2CA2595C00B8ED7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7F82CA2595C00B8ED7A /* Main.storyboard */; };
+		14E1B8022CA2595C00B8ED7A /* Groupify YT Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 14E1B8012CA2595C00B8ED7A /* Groupify YT Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		14E1B80C2CA2595C00B8ED7A /* Groupify YT Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 14E1B80B2CA2595C00B8ED7A /* Groupify YT Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		14E1B8122CA2595C00B8ED7A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D52CA2595B00B8ED7A /* Main.html */; };
+		14E1B8132CA2595C00B8ED7A /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D52CA2595B00B8ED7A /* Main.html */; };
+		14E1B8142CA2595C00B8ED7A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D72CA2595B00B8ED7A /* Icon.png */; };
+		14E1B8152CA2595C00B8ED7A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D72CA2595B00B8ED7A /* Icon.png */; };
+		14E1B8162CA2595C00B8ED7A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D82CA2595B00B8ED7A /* Style.css */; };
+		14E1B8172CA2595C00B8ED7A /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D82CA2595B00B8ED7A /* Style.css */; };
+		14E1B8182CA2595C00B8ED7A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D92CA2595B00B8ED7A /* Script.js */; };
+		14E1B8192CA2595C00B8ED7A /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7D92CA2595B00B8ED7A /* Script.js */; };
+		14E1B81A2CA2595C00B8ED7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7DA2CA2595B00B8ED7A /* ViewController.swift */; };
+		14E1B81B2CA2595C00B8ED7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7DA2CA2595B00B8ED7A /* ViewController.swift */; };
+		14E1B81C2CA2595C00B8ED7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7DB2CA2595C00B8ED7A /* Assets.xcassets */; };
+		14E1B81D2CA2595C00B8ED7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B7DB2CA2595C00B8ED7A /* Assets.xcassets */; };
+		14E1B81E2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7DD2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift */; };
+		14E1B81F2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E1B7DD2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift */; };
+		14E1B8432CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8312CA2595C00B8ED7A /* icon16.plasmo.3f939841.png */; };
+		14E1B8442CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */; };
+		14E1B8452CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */; };
+		14E1B8462CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */; };
+		14E1B8472CA2595C00B8ED7A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8352CA2595C00B8ED7A /* popup.html */; };
+		14E1B8482CA2595C00B8ED7A /* popup.596544fc.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */; };
+		14E1B8492CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */; };
+		14E1B84A2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */; };
+		14E1B84B2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */; };
+		14E1B84C2CA2595C00B8ED7A /* content.cd347efd.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */; };
+		14E1B84D2CA2595C00B8ED7A /* static in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83B2CA2595C00B8ED7A /* static */; };
+		14E1B84E2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */; };
+		14E1B84F2CA2595C00B8ED7A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83D2CA2595C00B8ED7A /* manifest.json */; };
+		14E1B8502CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83E2CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png */; };
+		14E1B8512CA2595C00B8ED7A /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83F2CA2595C00B8ED7A /* options.html */; };
+		14E1B8522CA2595C00B8ED7A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8402CA2595C00B8ED7A /* _locales */; };
+		14E1B8532CA2595C00B8ED7A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8412CA2595C00B8ED7A /* assets */; };
+		14E1B8542CA2595C00B8ED7A /* options.032735ed.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8422CA2595C00B8ED7A /* options.032735ed.js */; };
+		14E1B8552CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8312CA2595C00B8ED7A /* icon16.plasmo.3f939841.png */; };
+		14E1B8562CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */; };
+		14E1B8572CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */; };
+		14E1B8582CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */; };
+		14E1B8592CA2595C00B8ED7A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8352CA2595C00B8ED7A /* popup.html */; };
+		14E1B85A2CA2595C00B8ED7A /* popup.596544fc.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */; };
+		14E1B85B2CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */; };
+		14E1B85C2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */; };
+		14E1B85D2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */; };
+		14E1B85E2CA2595C00B8ED7A /* content.cd347efd.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */; };
+		14E1B85F2CA2595C00B8ED7A /* static in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83B2CA2595C00B8ED7A /* static */; };
+		14E1B8602CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */; };
+		14E1B8612CA2595C00B8ED7A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83D2CA2595C00B8ED7A /* manifest.json */; };
+		14E1B8622CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83E2CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png */; };
+		14E1B8632CA2595C00B8ED7A /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83F2CA2595C00B8ED7A /* options.html */; };
+		14E1B8642CA2595C00B8ED7A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8402CA2595C00B8ED7A /* _locales */; };
+		14E1B8652CA2595C00B8ED7A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8412CA2595C00B8ED7A /* assets */; };
+		14E1B8662CA2595C00B8ED7A /* options.032735ed.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8422CA2595C00B8ED7A /* options.032735ed.js */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14E1B8032CA2595C00B8ED7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14E1B7CF2CA2595B00B8ED7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14E1B8002CA2595C00B8ED7A;
+			remoteInfo = "Groupify YT Extension (iOS)";
+		};
+		14E1B80D2CA2595C00B8ED7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14E1B7CF2CA2595B00B8ED7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14E1B80A2CA2595C00B8ED7A;
+			remoteInfo = "Groupify YT Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		14E1B8252CA2595C00B8ED7A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				14E1B8022CA2595C00B8ED7A /* Groupify YT Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B82C2CA2595C00B8ED7A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				14E1B80C2CA2595C00B8ED7A /* Groupify YT Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		14E1B7D62CA2595B00B8ED7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		14E1B7D72CA2595B00B8ED7A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		14E1B7D82CA2595B00B8ED7A /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		14E1B7D92CA2595B00B8ED7A /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		14E1B7DA2CA2595B00B8ED7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14E1B7DB2CA2595C00B8ED7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14E1B7DD2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		14E1B7E22CA2595C00B8ED7A /* Groupify YT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Groupify YT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14E1B7E52CA2595C00B8ED7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14E1B7E72CA2595C00B8ED7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		14E1B7EA2CA2595C00B8ED7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		14E1B7ED2CA2595C00B8ED7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14E1B7EF2CA2595C00B8ED7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14E1B7F42CA2595C00B8ED7A /* Groupify YT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Groupify YT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14E1B7F62CA2595C00B8ED7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14E1B7F92CA2595C00B8ED7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14E1B7FB2CA2595C00B8ED7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14E1B7FC2CA2595C00B8ED7A /* Groupify YT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Groupify YT.entitlements"; sourceTree = "<group>"; };
+		14E1B8012CA2595C00B8ED7A /* Groupify YT Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Groupify YT Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14E1B8062CA2595C00B8ED7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14E1B80B2CA2595C00B8ED7A /* Groupify YT Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Groupify YT Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		14E1B8102CA2595C00B8ED7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14E1B8112CA2595C00B8ED7A /* Groupify YT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Groupify YT.entitlements"; sourceTree = "<group>"; };
+		14E1B8312CA2595C00B8ED7A /* icon16.plasmo.3f939841.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon16.plasmo.3f939841.png; path = "../../build/safari-mv3-prod/icon16.plasmo.3f939841.png"; sourceTree = "<group>"; };
+		14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = GroupItem.5ba5588d.js; path = "../../build/safari-mv3-prod/GroupItem.5ba5588d.js"; sourceTree = "<group>"; };
+		14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Sidebar.d55177d8.js; path = "../../build/safari-mv3-prod/Sidebar.d55177d8.js"; sourceTree = "<group>"; };
+		14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon32.plasmo.b3e782d4.png; path = "../../build/safari-mv3-prod/icon32.plasmo.b3e782d4.png"; sourceTree = "<group>"; };
+		14E1B8352CA2595C00B8ED7A /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = "../../build/safari-mv3-prod/popup.html"; sourceTree = "<group>"; };
+		14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.596544fc.css; path = "../../build/safari-mv3-prod/popup.596544fc.css"; sourceTree = "<group>"; };
+		14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon128.plasmo.75675c84.png; path = "../../build/safari-mv3-prod/icon128.plasmo.75675c84.png"; sourceTree = "<group>"; };
+		14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = SyncChannels.d0a686e1.js; path = "../../build/safari-mv3-prod/SyncChannels.d0a686e1.js"; sourceTree = "<group>"; };
+		14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.c5bdfb9c.js; path = "../../build/safari-mv3-prod/popup.c5bdfb9c.js"; sourceTree = "<group>"; };
+		14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.cd347efd.js; path = "../../build/safari-mv3-prod/content.cd347efd.js"; sourceTree = "<group>"; };
+		14E1B83B2CA2595C00B8ED7A /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = "../../build/safari-mv3-prod/static"; sourceTree = "<group>"; };
+		14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon64.plasmo.2d281304.png; path = "../../build/safari-mv3-prod/icon64.plasmo.2d281304.png"; sourceTree = "<group>"; };
+		14E1B83D2CA2595C00B8ED7A /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "../../build/safari-mv3-prod/manifest.json"; sourceTree = "<group>"; };
+		14E1B83E2CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon48.plasmo.3cd5ceed.png; path = "../../build/safari-mv3-prod/icon48.plasmo.3cd5ceed.png"; sourceTree = "<group>"; };
+		14E1B83F2CA2595C00B8ED7A /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = options.html; path = "../../build/safari-mv3-prod/options.html"; sourceTree = "<group>"; };
+		14E1B8402CA2595C00B8ED7A /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = "../../build/safari-mv3-prod/_locales"; sourceTree = "<group>"; };
+		14E1B8412CA2595C00B8ED7A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "../../build/safari-mv3-prod/assets"; sourceTree = "<group>"; };
+		14E1B8422CA2595C00B8ED7A /* options.032735ed.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.032735ed.js; path = "../../build/safari-mv3-prod/options.032735ed.js"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14E1B7DF2CA2595C00B8ED7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7F12CA2595C00B8ED7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7FE2CA2595C00B8ED7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B8082CA2595C00B8ED7A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14E1B7CE2CA2595B00B8ED7A = {
+			isa = PBXGroup;
+			children = (
+				14E1B7D32CA2595B00B8ED7A /* Shared (App) */,
+				14E1B7DC2CA2595C00B8ED7A /* Shared (Extension) */,
+				14E1B7E42CA2595C00B8ED7A /* iOS (App) */,
+				14E1B7F52CA2595C00B8ED7A /* macOS (App) */,
+				14E1B8052CA2595C00B8ED7A /* iOS (Extension) */,
+				14E1B80F2CA2595C00B8ED7A /* macOS (Extension) */,
+				14E1B7E32CA2595C00B8ED7A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14E1B7D32CA2595B00B8ED7A /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B7DA2CA2595B00B8ED7A /* ViewController.swift */,
+				14E1B7DB2CA2595C00B8ED7A /* Assets.xcassets */,
+				14E1B7D42CA2595B00B8ED7A /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		14E1B7D42CA2595B00B8ED7A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B7D52CA2595B00B8ED7A /* Main.html */,
+				14E1B7D72CA2595B00B8ED7A /* Icon.png */,
+				14E1B7D82CA2595B00B8ED7A /* Style.css */,
+				14E1B7D92CA2595B00B8ED7A /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		14E1B7DC2CA2595C00B8ED7A /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B8302CA2595C00B8ED7A /* Resources */,
+				14E1B7DD2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		14E1B7E32CA2595C00B8ED7A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B7E22CA2595C00B8ED7A /* Groupify YT.app */,
+				14E1B7F42CA2595C00B8ED7A /* Groupify YT.app */,
+				14E1B8012CA2595C00B8ED7A /* Groupify YT Extension.appex */,
+				14E1B80B2CA2595C00B8ED7A /* Groupify YT Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14E1B7E42CA2595C00B8ED7A /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B7E52CA2595C00B8ED7A /* AppDelegate.swift */,
+				14E1B7E72CA2595C00B8ED7A /* SceneDelegate.swift */,
+				14E1B7E92CA2595C00B8ED7A /* LaunchScreen.storyboard */,
+				14E1B7EC2CA2595C00B8ED7A /* Main.storyboard */,
+				14E1B7EF2CA2595C00B8ED7A /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		14E1B7F52CA2595C00B8ED7A /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B7F62CA2595C00B8ED7A /* AppDelegate.swift */,
+				14E1B7F82CA2595C00B8ED7A /* Main.storyboard */,
+				14E1B7FB2CA2595C00B8ED7A /* Info.plist */,
+				14E1B7FC2CA2595C00B8ED7A /* Groupify YT.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		14E1B8052CA2595C00B8ED7A /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B8062CA2595C00B8ED7A /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		14E1B80F2CA2595C00B8ED7A /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B8102CA2595C00B8ED7A /* Info.plist */,
+				14E1B8112CA2595C00B8ED7A /* Groupify YT.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		14E1B8302CA2595C00B8ED7A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				14E1B8312CA2595C00B8ED7A /* icon16.plasmo.3f939841.png */,
+				14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */,
+				14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */,
+				14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */,
+				14E1B8352CA2595C00B8ED7A /* popup.html */,
+				14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */,
+				14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */,
+				14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */,
+				14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */,
+				14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */,
+				14E1B83B2CA2595C00B8ED7A /* static */,
+				14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */,
+				14E1B83D2CA2595C00B8ED7A /* manifest.json */,
+				14E1B83E2CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png */,
+				14E1B83F2CA2595C00B8ED7A /* options.html */,
+				14E1B8402CA2595C00B8ED7A /* _locales */,
+				14E1B8412CA2595C00B8ED7A /* assets */,
+				14E1B8422CA2595C00B8ED7A /* options.032735ed.js */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14E1B7E12CA2595C00B8ED7A /* Groupify Youtube (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14E1B8262CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube (iOS)" */;
+			buildPhases = (
+				14E1B7DE2CA2595C00B8ED7A /* Sources */,
+				14E1B7DF2CA2595C00B8ED7A /* Frameworks */,
+				14E1B7E02CA2595C00B8ED7A /* Resources */,
+				14E1B8252CA2595C00B8ED7A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14E1B8042CA2595C00B8ED7A /* PBXTargetDependency */,
+			);
+			name = "Groupify Youtube (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Groupify YT (iOS)";
+			productReference = 14E1B7E22CA2595C00B8ED7A /* Groupify YT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14E1B7F32CA2595C00B8ED7A /* Groupify Youtube (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14E1B82D2CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube (macOS)" */;
+			buildPhases = (
+				14E1B7F02CA2595C00B8ED7A /* Sources */,
+				14E1B7F12CA2595C00B8ED7A /* Frameworks */,
+				14E1B7F22CA2595C00B8ED7A /* Resources */,
+				14E1B82C2CA2595C00B8ED7A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14E1B80E2CA2595C00B8ED7A /* PBXTargetDependency */,
+			);
+			name = "Groupify Youtube (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Groupify YT (macOS)";
+			productReference = 14E1B7F42CA2595C00B8ED7A /* Groupify YT.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14E1B8002CA2595C00B8ED7A /* Groupify Youtube Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14E1B8222CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube Extension (iOS)" */;
+			buildPhases = (
+				14E1B7FD2CA2595C00B8ED7A /* Sources */,
+				14E1B7FE2CA2595C00B8ED7A /* Frameworks */,
+				14E1B7FF2CA2595C00B8ED7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Groupify Youtube Extension (iOS)";
+			packageProductDependencies = (
+			);
+			productName = "Groupify YT Extension (iOS)";
+			productReference = 14E1B8012CA2595C00B8ED7A /* Groupify YT Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		14E1B80A2CA2595C00B8ED7A /* Groupify Youtube Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14E1B8292CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube Extension (macOS)" */;
+			buildPhases = (
+				14E1B8072CA2595C00B8ED7A /* Sources */,
+				14E1B8082CA2595C00B8ED7A /* Frameworks */,
+				14E1B8092CA2595C00B8ED7A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Groupify Youtube Extension (macOS)";
+			packageProductDependencies = (
+			);
+			productName = "Groupify YT Extension (macOS)";
+			productReference = 14E1B80B2CA2595C00B8ED7A /* Groupify YT Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14E1B7CF2CA2595B00B8ED7A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					14E1B7E12CA2595C00B8ED7A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					14E1B7F32CA2595C00B8ED7A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					14E1B8002CA2595C00B8ED7A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					14E1B80A2CA2595C00B8ED7A = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 14E1B7D22CA2595B00B8ED7A /* Build configuration list for PBXProject "Groupify" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14E1B7CE2CA2595B00B8ED7A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 14E1B7E32CA2595C00B8ED7A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14E1B7E12CA2595C00B8ED7A /* Groupify Youtube (iOS) */,
+				14E1B7F32CA2595C00B8ED7A /* Groupify Youtube (macOS) */,
+				14E1B8002CA2595C00B8ED7A /* Groupify Youtube Extension (iOS) */,
+				14E1B80A2CA2595C00B8ED7A /* Groupify Youtube Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14E1B7E02CA2595C00B8ED7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B8142CA2595C00B8ED7A /* Icon.png in Resources */,
+				14E1B7EB2CA2595C00B8ED7A /* LaunchScreen.storyboard in Resources */,
+				14E1B8122CA2595C00B8ED7A /* Main.html in Resources */,
+				14E1B8182CA2595C00B8ED7A /* Script.js in Resources */,
+				14E1B81C2CA2595C00B8ED7A /* Assets.xcassets in Resources */,
+				14E1B7EE2CA2595C00B8ED7A /* Main.storyboard in Resources */,
+				14E1B8162CA2595C00B8ED7A /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7F22CA2595C00B8ED7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B8152CA2595C00B8ED7A /* Icon.png in Resources */,
+				14E1B8172CA2595C00B8ED7A /* Style.css in Resources */,
+				14E1B7FA2CA2595C00B8ED7A /* Main.storyboard in Resources */,
+				14E1B8192CA2595C00B8ED7A /* Script.js in Resources */,
+				14E1B81D2CA2595C00B8ED7A /* Assets.xcassets in Resources */,
+				14E1B8132CA2595C00B8ED7A /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7FF2CA2595C00B8ED7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B8602CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */,
+				14E1B85D2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */,
+				14E1B8652CA2595C00B8ED7A /* assets in Resources */,
+				14E1B8632CA2595C00B8ED7A /* options.html in Resources */,
+				14E1B8562CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */,
+				14E1B8612CA2595C00B8ED7A /* manifest.json in Resources */,
+				14E1B8622CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */,
+				14E1B85C2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */,
+				14E1B85E2CA2595C00B8ED7A /* content.cd347efd.js in Resources */,
+				14E1B8662CA2595C00B8ED7A /* options.032735ed.js in Resources */,
+				14E1B85F2CA2595C00B8ED7A /* static in Resources */,
+				14E1B85A2CA2595C00B8ED7A /* popup.596544fc.css in Resources */,
+				14E1B8642CA2595C00B8ED7A /* _locales in Resources */,
+				14E1B85B2CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */,
+				14E1B8592CA2595C00B8ED7A /* popup.html in Resources */,
+				14E1B8552CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */,
+				14E1B8582CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */,
+				14E1B8572CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B8092CA2595C00B8ED7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B84E2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */,
+				14E1B84B2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */,
+				14E1B8532CA2595C00B8ED7A /* assets in Resources */,
+				14E1B8512CA2595C00B8ED7A /* options.html in Resources */,
+				14E1B8442CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */,
+				14E1B84F2CA2595C00B8ED7A /* manifest.json in Resources */,
+				14E1B8502CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */,
+				14E1B84A2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */,
+				14E1B84C2CA2595C00B8ED7A /* content.cd347efd.js in Resources */,
+				14E1B8542CA2595C00B8ED7A /* options.032735ed.js in Resources */,
+				14E1B84D2CA2595C00B8ED7A /* static in Resources */,
+				14E1B8482CA2595C00B8ED7A /* popup.596544fc.css in Resources */,
+				14E1B8522CA2595C00B8ED7A /* _locales in Resources */,
+				14E1B8492CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */,
+				14E1B8472CA2595C00B8ED7A /* popup.html in Resources */,
+				14E1B8432CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */,
+				14E1B8462CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */,
+				14E1B8452CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14E1B7DE2CA2595C00B8ED7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B81A2CA2595C00B8ED7A /* ViewController.swift in Sources */,
+				14E1B7E62CA2595C00B8ED7A /* AppDelegate.swift in Sources */,
+				14E1B7E82CA2595C00B8ED7A /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7F02CA2595C00B8ED7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B81B2CA2595C00B8ED7A /* ViewController.swift in Sources */,
+				14E1B7F72CA2595C00B8ED7A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B7FD2CA2595C00B8ED7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B81E2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14E1B8072CA2595C00B8ED7A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1B81F2CA2595C00B8ED7A /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14E1B8042CA2595C00B8ED7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14E1B8002CA2595C00B8ED7A /* Groupify Youtube Extension (iOS) */;
+			targetProxy = 14E1B8032CA2595C00B8ED7A /* PBXContainerItemProxy */;
+		};
+		14E1B80E2CA2595C00B8ED7A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14E1B80A2CA2595C00B8ED7A /* Groupify Youtube Extension (macOS) */;
+			targetProxy = 14E1B80D2CA2595C00B8ED7A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		14E1B7D52CA2595B00B8ED7A /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14E1B7D62CA2595B00B8ED7A /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		14E1B7E92CA2595C00B8ED7A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14E1B7EA2CA2595C00B8ED7A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		14E1B7EC2CA2595C00B8ED7A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14E1B7ED2CA2595C00B8ED7A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		14E1B7F82CA2595C00B8ED7A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14E1B7F92CA2595C00B8ED7A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14E1B8202CA2595C00B8ED7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		14E1B8212CA2595C00B8ED7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		14E1B8232CA2595C00B8ED7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify.Extension;
+				PRODUCT_NAME = "Groupify YT Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14E1B8242CA2595C00B8ED7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify.Extension;
+				PRODUCT_NAME = "Groupify YT Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14E1B8272CA2595C00B8ED7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Organizer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.6;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
+				PRODUCT_NAME = "Groupify YT";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14E1B8282CA2595C00B8ED7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Organizer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.6;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
+				PRODUCT_NAME = "Groupify YT";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14E1B82A2CA2595C00B8ED7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Groupify YT.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify.Extension;
+				PRODUCT_NAME = "Groupify YT Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		14E1B82B2CA2595C00B8ED7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Groupify YT.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify.Extension;
+				PRODUCT_NAME = "Groupify YT Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		14E1B82E2CA2595C00B8ED7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Groupify YT.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Organizer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.6;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
+				PRODUCT_NAME = "Groupify YT";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		14E1B82F2CA2595C00B8ED7A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Groupify YT.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = UM6SZWPURL;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Groupify Youtube Organizer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0.6;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
+				PRODUCT_NAME = "Groupify YT";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14E1B7D22CA2595B00B8ED7A /* Build configuration list for PBXProject "Groupify" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14E1B8202CA2595C00B8ED7A /* Debug */,
+				14E1B8212CA2595C00B8ED7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14E1B8222CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14E1B8232CA2595C00B8ED7A /* Debug */,
+				14E1B8242CA2595C00B8ED7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14E1B8262CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14E1B8272CA2595C00B8ED7A /* Debug */,
+				14E1B8282CA2595C00B8ED7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14E1B8292CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14E1B82A2CA2595C00B8ED7A /* Debug */,
+				14E1B82B2CA2595C00B8ED7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14E1B82D2CA2595C00B8ED7A /* Build configuration list for PBXNativeTarget "Groupify Youtube (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14E1B82E2CA2595C00B8ED7A /* Debug */,
+				14E1B82F2CA2595C00B8ED7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14E1B7CF2CA2595B00B8ED7A /* Project object */;
+}

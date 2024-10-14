@@ -42,121 +42,11 @@ const Sidebar = () => {
   const { data } = useGroupifyStorage("groups", null, session)
 
   useEffect(() => {
-    ;(async () => {
-      if (document.querySelector("html[dark]") != null) {
-        document
-          .querySelectorAll("plasmo-csui")
-          .forEach((e) => e.classList.add("dark"))
-      }
-
-      if (!session) {
-        return
-      }
-
-      indexedDB.databases().then((databases) => {
-        const database = databases
-          .filter((d) => d.name.includes("yt-it-response-store"))
-          .sort((a, b) => a.name.length - b.name.length)[0]
-
-        let db
-        const request = indexedDB.open(database.name)
-
-        request.onerror = (event) => {
-          console.error("Why didn't you allow my web app to use IndexedDB?!")
-        }
-
-        request.onsuccess = (event) => {
-          db = event.target.result
-
-          const transaction = db.transaction(["ResponseStore"], "readwrite")
-          const objectStore = transaction.objectStore("ResponseStore")
-
-          const objectStoreRequest = objectStore.get([
-            "service:guide:fallback",
-            1
-          ])
-
-          objectStoreRequest.onsuccess = (event) => {
-            const result =
-              event.target.result.innertubeResponse.items[1]
-                .guideSubscriptionsSectionRenderer.items
-
-            let items =
-              result[result.length - 1].guideCollapsibleEntryRenderer
-                .expandableItems
-
-            items.pop()
-
-            items = items.map(({ guideEntryRenderer: item }, index) => {
-              return {
-                url: item?.navigationEndpoint?.commandMetadata
-                  ?.webCommandMetadata?.url,
-                channelId: item.entryData.guideEntryData.guideEntryId,
-                id: item.entryData.guideEntryData.guideEntryId,
-                name: item.formattedTitle?.simpleText,
-                thumbnail: item?.thumbnail?.thumbnails[0].url,
-                newContent:
-                  item.presentationStyle ===
-                  "GUIDE_ENTRY_PRESENTATION_STYLE_NEW_CONTENT"
-              }
-            })
-
-            document.querySelector("#expander-item").click()
-            document.querySelector("#collapser-item").click()
-
-            let subscriptions = []
-
-            subscriptions = document
-              .querySelectorAll("#sections ytd-guide-section-renderer")[1]
-              .querySelectorAll("a[href*='@']")
-
-            if (Math.abs(items.length - subscriptions.length) > 5) {
-              subscriptions = Array.from(subscriptions)
-              items = subscriptions?.map((s, index) => {
-                return {
-                  url: "@" + subscriptions[index]?.href.split("@")[1],
-                  channelId: "@" + subscriptions[index]?.href.split("@")[1],
-                  id: subscriptions[index]?.href,
-                  name: subscriptions[index]?.title,
-                  thumbnail: JSON.parse(
-                    subscriptions[index]
-                      ?.querySelector("yt-icon")
-                      .getAttribute("disable-upgrade")
-                  )?.thumbnails[0].url,
-                  newContent: false
-                }
-              })
-            }
-
-            const time = setTimeout(() => {
-              toast({
-                title: "Please wait",
-                description: "Syncing Youtube channels with Groupify"
-              })
-            }, 500)
-
-            toggleOpen()
-
-            fetch(
-              `${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/youtube-channels`,
-              {
-                credentials: "include",
-                method: "POST",
-                body: JSON.stringify(items),
-                headers: {
-                  "Content-Type": "application/json"
-                }
-              }
-            ).then(() => {
-              setUploading(false)
-              dismiss()
-              toggleOpen()
-              clearTimeout(time)
-            })
-          }
-        }
-      })
-    })()
+    if (document.querySelector("html[dark]") != null) {
+      document
+        .querySelectorAll("plasmo-csui")
+        .forEach((e) => e.classList.add("dark"))
+    }
   }, [session])
 
   if (isUploading) {
@@ -232,7 +122,7 @@ const Sidebar = () => {
               {chrome.i18n.getMessage("sidebar_groups_not_found")}
             </span>
           )}
-          {data?.map((g) => (
+          {data?.map?.((g) => (
             <div key={g.id}>
               <GroupItem {...g} />
             </div>
