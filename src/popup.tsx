@@ -4,6 +4,9 @@ import { MdOutlineSecurity } from "react-icons/md"
 import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "~components/ui/button"
+import { useGroupifyStorage } from "~lib/hooks"
+
+import GroupItem from "./contents/GroupItem"
 
 import "~base.css"
 import "~style.css"
@@ -22,6 +25,7 @@ export const config: PlasmoCSConfig = {
 
 function Popup() {
   const [session] = useStorage("authorization")
+  const { data } = useGroupifyStorage("groups", null, session)
 
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
@@ -37,7 +41,7 @@ function Popup() {
 
   if (!session) {
     return (
-      <div className="flex h-96 w-96 flex-col items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-800">
+      <div className="flex w-[350px] h-96 flex-col items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-800">
         <div className="mx-4 space-y-4 w-full max-w-md rounded-lg items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-900 sm:p-8">
           <MdOutlineSecurity size={24} className="dark:text-gray-50 m-auto" />
           <div className="space-y-2 text-center">
@@ -73,23 +77,20 @@ function Popup() {
   }
 
   return (
-    <div className="flex h-80 w-80 flex-col items-center justify-center bg-white p-6 shadow-lg dark:bg-gray-800">
-      <div className="space-y-4 text-center">
-        <h1 className="text-2xl font-bold tracking-tight hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300">
-          You are authenticated!
-        </h1>
-        <p className="text-lg text-gray-500 dark:text-gray-400">
-          You can now organize your subscriptions
-        </p>
+    <>
+      <div className="flex w-[350px] h-full gap-y-4 flex-col bg-white p-6 dark:bg-gray-800">
+        {!data?.length && (
+          <span className="w-[300px] px-4 my-2 flex flex-row items-center justify-between text-black dark:text-white text-primary text-sm">
+            {chrome.i18n.getMessage("sidebar_groups_not_found")}
+          </span>
+        )}
+        {data?.map((g) => (
+          <div className="w-[300px]" key={g.id}>
+            <GroupItem {...g} />
+          </div>
+        ))}
       </div>
-      <Button
-        className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 dark:text-gray-50 dark:hover:text-gray-300"
-        variant="link">
-        <a target="_blank" href="https://groupify.dev/dashboard/groups">
-          Go to Dashboard
-        </a>
-      </Button>
-    </div>
+    </>
   )
 }
 
