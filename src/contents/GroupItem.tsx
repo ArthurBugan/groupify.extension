@@ -1,6 +1,7 @@
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect, useState } from "react"
 import { BiChevronRight, BiEdit } from "react-icons/bi"
+import { ReactSVG } from "react-svg"
 
 import { Button } from "~components/ui/button"
 import {
@@ -36,6 +37,8 @@ const GroupItem: React.FC<GroupType> = (g) => {
     }
   }, [isOpen])
 
+  console.log(data)
+
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="group/child">
       <div className="px-4 gap-x-2 my-2 flex flex-row items-center justify-start">
@@ -47,22 +50,22 @@ const GroupItem: React.FC<GroupType> = (g) => {
               size={16}
               className="text-black dark:text-white transition-all text-primary group-data-[state='open']/child:rotate-90"
             />
-            <div className="gap-x-2 flex flex-row">
-              <img
-                className={"text-2xl text-primary text-black dark:text-white"}
+            <div className="flex flex-row">
+              <ReactSVG
+                className={"text-2xl text-primary fill-black dark:fill-white"}
                 src={`https://api.iconify.design/${g.icon.replace(
                   ":",
                   "/"
                 )}.svg`}
               />
-              <p className="text-black dark:text-white line-clamp-1 text-primary truncate text-lg">
+              <p className="text-black dark:text-white text-primary line-clamp-1 text-clip mr-auto text-lg ml-2">
                 {g.name}
               </p>
             </div>
           </Button>
         </CollapsibleTrigger>
 
-        <Button variant="ghost" className="ml-auto">
+        <Button variant="ghost" className="ml-auto dark:hover:bg-slate-900">
           <BiEdit
             onClick={() => window.open("https://groupify.dev/dashboard/groups")}
             size={16}
@@ -92,7 +95,7 @@ const GroupItem: React.FC<GroupType> = (g) => {
             </svg>
           )}
 
-          {!loading && !data.length && (
+          {!loading && !localData.length && (
             <span className="text-primary text-sm text-black dark:text-white">
               {chrome.i18n.getMessage("group_item_not_found")}
             </span>
