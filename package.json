@@ -8,6 +8,8 @@
     "dev": "plasmo dev --verbose",
     "build": "plasmo build",
     "build-firefox": "plasmo build --target=firefox-mv2 --hoist",
+    "build-ios": "plasmo build --target=safari-mv3 --hoist",
+    "copy-assets": "cp -R build/safari-mv3-prod/* 'groupify-ios/iOS (Extension)/'",
     "package": "plasmo package"
   },
   "browser": {

@@ -33,11 +33,8 @@
 		14E1B8442CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */; };
 		14E1B8452CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */; };
 		14E1B8462CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */; };
-		14E1B8472CA2595C00B8ED7A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8352CA2595C00B8ED7A /* popup.html */; };
-		14E1B8482CA2595C00B8ED7A /* popup.596544fc.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */; };
 		14E1B8492CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */; };
 		14E1B84A2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */; };
-		14E1B84B2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */; };
 		14E1B84C2CA2595C00B8ED7A /* content.cd347efd.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */; };
 		14E1B84D2CA2595C00B8ED7A /* static in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83B2CA2595C00B8ED7A /* static */; };
 		14E1B84E2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */; };
@@ -47,24 +44,6 @@
 		14E1B8522CA2595C00B8ED7A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8402CA2595C00B8ED7A /* _locales */; };
 		14E1B8532CA2595C00B8ED7A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8412CA2595C00B8ED7A /* assets */; };
 		14E1B8542CA2595C00B8ED7A /* options.032735ed.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8422CA2595C00B8ED7A /* options.032735ed.js */; };
-		14E1B8552CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8312CA2595C00B8ED7A /* icon16.plasmo.3f939841.png */; };
-		14E1B8562CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */; };
-		14E1B8572CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */; };
-		14E1B8582CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */; };
-		14E1B8592CA2595C00B8ED7A /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8352CA2595C00B8ED7A /* popup.html */; };
-		14E1B85A2CA2595C00B8ED7A /* popup.596544fc.css in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */; };
-		14E1B85B2CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */; };
-		14E1B85C2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */; };
-		14E1B85D2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */; };
-		14E1B85E2CA2595C00B8ED7A /* content.cd347efd.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */; };
-		14E1B85F2CA2595C00B8ED7A /* static in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83B2CA2595C00B8ED7A /* static */; };
-		14E1B8602CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */; };
-		14E1B8612CA2595C00B8ED7A /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83D2CA2595C00B8ED7A /* manifest.json */; };
-		14E1B8622CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83E2CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png */; };
-		14E1B8632CA2595C00B8ED7A /* options.html in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B83F2CA2595C00B8ED7A /* options.html */; };
-		14E1B8642CA2595C00B8ED7A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8402CA2595C00B8ED7A /* _locales */; };
-		14E1B8652CA2595C00B8ED7A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8412CA2595C00B8ED7A /* assets */; };
-		14E1B8662CA2595C00B8ED7A /* options.032735ed.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8422CA2595C00B8ED7A /* options.032735ed.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,11 +116,8 @@
 		14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = GroupItem.5ba5588d.js; path = "../../build/safari-mv3-prod/GroupItem.5ba5588d.js"; sourceTree = "<group>"; };
 		14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Sidebar.d55177d8.js; path = "../../build/safari-mv3-prod/Sidebar.d55177d8.js"; sourceTree = "<group>"; };
 		14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon32.plasmo.b3e782d4.png; path = "../../build/safari-mv3-prod/icon32.plasmo.b3e782d4.png"; sourceTree = "<group>"; };
-		14E1B8352CA2595C00B8ED7A /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = popup.html; path = "../../build/safari-mv3-prod/popup.html"; sourceTree = "<group>"; };
-		14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = popup.596544fc.css; path = "../../build/safari-mv3-prod/popup.596544fc.css"; sourceTree = "<group>"; };
 		14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon128.plasmo.75675c84.png; path = "../../build/safari-mv3-prod/icon128.plasmo.75675c84.png"; sourceTree = "<group>"; };
 		14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = SyncChannels.d0a686e1.js; path = "../../build/safari-mv3-prod/SyncChannels.d0a686e1.js"; sourceTree = "<group>"; };
-		14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = popup.c5bdfb9c.js; path = "../../build/safari-mv3-prod/popup.c5bdfb9c.js"; sourceTree = "<group>"; };
 		14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.cd347efd.js; path = "../../build/safari-mv3-prod/content.cd347efd.js"; sourceTree = "<group>"; };
 		14E1B83B2CA2595C00B8ED7A /* static */ = {isa = PBXFileReference; lastKnownFileType = folder; name = static; path = "../../build/safari-mv3-prod/static"; sourceTree = "<group>"; };
 		14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon64.plasmo.2d281304.png; path = "../../build/safari-mv3-prod/icon64.plasmo.2d281304.png"; sourceTree = "<group>"; };
@@ -286,11 +262,8 @@
 				14E1B8322CA2595C00B8ED7A /* GroupItem.5ba5588d.js */,
 				14E1B8332CA2595C00B8ED7A /* Sidebar.d55177d8.js */,
 				14E1B8342CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png */,
-				14E1B8352CA2595C00B8ED7A /* popup.html */,
-				14E1B8362CA2595C00B8ED7A /* popup.596544fc.css */,
 				14E1B8372CA2595C00B8ED7A /* icon128.plasmo.75675c84.png */,
 				14E1B8382CA2595C00B8ED7A /* SyncChannels.d0a686e1.js */,
-				14E1B8392CA2595C00B8ED7A /* popup.c5bdfb9c.js */,
 				14E1B83A2CA2595C00B8ED7A /* content.cd347efd.js */,
 				14E1B83B2CA2595C00B8ED7A /* static */,
 				14E1B83C2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png */,
@@ -356,7 +329,6 @@
 			buildPhases = (
 				14E1B7FD2CA2595C00B8ED7A /* Sources */,
 				14E1B7FE2CA2595C00B8ED7A /* Frameworks */,
-				14E1B7FF2CA2595C00B8ED7A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -462,37 +434,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		14E1B7FF2CA2595C00B8ED7A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14E1B8602CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */,
-				14E1B85D2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */,
-				14E1B8652CA2595C00B8ED7A /* assets in Resources */,
-				14E1B8632CA2595C00B8ED7A /* options.html in Resources */,
-				14E1B8562CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */,
-				14E1B8612CA2595C00B8ED7A /* manifest.json in Resources */,
-				14E1B8622CA2595C00B8ED7A /* icon48.plasmo.3cd5ceed.png in Resources */,
-				14E1B85C2CA2595C00B8ED7A /* SyncChannels.d0a686e1.js in Resources */,
-				14E1B85E2CA2595C00B8ED7A /* content.cd347efd.js in Resources */,
-				14E1B8662CA2595C00B8ED7A /* options.032735ed.js in Resources */,
-				14E1B85F2CA2595C00B8ED7A /* static in Resources */,
-				14E1B85A2CA2595C00B8ED7A /* popup.596544fc.css in Resources */,
-				14E1B8642CA2595C00B8ED7A /* _locales in Resources */,
-				14E1B85B2CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */,
-				14E1B8592CA2595C00B8ED7A /* popup.html in Resources */,
-				14E1B8552CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */,
-				14E1B8582CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */,
-				14E1B8572CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		14E1B8092CA2595C00B8ED7A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				14E1B84E2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */,
-				14E1B84B2CA2595C00B8ED7A /* popup.c5bdfb9c.js in Resources */,
 				14E1B8532CA2595C00B8ED7A /* assets in Resources */,
 				14E1B8512CA2595C00B8ED7A /* options.html in Resources */,
 				14E1B8442CA2595C00B8ED7A /* GroupItem.5ba5588d.js in Resources */,
@@ -502,10 +448,8 @@
 				14E1B84C2CA2595C00B8ED7A /* content.cd347efd.js in Resources */,
 				14E1B8542CA2595C00B8ED7A /* options.032735ed.js in Resources */,
 				14E1B84D2CA2595C00B8ED7A /* static in Resources */,
-				14E1B8482CA2595C00B8ED7A /* popup.596544fc.css in Resources */,
 				14E1B8522CA2595C00B8ED7A /* _locales in Resources */,
 				14E1B8492CA2595C00B8ED7A /* icon128.plasmo.75675c84.png in Resources */,
-				14E1B8472CA2595C00B8ED7A /* popup.html in Resources */,
 				14E1B8432CA2595C00B8ED7A /* icon16.plasmo.3f939841.png in Resources */,
 				14E1B8462CA2595C00B8ED7A /* icon32.plasmo.b3e782d4.png in Resources */,
 				14E1B8452CA2595C00B8ED7A /* Sidebar.d55177d8.js in Resources */,
@@ -784,7 +728,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
@@ -800,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -822,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS (App)/Info.plist";
@@ -838,7 +782,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -926,7 +870,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Groupify YT.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -940,7 +884,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,
@@ -962,7 +906,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Groupify YT.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -976,7 +920,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
 					SafariServices,

@@ -1,0 +1,206 @@
+{
+  "extensionName": {
+    "message": "Groupify",
+    "description": "Nome dell'estensione."
+  },
+  "extensionDescription": {
+    "message": "Raggruppa i tuoi abbonamenti e organizzali in gruppi di facile accesso",
+    "description": "Descrizione dell'estensione."
+  },
+  "popup_btn": {
+    "message": "Accedi con link magico",
+    "description": "Testo del pulsante di accesso del popup"
+  },
+  "popup_support": {
+    "message": "Supportami",
+    "description": "Testo del pulsante di supporto del popup"
+  },
+  "sidebar_unauthorized": {
+    "message": "Accedi a Groupify",
+    "description": "Testo per indicare che l'utente deve effettuare il login"
+  },
+  "sidebar_loading": {
+    "message": "Caricamento canali",
+    "description": "Testo per indicare che l'applicazione sta caricando i canali"
+  },
+  "sidebar_groups": {
+    "message": "I miei gruppi",
+    "description": "Testo principale della barra laterale"
+  },
+  "sidebar_groups_shortcut": {
+    "message": "Al gruppo",
+    "description": "Testo scorciatoia aggiungi"
+  },
+  "sidebar_groups_not_found": {
+    "message": "Nessun gruppo trovato",
+    "description": "Nessun gruppo trovato nella barra laterale"
+  },
+  "group_item_not_found": {
+    "message": "Nessun canale trovato",
+    "description": "Nessun canale trovato nell'elemento del gruppo"
+  },
+  "group_dialog_success": {
+    "message": "Nuovo gruppo creato! ✅",
+    "description": "Messaggio da mostrare quando viene creato un nuovo gruppo"
+  },
+  "group_dialog_edit_success": {
+    "message": "Gruppo modificato con successo! ✅",
+    "description": "Messaggio da mostrare quando un gruppo viene modificato"
+  },
+  "group_dialog_add_group": {
+    "message": "Aggiungi gruppo",
+    "description": "Titolo della finestra di dialogo del gruppo"
+  },
+  "group_dialog_group_name": {
+    "message": "Nome del gruppo",
+    "description": "Placeholder per la finestra di dialogo del gruppo"
+  },
+  "group_dialog_submit_group": {
+    "message": "Invia",
+    "description": "Testo del pulsante per inviare la finestra di dialogo del gruppo"
+  },
+  "group_dialog_edit_group": {
+    "message": "Modifica gruppo",
+    "description": "Titolo della finestra di dialogo di modifica del gruppo"
+  },
+  "group_dialog_edit_group_items": {
+    "message": "I miei canali di gruppo",
+    "description": "Titolo per la finestra di dialogo di modifica dei miei gruppi"
+  },
+  "group_dialog_edit_delete_success": {
+    "message": "Gruppo eliminato con successo! ✅",
+    "description": "Messaggio da mostrare quando un gruppo viene eliminato"
+  },
+  "group_dialog_delete_group": {
+    "message": "Elimina gruppo",
+    "description": "Titolo del pulsante di eliminazione nella finestra di dialogo di modifica"
+  },
+  "combobox_placeholder": {
+    "message": "Cerca icona...",
+    "description": "Placeholder per la combobox"
+  },
+  "combobox_no_items_found": {
+    "message": "Nessuna icona trovata...",
+    "description": "Testo per lo stato vuoto della combobox"
+  },
+  "combobox_channels_placeholder": {
+    "message": "Cerca canali...",
+    "description": "Placeholder per la combobox dei canali"
+  },
+  "combobox_channels_no_items_found": {
+    "message": "Nessun canale trovato...",
+    "description": "Testo per lo stato vuoto della combobox dei canali"
+  },
+  "tooltip_delete": {
+    "message": "Tieni premuto il pulsante per 3 secondi per confermare",
+    "description": "Testo per il tooltip di eliminazione"
+  },
+  "login_to_groupify": {
+    "message": "Accedi a Groupify",
+    "description": "Titolo della schermata di accesso"
+  },
+  "enter_your_email_below_to_login_to_your_account": {
+    "message": "Inserisci la tua email qui sotto per accedere al tuo account",
+    "description": "Sottotitolo della schermata di accesso"
+  },
+  "discord": {
+    "message": "Discord",
+    "description": "Pulsante di accesso Discord"
+  },
+  "google": {
+    "message": "Google",
+    "description": "Pulsante di accesso Google"
+  },
+  "or_continue_with": {
+    "message": "O continua con",
+    "description": "Separatore delle opzioni di accesso"
+  },
+  "email": {
+    "message": "Email",
+    "description": "Etichetta del campo email"
+  },
+  "email_placeholder": {
+    "message": "m@example.com",
+    "description": "Testo segnaposto del campo email"
+  },
+  "password": {
+    "message": "Password",
+    "description": "Etichetta del campo password"
+  },
+  "password_placeholder": {
+    "message": "********",
+    "description": "Testo segnaposto del campo password"
+  },
+  "loading": {
+    "message": "Caricamento...",
+    "description": "Testo del pulsante durante il caricamento"
+  },
+  "login": {
+    "message": "Accedi",
+    "description": "Testo del pulsante di accesso"
+  },
+  "dont_have_an_account": {
+    "message": "Non hai un account?",
+    "description": "Testo per chi non ha un account"
+  },
+  "sign_up": {
+    "message": "Registrati",
+    "description": "Link di registrazione"
+  },
+  "login_validation_password_required": {
+    "message": "La password è obbligatoria",
+    "description": "Messaggio di convalida: password obbligatoria"
+  },
+  "login_validation_password_min": {
+    "message": "La password deve contenere almeno 6 caratteri",
+    "description": "Messaggio di convalida: password minima di 6 caratteri"
+  },
+  "login_title": {
+    "message": "Accedi a Groupify",
+    "description": "Titolo della schermata di accesso"
+  },
+  "login_subtitle": {
+    "message": "Inserisci la tua email qui sotto per accedere al tuo account",
+    "description": "Sottotitolo della schermata di accesso"
+  },
+  "login_email": {
+    "message": "Email",
+    "description": "Etichetta del campo email"
+  },
+  "login_email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder del campo email"
+  },
+  "login_password": {
+    "message": "Password",
+    "description": "Etichetta del campo password"
+  },
+  "login_password_placeholder": {
+    "message": "********",
+    "description": "Placeholder del campo password"
+  },
+  "login_signing": {
+    "message": "Accesso in corso...",
+    "description": "Testo del pulsante durante l'accesso"
+  },
+  "login_signin": {
+    "message": "Accedi",
+    "description": "Testo del pulsante di accesso"
+  },
+  "login_discord": {
+    "message": "Accedi con Groupify",
+    "description": "Pulsante di accesso Groupify"
+  },
+  "login_google": {
+    "message": "Accedi con Google",
+    "description": "Pulsante di accesso Google"
+  },
+  "login_forgot": {
+    "message": "Password dimenticata?",
+    "description": "Link password dimenticata"
+  },
+  "login_signup": {
+    "message": "Registrati",
+    "description": "Link di registrazione"
+  }
+}
