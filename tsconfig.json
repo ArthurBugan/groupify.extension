@@ -10,9 +10,10 @@
   ],
   "compilerOptions": {
     "paths": {
-      "~*": [
-        "./src/*"
-      ]
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/*": ["./src/*"],
     },
     "baseUrl": "."
   }

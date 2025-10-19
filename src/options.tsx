@@ -1,16 +1,13 @@
-import { zodResolver } from "@hookform/resolvers/zod"
 import type { PlasmoCSConfig } from "plasmo"
 import { useEffect } from "react"
-import { FormProvider, useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { Button } from "~components/ui/button"
-import { Input } from "~components/ui/input"
+import { Button } from "@/components/ui/button"
 
-import "~base.css"
-import "~style.css"
+import "@/style.css"
+import { useUser } from "@/hooks/useQuery/useUser"
 
 const schema = z.object({
   email: z.string().email()
@@ -24,7 +21,7 @@ export const config: PlasmoCSConfig = {
 }
 
 function Options() {
-  const [session] = useStorage("authorization")
+	const { userData, loading: isLoadingUser, error: userError } = useUser();
 
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
@@ -34,13 +31,13 @@ function Options() {
     }
   }, [])
 
-  if (!session) {
+  if (!userData) {
     return (
-      <div className="flex h-screen w-full items-center justify-center bg-primary">
+      <div className="flex justify-center items-center w-full h-screen bg-primary">
         <div className="shadow-lg bg-primary">
           <Button
             variant="secondary"
-            className="h-24 w-40"
+            className="w-40 h-24"
             onClick={() =>
               window.open("https://groupify.dev/dashboard/groups")
             }>
@@ -54,8 +51,8 @@ function Options() {
   }
 
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-primary">
-      <div className="w-full max-w-lg rounded-lg p-6 shadow-lg bg-secondary">
+    <div className="flex justify-center items-center w-full h-screen bg-primary">
+      <div className="p-6 w-full max-w-lg rounded-lg shadow-lg bg-secondary">
         <div className="space-y-2 text-center">
           <h1 className="text-4xl font-bold tracking-tight hover:text-gray-700 text-primary">
             Support Groupify through Donations
@@ -68,7 +65,7 @@ function Options() {
         </div>
         <div className="space-y-8">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Button className="w-full my-5" variant="secondary">
+            <Button className="my-5 w-full" variant="secondary">
               <a
                 className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 text-primary"
                 target="_blank"
@@ -76,7 +73,7 @@ function Options() {
                 {chrome.i18n.getMessage("popup_support")}
               </a>
             </Button>
-            <Button className="w-full my-5" variant="secondary">
+            <Button className="my-5 w-full" variant="secondary">
               <a
                 className="text-lg font-medium text-gray-900 underline underline-offset-2 hover:text-gray-700 text-primary"
                 target="_blank"
