@@ -50,7 +50,7 @@ export const ExpandedGroup: React.FC<ExpandedGroupProps> = ({ group }) => {
             {channels.map((channel) => (
                 <div
                     key={channel.id}
-                    onClick={() => window.open(`${channel.contentType === 'anime' ? 'https://crunchyroll.com/series/' : 'https://youtube.com/c/'}${channel.url}`)}
+                    onClick={() => window.open(`${channel.contentType === 'anime' ? 'https://crunchyroll.com/series/' : 'https://youtube.com/channel/'}${channel.url}`)}
                     className={cn(
                         "flex items-center gap-2 p-2 rounded-md hover:bg-accent",
                         `pl-${(group.nestingLevel + 2) * 16}`, // Indent channels further than their parent group
