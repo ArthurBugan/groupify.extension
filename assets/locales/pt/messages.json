@@ -94,5 +94,113 @@
   "tooltip_delete": {
     "message": "Segure o botão por 3 segundos para confirmar",
     "description": "Texto para o tooltip de deleção"
+  },
+  "login_to_groupify": {
+    "message": "Entrar no Groupify",
+    "description": "Título da tela de login"
+  },
+  "enter_your_email_below_to_login_to_your_account": {
+    "message": "Digite seu e-mail abaixo para fazer login na sua conta",
+    "description": "Subtítulo da tela de login"
+  },
+  "discord": {
+    "message": "Discord",
+    "description": "Botão de login com Discord"
+  },
+  "google": {
+    "message": "Google",
+    "description": "Botão de login com Google"
+  },
+  "or_continue_with": {
+    "message": "Ou continue com",
+    "description": "Separador de opções de login"
+  },
+  "email": {
+    "message": "E-mail",
+    "description": "Label do campo de e-mail"
+  },
+  "email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder do campo de e-mail"
+  },
+  "password": {
+    "message": "Senha",
+    "description": "Label do campo de senha"
+  },
+  "password_placeholder": {
+    "message": "********",
+    "description": "Placeholder do campo de senha"
+  },
+  "loading": {
+    "message": "Carregando...",
+    "description": "Texto do botão enquanto carrega"
+  },
+  "login": {
+    "message": "Entrar",
+    "description": "Texto do botão de login"
+  },
+  "dont_have_an_account": {
+    "message": "Não tem uma conta?",
+    "description": "Texto para quem não tem conta"
+  },
+  "sign_up": {
+    "message": "Cadastre-se",
+    "description": "Link para cadastro"
+  },
+  "login_validation_password_required": {
+    "message": "A senha é obrigatória",
+    "description": "Mensagem de validação: senha obrigatória"
+  },
+  "login_validation_password_min": {
+    "message": "A senha deve ter pelo menos 6 caracteres",
+    "description": "Mensagem de validação: senha mínima de 6 caracteres"
+  },
+  "login_title": {
+    "message": "Entrar no Groupify",
+    "description": "Título da tela de login"
+  },
+  "login_subtitle": {
+    "message": "Digite seu e-mail abaixo para fazer login na sua conta",
+    "description": "Subtítulo da tela de login"
+  },
+  "login_email": {
+    "message": "E-mail",
+    "description": "Label do campo de e-mail"
+  },
+  "login_email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder do campo de e-mail"
+  },
+  "login_password": {
+    "message": "Senha",
+    "description": "Label do campo de senha"
+  },
+  "login_password_placeholder": {
+    "message": "********",
+    "description": "Placeholder do campo de senha"
+  },
+  "login_signing": {
+    "message": "Entrando...",
+    "description": "Texto do botão enquanto está logando"
+  },
+  "login_signin": {
+    "message": "Entrar",
+    "description": "Texto do botão de login"
+  },
+  "login_discord": {
+    "message": "Entrar com Groupify",
+    "description": "Botão de login com Groupify"
+  },
+  "login_google": {
+    "message": "Entrar com Google",
+    "description": "Botão de login com Google"
+  },
+  "login_forgot": {
+    "message": "Esqueceu a senha?",
+    "description": "Link para esqueci a senha"
+  },
+  "login_signup": {
+    "message": "Cadastre-se",
+    "description": "Link para cadastro"
   }
 }

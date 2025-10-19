@@ -4,9 +4,8 @@ import { useEffect } from "react"
 
 import { useStorage } from "@plasmohq/storage/hook"
 
-import { Toaster } from "~/components/ui/toasters"
-import { useToast } from "~/components/ui/use-toast"
-import { useCreateDialog } from "~/core/store"
+import { Toaster } from "@/components/ui/toasters"
+import { useCreateDialog } from "@/core/store"
 
 export const getStyle = () => {
   const style = document.createElement("style")

@@ -94,5 +94,113 @@
   "tooltip_delete": {
     "message": "Hold the click for 3 seconds to confirm",
     "description": "Text to delete tooltip"
+  },
+  "login_to_groupify": {
+    "message": "Login to Groupify",
+    "description": "Login screen title"
+  },
+  "enter_your_email_below_to_login_to_your_account": {
+    "message": "Enter your email below to login to your account",
+    "description": "Login screen subtitle"
+  },
+  "discord": {
+    "message": "Discord",
+    "description": "Discord login button"
+  },
+  "google": {
+    "message": "Google",
+    "description": "Google login button"
+  },
+  "or_continue_with": {
+    "message": "Or continue with",
+    "description": "Login options separator"
+  },
+  "email": {
+    "message": "Email",
+    "description": "Email field label"
+  },
+  "email_placeholder": {
+    "message": "m@example.com",
+    "description": "Email field placeholder"
+  },
+  "password": {
+    "message": "Password",
+    "description": "Password field label"
+  },
+  "password_placeholder": {
+    "message": "********",
+    "description": "Password field placeholder"
+  },
+  "loading": {
+    "message": "Loading...",
+    "description": "Button text while loading"
+  },
+  "login": {
+    "message": "Login",
+    "description": "Login button text"
+  },
+  "dont_have_an_account": {
+    "message": "Don't have an account?",
+    "description": "Text for no account"
+  },
+  "sign_up": {
+    "message": "Sign up",
+    "description": "Sign up link"
+  },
+  "login_validation_password_required": {
+    "message": "Password is required",
+    "description": "Validation message: password required"
+  },
+  "login_validation_password_min": {
+    "message": "Password must be at least 6 characters",
+    "description": "Validation message: password min 6 characters"
+  },
+  "login_title": {
+    "message": "Login to Groupify",
+    "description": "Login screen title"
+  },
+  "login_subtitle": {
+    "message": "Enter your email below to login to your account",
+    "description": "Login screen subtitle"
+  },
+  "login_email": {
+    "message": "Email",
+    "description": "Email field label"
+  },
+  "login_email_placeholder": {
+    "message": "m@example.com",
+    "description": "Email field placeholder"
+  },
+  "login_password": {
+    "message": "Password",
+    "description": "Password field label"
+  },
+  "login_password_placeholder": {
+    "message": "********",
+    "description": "Password field placeholder"
+  },
+  "login_signing": {
+    "message": "Signing in...",
+    "description": "Button text while signing in"
+  },
+  "login_signin": {
+    "message": "Sign In",
+    "description": "Sign In button text"
+  },
+  "login_discord": {
+    "message": "Login with Groupify",
+    "description": "Groupify login button"
+  },
+  "login_google": {
+    "message": "Login with Google",
+    "description": "Google login button"
+  },
+  "login_forgot": {
+    "message": "Forgot password?",
+    "description": "Forgot password link"
+  },
+  "login_signup": {
+    "message": "Sign Up",
+    "description": "Sign Up link"
   }
 }
