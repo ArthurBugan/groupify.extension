@@ -1,0 +1,206 @@
+{
+  "extensionName": {
+    "message": "Groupify",
+    "description": "Nome da extensão."
+  },
+  "extensionDescription": {
+    "message": "Group your subscriptions and organize into easy to access groups",
+    "description": "Descrição da extensão."
+  },
+  "popup_btn": {
+    "message": "Entrar com magic link",
+    "description": "Text botão entrar popup"
+  },
+  "popup_support": {
+    "message": "Doar",
+    "description": "Text botão doar popup"
+  },
+  "sidebar_unauthorized": {
+    "message": "Login p/ usar Groupify.",
+    "description": "Texto para indicar que o usuário precisa fazer login"
+  },
+  "sidebar_loading": {
+    "message": "Carregando canais aguarde.",
+    "description": "Texto para indicar que o usuário precisa fazer login"
+  },
+  "sidebar_groups": {
+    "message": "Meus grupos",
+    "description": "Text principal da barra lateral"
+  },
+  "sidebar_groups_shortcut": {
+    "message": "Ao grupo",
+    "description": "Atalho adicionar ao grupo"
+  },
+  "sidebar_groups_not_found": {
+    "message": "Adicione grupos para exibi-los aqui",
+    "description": "Grupos não encontrados"
+  },
+  "group_item_not_found": {
+    "message": "Adicione canais ao seu grupo",
+    "description": "Group item no channels found"
+  },
+  "group_dialog_success": {
+    "message": "Novo grupo criado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um novo grupo é adicionado"
+  },
+  "group_dialog_edit_success": {
+    "message": "Grupo editado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um grupe é editado"
+  },
+  "group_dialog_add_group": {
+    "message": "Adicionar grupo",
+    "description": "Titulo para modal Criar grupo"
+  },
+  "group_dialog_group_name": {
+    "message": "Nome do grupo",
+    "description": "Placeholder para a modal Criar grupo"
+  },
+  "group_dialog_submit_group": {
+    "message": "Criar grupo",
+    "description": "Text do botão para Criar grupo"
+  },
+  "group_dialog_edit_group": {
+    "message": "Editar grupo",
+    "description": "Titulo para modal Editar grupo"
+  },
+  "group_dialog_edit_group_items": {
+    "message": "Canais do meu grupo",
+    "description": "Titulo para texto do grupo dos canais Editar grupo"
+  },
+  "group_dialog_edit_delete_success": {
+    "message": "Grupo apagado com sucesso! ✅",
+    "description": "Mensagem para exibir quando um grupo é excluido"
+  },
+  "group_dialog_delete_group": {
+    "message": "Apagar grupo",
+    "description": "Titulo para botão Deletar na modal Editar grupo"
+  },
+  "combobox_placeholder": {
+    "message": "Procurar icone...",
+    "description": "Placeholder para combobox"
+  },
+  "combobox_no_items_found": {
+    "message": "Nenhum icone encontrado...",
+    "description": "Texto para empty state do combobox"
+  },
+  "combobox_channels_placeholder": {
+    "message": "Procurar canais...",
+    "description": "Placeholder to combobox-channels"
+  },
+  "combobox_channels_no_items_found": {
+    "message": "Nenhum canal encontrado...",
+    "description": "Text para empty state do combobox-channels"
+  },
+  "tooltip_delete": {
+    "message": "Segure o botão por 3 segundos para confirmar",
+    "description": "Texto para o tooltip de deleção"
+  },
+  "login_to_groupify": {
+    "message": "Entrar no Groupify",
+    "description": "Título da tela de login"
+  },
+  "enter_your_email_below_to_login_to_your_account": {
+    "message": "Digite seu e-mail abaixo para fazer login na sua conta",
+    "description": "Subtítulo da tela de login"
+  },
+  "discord": {
+    "message": "Discord",
+    "description": "Botão de login com Discord"
+  },
+  "google": {
+    "message": "Google",
+    "description": "Botão de login com Google"
+  },
+  "or_continue_with": {
+    "message": "Ou continue com",
+    "description": "Separador de opções de login"
+  },
+  "email": {
+    "message": "E-mail",
+    "description": "Label do campo de e-mail"
+  },
+  "email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder do campo de e-mail"
+  },
+  "password": {
+    "message": "Senha",
+    "description": "Label do campo de senha"
+  },
+  "password_placeholder": {
+    "message": "********",
+    "description": "Placeholder do campo de senha"
+  },
+  "loading": {
+    "message": "Carregando...",
+    "description": "Texto do botão enquanto carrega"
+  },
+  "login": {
+    "message": "Entrar",
+    "description": "Texto do botão de login"
+  },
+  "dont_have_an_account": {
+    "message": "Não tem uma conta?",
+    "description": "Texto para quem não tem conta"
+  },
+  "sign_up": {
+    "message": "Cadastre-se",
+    "description": "Link para cadastro"
+  },
+  "login_validation_password_required": {
+    "message": "A senha é obrigatória",
+    "description": "Mensagem de validação: senha obrigatória"
+  },
+  "login_validation_password_min": {
+    "message": "A senha deve ter pelo menos 6 caracteres",
+    "description": "Mensagem de validação: senha mínima de 6 caracteres"
+  },
+  "login_title": {
+    "message": "Entrar no Groupify",
+    "description": "Título da tela de login"
+  },
+  "login_subtitle": {
+    "message": "Digite seu e-mail abaixo para fazer login na sua conta",
+    "description": "Subtítulo da tela de login"
+  },
+  "login_email": {
+    "message": "E-mail",
+    "description": "Label do campo de e-mail"
+  },
+  "login_email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder do campo de e-mail"
+  },
+  "login_password": {
+    "message": "Senha",
+    "description": "Label do campo de senha"
+  },
+  "login_password_placeholder": {
+    "message": "********",
+    "description": "Placeholder do campo de senha"
+  },
+  "login_signing": {
+    "message": "Entrando...",
+    "description": "Texto do botão enquanto está logando"
+  },
+  "login_signin": {
+    "message": "Entrar",
+    "description": "Texto do botão de login"
+  },
+  "login_discord": {
+    "message": "Entrar com Groupify",
+    "description": "Botão de login com Groupify"
+  },
+  "login_google": {
+    "message": "Entrar com Google",
+    "description": "Botão de login com Google"
+  },
+  "login_forgot": {
+    "message": "Esqueceu a senha?",
+    "description": "Link para esqueci a senha"
+  },
+  "login_signup": {
+    "message": "Cadastre-se",
+    "description": "Link para cadastro"
+  }
+}

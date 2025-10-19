@@ -1,0 +1,206 @@
+{
+  "extensionName": {
+    "message": "Groupify",
+    "description": "Nom de l'extension."
+  },
+  "extensionDescription": {
+    "message": "Regroupez vos abonnements et organisez-les en groupes faciles d'accès",
+    "description": "Description de l'extension."
+  },
+  "popup_btn": {
+    "message": "Se connecter avec un lien magique",
+    "description": "Texte du bouton de connexion de la popup"
+  },
+  "popup_support": {
+    "message": "Me soutenir",
+    "description": "Texte du bouton de support de la popup"
+  },
+  "sidebar_unauthorized": {
+    "message": "Connectez-vous à Groupify",
+    "description": "Texte indiquant que l'utilisateur doit se connecter"
+  },
+  "sidebar_loading": {
+    "message": "Chargement des chaînes",
+    "description": "Texte indiquant que l'application charge les chaînes"
+  },
+  "sidebar_groups": {
+    "message": "Mes groupes",
+    "description": "Texte principal de la barre latérale"
+  },
+  "sidebar_groups_shortcut": {
+    "message": "Au groupe",
+    "description": "Texte du raccourci d'ajout"
+  },
+  "sidebar_groups_not_found": {
+    "message": "Aucun groupe trouvé",
+    "description": "Aucun groupe trouvé dans la barre latérale"
+  },
+  "group_item_not_found": {
+    "message": "Aucune chaîne trouvée",
+    "description": "Aucune chaîne trouvée dans l'élément de groupe"
+  },
+  "group_dialog_success": {
+    "message": "Nouveau groupe créé ! ✅",
+    "description": "Message à afficher lors de la création d'un nouveau groupe"
+  },
+  "group_dialog_edit_success": {
+    "message": "Groupe modifié avec succès ! ✅",
+    "description": "Message à afficher lors de la modification d'un groupe"
+  },
+  "group_dialog_add_group": {
+    "message": "Ajouter un groupe",
+    "description": "Titre de la boîte de dialogue de groupe"
+  },
+  "group_dialog_group_name": {
+    "message": "Nom du groupe",
+    "description": "Placeholder pour la boîte de dialogue de groupe"
+  },
+  "group_dialog_submit_group": {
+    "message": "Soumettre",
+    "description": "Texte du bouton pour soumettre la boîte de dialogue de groupe"
+  },
+  "group_dialog_edit_group": {
+    "message": "Modifier le groupe",
+    "description": "Titre de la boîte de dialogue de modification de groupe"
+  },
+  "group_dialog_edit_group_items": {
+    "message": "Mes chaînes de groupe",
+    "description": "Titre pour la boîte de dialogue de modification de mes groupes"
+  },
+  "group_dialog_edit_delete_success": {
+    "message": "Groupe supprimé avec succès ! ✅",
+    "description": "Message à afficher lors de la suppression d'un groupe"
+  },
+  "group_dialog_delete_group": {
+    "message": "Supprimer le groupe",
+    "description": "Titre du bouton de suppression dans la boîte de dialogue de modification"
+  },
+  "combobox_placeholder": {
+    "message": "Rechercher une icône...",
+    "description": "Placeholder pour la combobox"
+  },
+  "combobox_no_items_found": {
+    "message": "Aucune icône trouvée...",
+    "description": "Texte pour l'état vide de la combobox"
+  },
+  "combobox_channels_placeholder": {
+    "message": "Rechercher des chaînes...",
+    "description": "Placeholder pour la combobox de chaînes"
+  },
+  "combobox_channels_no_items_found": {
+    "message": "Aucune chaîne trouvée...",
+    "description": "Texte pour l'état vide de la combobox de chaînes"
+  },
+  "tooltip_delete": {
+    "message": "Maintenez le clic pendant 3 secondes pour confirmer",
+    "description": "Texte de l'infobulle de suppression"
+  },
+  "login_to_groupify": {
+    "message": "Se connecter à Groupify",
+    "description": "Titre de l'écran de connexion"
+  },
+  "enter_your_email_below_to_login_to_your_account": {
+    "message": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+    "description": "Sous-titre de l'écran de connexion"
+  },
+  "discord": {
+    "message": "Discord",
+    "description": "Bouton de connexion Discord"
+  },
+  "google": {
+    "message": "Google",
+    "description": "Bouton de connexion Google"
+  },
+  "or_continue_with": {
+    "message": "Ou continuer avec",
+    "description": "Séparateur d'options de connexion"
+  },
+  "email": {
+    "message": "E-mail",
+    "description": "Libellé du champ e-mail"
+  },
+  "email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder du champ e-mail"
+  },
+  "password": {
+    "message": "Mot de passe",
+    "description": "Libellé du champ mot de passe"
+  },
+  "password_placeholder": {
+    "message": "********",
+    "description": "Placeholder du champ mot de passe"
+  },
+  "loading": {
+    "message": "Chargement...",
+    "description": "Texte du bouton pendant le chargement"
+  },
+  "login": {
+    "message": "Se connecter",
+    "description": "Texte du bouton de connexion"
+  },
+  "dont_have_an_account": {
+    "message": "Vous n'avez pas de compte ?",
+    "description": "Texte pour les utilisateurs sans compte"
+  },
+  "sign_up": {
+    "message": "S'inscrire",
+    "description": "Lien d'inscription"
+  },
+  "login_validation_password_required": {
+    "message": "Le mot de passe est requis",
+    "description": "Message de validation : mot de passe requis"
+  },
+  "login_validation_password_min": {
+    "message": "Le mot de passe doit contenir au moins 6 caractères",
+    "description": "Message de validation : mot de passe minimum 6 caractères"
+  },
+  "login_title": {
+    "message": "Se connecter à Groupify",
+    "description": "Titre de l'écran de connexion"
+  },
+  "login_subtitle": {
+    "message": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+    "description": "Sous-titre de l'écran de connexion"
+  },
+  "login_email": {
+    "message": "E-mail",
+    "description": "Libellé du champ e-mail"
+  },
+  "login_email_placeholder": {
+    "message": "m@example.com",
+    "description": "Placeholder du champ e-mail"
+  },
+  "login_password": {
+    "message": "Mot de passe",
+    "description": "Libellé du champ mot de passe"
+  },
+  "login_password_placeholder": {
+    "message": "********",
+    "description": "Placeholder du champ mot de passe"
+  },
+  "login_signing": {
+    "message": "Connexion en cours...",
+    "description": "Texte du bouton pendant la connexion"
+  },
+  "login_signin": {
+    "message": "Se connecter",
+    "description": "Texte du bouton de connexion"
+  },
+  "login_discord": {
+    "message": "Se connecter avec Groupify",
+    "description": "Bouton de connexion Groupify"
+  },
+  "login_google": {
+    "message": "Se connecter avec Google",
+    "description": "Bouton de connexion Google"
+  },
+  "login_forgot": {
+    "message": "Mot de passe oublié ?",
+    "description": "Lien mot de passe oublié"
+  },
+  "login_signup": {
+    "message": "S'inscrire",
+    "description": "Lien d'inscription"
+  }
+}

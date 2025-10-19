@@ -1,0 +1,1 @@
+var e,n;"function"==typeof(e=globalThis.define)&&(n=e,e=null),chrome.sidePanel.setPanelBehavior({openPanelOnActionClick:!0}).catch(e=>console.error(e)),globalThis.define=n;
