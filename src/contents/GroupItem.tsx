@@ -2,13 +2,13 @@ import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect, useState } from "react"
 import { BiChevronRight, BiEdit } from "react-icons/bi"
 
-import { Button } from "~components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
-} from "~components/ui/collapsible"
-import { type GroupType, useGroupifyStorage } from "~lib/hooks"
+} from "@/components/ui/collapsible"
+import { type GroupType, useGroupifyStorage } from "@/lib/hooks"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return null
