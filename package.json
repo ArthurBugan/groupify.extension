@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "Groupify Youtube Organize",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Organize your youtube channels into groups and lists. Access them from Crunchyroll and Youtube the sidebar",
   "author": "arthurbugan",
   "scripts": {
@@ -29,6 +29,7 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-separator": "^1.1.8",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toast": "^1.1.4",
@@ -81,11 +82,8 @@
     ],
     "permissions": [
       "storage",
-      "scripting",
       "activeTab",
-      "tabs",
-      "cookies",
-      "webRequest"
+      "cookies"
     ],
     "externally_connectable": {
       "matches": [
