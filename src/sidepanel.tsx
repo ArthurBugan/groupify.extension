@@ -107,17 +107,17 @@ function getBrowserType() {
 const GroupsLoadingSkeleton = () => (
   <div className="space-y-3 animate-in fade-in duration-300">
     <div className="flex items-center justify-between">
-      <Skeleton className="h-8 w-32" />
-      <Skeleton className="h-8 w-24" />
+      <Skeleton className="h-8 w-32 dark:bg-white/10" />
+      <Skeleton className="h-8 w-24 dark:bg-white/10" />
     </div>
-    <Separator />
+    <Separator className="dark:bg-white/10" />
     <div className="space-y-2">
       {[1, 2, 3, 4].map((i) => (
         <div key={i} className="flex items-center gap-3 p-3 rounded-lg">
-          <Skeleton className="h-5 w-5 rounded" />
-          <Skeleton className="h-6 w-6 rounded" />
-          <Skeleton className="h-5 w-40" />
-          <Skeleton className="h-5 w-8 ml-auto" />
+          <Skeleton className="h-5 w-5 rounded dark:bg-white/10" />
+          <Skeleton className="h-6 w-6 rounded dark:bg-white/10" />
+          <Skeleton className="h-5 w-40 dark:bg-white/10" />
+          <Skeleton className="h-5 w-8 ml-auto dark:bg-white/10" />
         </div>
       ))}
     </div>
@@ -127,17 +127,19 @@ const GroupsLoadingSkeleton = () => (
 // Empty State Component
 const EmptyGroupsState = () => (
   <div className="flex flex-col items-center justify-center py-12 px-4 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-    <div className="rounded-full bg-muted p-4 mb-4">
-      <FolderOpen className="h-8 w-8 text-muted-foreground" />
+    <div className="rounded-full bg-muted dark:bg-white/10 p-4 mb-4">
+      <FolderOpen className="h-8 w-8 text-muted-foreground dark:text-white/70" />
     </div>
-    <h3 className="text-lg font-semibold mb-2">No groups yet</h3>
-    <p className="text-sm text-muted-foreground mb-4 max-w-xs">
+    <h3 className="text-lg font-semibold mb-2 dark:text-white">
+      No groups yet
+    </h3>
+    <p className="text-sm text-muted-foreground dark:text-white/60 mb-4 max-w-xs">
       Create your first group to start organizing your favorite channels
     </p>
     <Button
       variant="outline"
       size="sm"
-      className="gap-2"
+      className="gap-2 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
       onClick={() =>
         window.open("https://groupify.dev/dashboard/groups", "_blank")
       }>
@@ -163,16 +165,16 @@ const GroupListItem = ({
       <div
         className={cn(
           "flex items-center rounded-lg transition-colors",
-          "hover:bg-accent/50"
+          "hover:bg-accent/50 dark:hover:bg-white/10"
         )}
         style={{ paddingLeft: `${group.nestingLevel * 16}px` }}>
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="flex-1 justify-start h-11 px-3 gap-2 font-normal hover:bg-transparent">
+            className="flex-1 justify-start h-11 px-3 gap-2 font-normal hover:bg-transparent dark:text-white">
             <ChevronRight
               className={cn(
-                "h-4 w-4 text-muted-foreground transition-transform duration-200 shrink-0",
+                "h-4 w-4 text-muted-foreground dark:text-white/70 transition-transform duration-200 shrink-0",
                 group.expanded && "rotate-90"
               )}
             />
@@ -183,12 +185,14 @@ const GroupListItem = ({
                   className="w-6 h-6"
                 />
               </div>
-              <span className="text-sm font-medium truncate">{group.name}</span>
+              <span className="text-sm font-medium truncate dark:text-white">
+                {group.name}
+              </span>
             </div>
             {group.channelCount > 0 && (
               <Badge
                 variant="secondary"
-                className="text-[10px] h-5 px-1.5 shrink-0">
+                className="text-[10px] h-5 px-1.5 shrink-0 dark:bg-white/20 dark:text-white">
                 {group.channelCount}
               </Badge>
             )}
@@ -209,16 +213,20 @@ const GroupListItem = ({
 
 // User Header Component
 const UserHeader = ({ email }: { email: string }) => (
-  <div className="flex items-center justify-between p-4 bg-card border-b border-border">
+  <div className="flex items-center justify-between p-4 bg-card border-b border-border dark:bg-gray-900 dark:border-gray-800">
     <div className="flex items-center gap-3">
       <Avatar className="h-9 w-9">
-        <AvatarFallback className="bg-primary/10 text-primary">
+        <AvatarFallback className="bg-primary/10 text-primary dark:bg-gray-800 dark:text-white">
           <User className="h-4 w-4" />
         </AvatarFallback>
       </Avatar>
       <div className="flex flex-col min-w-0">
-        <span className="text-sm font-medium truncate">{email}</span>
-        <span className="text-xs text-muted-foreground">Signed in</span>
+        <span className="text-sm font-medium truncate dark:text-white">
+          {email}
+        </span>
+        <span className="text-xs text-muted-foreground dark:text-gray-400">
+          Signed in
+        </span>
       </div>
     </div>
     <TooltipProvider delayDuration={200}>
@@ -227,7 +235,7 @@ const UserHeader = ({ email }: { email: string }) => (
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 shrink-0"
+            className="h-8 w-8 shrink-0 dark:text-white dark:hover:bg-gray-800"
             onClick={() =>
               window.open("https://groupify.dev/dashboard/groups", "_blank")
             }>
@@ -235,7 +243,7 @@ const UserHeader = ({ email }: { email: string }) => (
           </Button>
         </TooltipTrigger>
         <TooltipContent side="bottom">
-          <p>Open Dashboard</p>
+          <p className="dark:text-white">Open Dashboard</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -271,15 +279,13 @@ function IndexSidePanel() {
     }
   }, [groupsData?.data])
 
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
 
     const handleChange = () => {
-      if (mediaQuery.matches) {
-        document.documentElement.classList.add("dark")
-      } else {
-        document.documentElement.classList.remove("dark")
-      }
+      setIsDarkMode(mediaQuery.matches)
     }
 
     handleChange()
@@ -386,7 +392,11 @@ function IndexSidePanel() {
   if (userData?.email) {
     return (
       <TooltipProvider delayDuration={200}>
-        <div className="flex flex-col h-screen bg-background">
+        <div
+          className={cn(
+            "flex flex-col h-screen bg-background",
+            isDarkMode && "dark text-white"
+          )}>
           <UserHeader email={userData.email} />
 
           <div className="flex-1 overflow-hidden">
@@ -450,20 +460,24 @@ function IndexSidePanel() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div
+      className={cn(
+        "flex flex-col min-h-screen bg-background",
+        isDarkMode && "dark text-white"
+      )}>
       <div className="flex flex-1 justify-center items-center px-4 py-12 w-full">
         <div className="space-y-8 w-full max-w-md">
-          <Card className="shadow-lg">
+          <Card className="shadow-lg dark:bg-gray-900 dark:border-gray-800">
             <CardHeader className="space-y-1 pb-6">
               <div className="flex justify-center mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Layers className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 rounded-xl bg-primary/10 dark:bg-gray-800 flex items-center justify-center">
+                  <Layers className="h-6 w-6 text-primary dark:text-white" />
                 </div>
               </div>
-              <CardTitle className="text-2xl font-bold text-center">
+              <CardTitle className="text-2xl font-bold text-center dark:text-white">
                 {chrome.i18n.getMessage("login_title")}
               </CardTitle>
-              <CardDescription className="text-center">
+              <CardDescription className="text-center dark:text-gray-400">
                 {chrome.i18n.getMessage("login_subtitle")}
               </CardDescription>
             </CardHeader>
@@ -471,9 +485,11 @@ function IndexSidePanel() {
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <CardContent className="space-y-4">
                   {form.formState.errors.root && (
-                    <Alert variant="destructive" className="animate-in fade-in">
+                    <Alert
+                      variant="destructive"
+                      className="animate-in fade-in dark:bg-red-900/20 dark:border-red-800">
                       <AlertCircle className="h-4 w-4" />
-                      <AlertDescription>
+                      <AlertDescription className="dark:text-red-200">
                         {form.formState.errors.root.message}
                       </AlertDescription>
                     </Alert>
@@ -483,7 +499,7 @@ function IndexSidePanel() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
+                        <FormLabel className="dark:text-white">
                           {chrome.i18n.getMessage("login_email")}
                         </FormLabel>
                         <FormControl>
@@ -493,10 +509,10 @@ function IndexSidePanel() {
                               "login_email.placeholder"
                             )}
                             {...field}
-                            className="h-11"
+                            className="h-11 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder:text-gray-500"
                           />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="dark:text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -506,7 +522,7 @@ function IndexSidePanel() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
+                        <FormLabel className="dark:text-white">
                           {chrome.i18n.getMessage("login_password")}
                         </FormLabel>
                         <FormControl>
@@ -517,23 +533,23 @@ function IndexSidePanel() {
                                 "login_password.placeholder"
                               )}
                               {...field}
-                              className="h-11 pr-10"
+                              className="h-11 pr-10 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder:text-gray-500"
                             />
                             <Button
                               type="button"
                               variant="ghost"
                               size="sm"
-                              className="absolute top-0 right-0 px-3 py-2 h-full hover:bg-transparent"
+                              className="absolute top-0 right-0 px-3 py-2 h-full hover:bg-transparent dark:text-gray-400"
                               onClick={() => setShowPassword(!showPassword)}>
                               {showPassword ? (
-                                <EyeOff className="w-4 h-4 text-muted-foreground" />
+                                <EyeOff className="w-4 h-4 text-muted-foreground dark:text-gray-400" />
                               ) : (
-                                <Eye className="w-4 h-4 text-muted-foreground" />
+                                <Eye className="w-4 h-4 text-muted-foreground dark:text-gray-400" />
                               )}
                             </Button>
                           </div>
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="dark:text-red-400" />
                       </FormItem>
                     )}
                   />
@@ -541,7 +557,7 @@ function IndexSidePanel() {
                 <CardFooter className="flex flex-col space-y-3 pt-2">
                   <Button
                     type="submit"
-                    className="w-full h-11"
+                    className="w-full h-11 dark:bg-white dark:text-black dark:hover:bg-gray-200"
                     disabled={loginMutation.isPending}>
                     {loginMutation.isPending ? (
                       <>
@@ -555,10 +571,10 @@ function IndexSidePanel() {
 
                   <div className="relative w-full py-2">
                     <div className="absolute inset-0 flex items-center">
-                      <Separator className="w-full" />
+                      <Separator className="w-full dark:bg-gray-700" />
                     </div>
                     <div className="relative flex justify-center">
-                      <span className="bg-card px-2 text-xs text-muted-foreground">
+                      <span className="bg-card px-2 text-xs text-muted-foreground dark:bg-gray-900 dark:text-gray-400">
                         Or continue with
                       </span>
                     </div>
@@ -568,7 +584,7 @@ function IndexSidePanel() {
                     <Button
                       onClick={handleDiscordAuth}
                       variant="outline"
-                      className="h-11 gap-2"
+                      className="h-11 gap-2 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700"
                       type="button">
                       <Icons.discord className="w-4 h-4" />
                       <span>Discord</span>
@@ -576,7 +592,7 @@ function IndexSidePanel() {
                     <Button
                       onClick={handleGoogleAuth}
                       variant="outline"
-                      className="h-11 gap-2"
+                      className="h-11 gap-2 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700"
                       type="button">
                       <Icons.google className="w-4 h-4" />
                       <span>Google</span>
