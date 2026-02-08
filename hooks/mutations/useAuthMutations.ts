@@ -55,7 +55,6 @@ const loginUser = async (
 		credentials,
 	);
 
-	console.log(response.data)
 	if (response?.data) {
 		localStorage.setItem("authToken", response.data);
 		apiClient.setAuthToken(response.data);

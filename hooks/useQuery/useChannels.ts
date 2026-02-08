@@ -184,7 +184,7 @@ const updateChannelsBatch = async (
 	console.log("updateChannelsBatch", data);
 	const groupId = data.channels[0].groupId;
 	const response = await apiClient.patch<ApiResponse<Channel[]>>(
-		`/api/v2/channels/${groupId}/batch`,
+		`/api/v3/channels/${groupId}/batch`,
 		data,
 	);
 	return response.data;

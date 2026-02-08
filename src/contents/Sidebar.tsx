@@ -1,7 +1,14 @@
 import cssText from "data-text:../style.css"
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
 import { useEffect, useState } from "react"
-import { BiChevronRight, BiFolderPlus } from "react-icons/bi"
+import {
+  FolderOpen,
+  Plus,
+  ExternalLink,
+  ChevronRight,
+  Layers,
+  AlertCircle
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -9,49 +16,55 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from "@/components/ui/collapsible"
-import { sleep } from "@/lib/utils"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from "@/components/ui/tooltip"
+import { Badge } from "@/components/ui/badge"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
+import { sleep, cn } from "@/lib/utils"
 import { useUser } from "@/hooks/useQuery/useUser"
 
 import GroupItem from "./GroupItem"
 import { useGroups } from "@/hooks/useQuery/useGroups"
 import { QueryClientProvider } from "@tanstack/react-query"
 import { queryClient } from "@/hooks/utils/queryClient"
-import { Loader2 } from "lucide-react"
 
 interface ApiGroup {
-  id: string;
-  name: string;
-  channelCount: number;
-  category: string;
-  createdAt: string;
-  icon: string;
-  parentId: string | null;
-  nestingLevel: number;
-  displayOrder: number;
+  id: string
+  name: string
+  channelCount: number
+  category: string
+  createdAt: string
+  icon: string
+  parentId: string | null
+  nestingLevel: number
+  displayOrder: number
 }
 
 interface TableGroup extends ApiGroup {
-  order: any
-  expanded: boolean;
+  order: number
 }
 
 const transformApiGroups = (apiGroups?: ApiGroup[]): TableGroup[] => {
-  if (!apiGroups) return [];
+  if (!apiGroups) return []
 
   return apiGroups?.map((group, index) => ({
-    id: group.id,
-    name: group.name,
+    ...group,
     channelCount: group.channelCount || 0,
     category: group.category || "General",
     createdAt: new Date(group.createdAt).toLocaleDateString(),
-    icon: group.icon || "FolderKanban",
+    icon: group.icon || "lucide:folder-kanban",
     parentId: group.parentId || null,
-    expanded: false,
     nestingLevel: group.nestingLevel || 0,
-    order: group.displayOrder || index,
-    displayOrder: group.displayOrder === undefined || group.displayOrder === null ? index : group.displayOrder,
-  }));
-};
+    order: group.displayOrder ?? index,
+    displayOrder: group.displayOrder ?? index
+  }))
+}
 
 export const getStyle = () => {
   const style = document.createElement("style")
@@ -66,177 +79,246 @@ export const config: PlasmoCSConfig = {
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   await sleep(2000)
-  return document.querySelector("ytd-guide-entry-renderer:nth-child(3)")
+  return document.querySelector("ytd-guide-entry-renderer:nth-child(2)")
 }
 
-const Sidebar = () => {
-  const { userData, loading: isLoadingUser, error: userError } = useUser();
-  const { data: groupsData, isLoading: isLoadingGroups } = useGroups({limit: 100});
-  const [groups, setGroups] = useState<TableGroup[]>([]);
-
-  useEffect(() => {
-    if (groupsData?.data) {
-      setGroups(transformApiGroups(groupsData.data as ApiGroup[]));
-    }
-  }, [groupsData?.data]);
-
-  const toggleExpand = (id: string) => {
-    setGroups(
-      groups.map((group) =>
-        group.id === id ? { ...group, expanded: !group.expanded } : group,
-      ),
-    );
-  };
-
- 	const getSortedGroups = () => {
-		const result: TableGroup[] = [];
-		const processedGroups = new Set<string>();
-
-		// First, add all groups that don't have parents in the current dataset
-		// This includes actual root groups and orphaned child groups whose parents are on other pages
-		const groupsWithoutParentsInDataset = groups.filter((group) => {
-			if (group.parentId === null) return true;
-			// Check if parent exists in current dataset
-			const parentExists = groups.some((g) => g.id === group.parentId);
-			return !parentExists;
-		});
-
-		// Sort groups without parents by order
-		const sortedRootGroups = groupsWithoutParentsInDataset.sort(
-			(a, b) => a.order - b.order,
-		);
-
-		const addGroupAndChildren = (group: TableGroup) => {
-			if (processedGroups.has(group.id)) return;
-
-			result.push(group);
-			processedGroups.add(group.id);
-
-			// Add children if expanded (only if they exist in current dataset)
-			if (group.expanded) {
-				const children = groups
-					.filter((g) => g.parentId === group.id)
-					.sort((a, b) => a.order - b.order);
-				children.forEach(addGroupAndChildren);
-			}
-		};
-
-		sortedRootGroups.forEach(addGroupAndChildren);
-		return result;
-	};
-
-  const sortedGroups = getSortedGroups();
-
-  console.log(sortedGroups)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-
-    const handleChange = () => {
-      if (mediaQuery.matches) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      };
-    }
-    handleChange();
-    mediaQuery.addEventListener('change', handleChange);
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
-  }, []);
-
-  if (isLoadingGroups) {
-    return (
-      <div className="flex flex-col mt-2 w-full">
-        <hr className="mb-3 h-px bg-gray-200 border-0 dark:bg-gray-700" />
-        <Loader2 className="m-auto animate-spin dark:text-white text-black" />
-        <div className="flex gap-y-4 w-full">
-          <div className="flex items-center px-4 my-3 w-full">
-            <div className="flex justify-center items-center">
-              <div className="w-8 h-8 rounded-full border-4 border-gray-300 animate-spin border-t-gray-900" />
-            </div>
-            <p className="m-auto text-xl text-primary dark:text-white">
-              {chrome.i18n.getMessage("sidebar_loading")}
-            </p>
-          </div>
-        </div>
+const SidebarSkeleton = () => (
+  <div className="flex flex-col mt-2 w-full animate-in fade-in duration-300">
+    <Separator className="mb-4 dark:bg-white/10" />
+    <div className="px-3 py-2 space-y-3">
+      <div className="flex items-center gap-3">
+        <Skeleton className="h-5 w-5 rounded dark:bg-white/10" />
+        <Skeleton className="h-5 w-24 dark:bg-white/10" />
       </div>
-    )
-  }
+      <div className="space-y-2 pl-4">
+        <Skeleton className="h-9 w-full dark:bg-white/10" />
+        <Skeleton className="h-9 w-full dark:bg-white/10" />
+        <Skeleton className="h-9 w-[85%] dark:bg-white/10" />
+      </div>
+    </div>
+  </div>
+)
 
-  if (!userData) {
-    return (
-      <div className="flex flex-col w-full">
-        <hr className="mb-3 h-px bg-gray-200 border-0 dark:bg-gray-700" />
+const EmptyState = ({ onCreate }: { onCreate: () => void }) => (
+  <div className="flex flex-col items-center justify-center px-4 py-6 text-center animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div className="rounded-full bg-muted dark:bg-white/10 p-3 mb-3">
+      <FolderOpen className="h-6 w-6 text-muted-foreground dark:text-white/70" />
+    </div>
+    <p className="text-sm font-medium text-foreground dark:text-white mb-1">
+      {chrome.i18n.getMessage("sidebar_groups_not_found")}
+    </p>
+    <p className="text-xs text-muted-foreground dark:text-white/60 mb-3">
+      Create your first group to organize your channels
+    </p>
+    <Button
+      variant="outline"
+      size="sm"
+      onClick={onCreate}
+      className="gap-2 text-xs dark:border-white/20 dark:text-white dark:hover:bg-white/10">
+      <Plus className="h-3.5 w-3.5" />
+      Create Group
+    </Button>
+  </div>
+)
 
-        <div className="flex gap-y-4 w-full">
-          <div className="flex items-center px-4 my-3 w-full">
+const UnauthorizedState = () => (
+  <div className="flex flex-col w-full animate-in fade-in duration-300">
+    <Separator className="mb-4 dark:bg-white/10" />
+    <div className="px-4 py-4">
+      <div className="rounded-lg border border-destructive/20 dark:border-red-400/30 bg-destructive/5 dark:bg-red-400/10 p-4">
+        <div className="flex items-start gap-3">
+          <AlertCircle className="h-5 w-5 text-destructive dark:text-red-400 mt-0.5 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-destructive dark:text-red-400 mb-1">
+              Sign in required
+            </p>
+            <p className="text-xs text-destructive/80 dark:text-red-400/70 mb-3">
+              Please sign in to access your groups
+            </p>
             <Button
               variant="destructive"
-              className="m-auto text-xl text-primary dark:text-white"
+              size="sm"
+              className="w-full text-xs dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
               onClick={() =>
                 window.open("https://groupify.dev/dashboard/groups")
               }>
+              <ExternalLink className="h-3.5 w-3.5 mr-2" />
               {chrome.i18n.getMessage("sidebar_unauthorized")}
             </Button>
           </div>
         </div>
       </div>
-    )
+    </div>
+  </div>
+)
+
+const Sidebar = () => {
+  const { userData, loading: isLoadingUser } = useUser()
+  const { data: groupsData, isLoading: isLoadingGroups } = useGroups({
+    limit: 100
+  })
+  const [groups, setGroups] = useState<TableGroup[]>([])
+  const [isOpen, setIsOpen] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (groupsData?.data) {
+      setGroups(transformApiGroups(groupsData.data as ApiGroup[]))
+    }
+  }, [groupsData?.data])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    const handleChange = () => {
+      setIsDarkMode(mediaQuery.matches)
+    }
+    handleChange()
+    mediaQuery.addEventListener("change", handleChange)
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange)
+    }
+  }, [])
+
+  if (isLoadingGroups || isLoadingUser) {
+    return <SidebarSkeleton />
   }
 
-  console.log(groupsData)
+  if (!userData) {
+    return <UnauthorizedState />
+  }
+
+  const rootGroups = groups.filter(
+    (g) => g.parentId === null || !groups.some((x) => x.id === g.parentId)
+  )
 
   return (
-    <div className="flex gap-y-4 w-full">
-      <Collapsible className="w-full group">
-        <div className="flex flex-row justify-between items-center px-2 my-3">
-          <CollapsibleTrigger asChild>
-            <Button
-              className="flex justify-start items-center w-full"
-              variant="ghost">
-              <div className="flex flex-row gap-x-2">
-                <BiChevronRight
-                  className="transition-all text-primary h-10 w-10 group-data-[state='open']:rotate-90 dark:text-white"
+    <TooltipProvider delayDuration={200}>
+      <div
+        className={cn(
+          "flex w-full animate-in fade-in slide-in-from-top-2 duration-300",
+          isDarkMode && "dark text-white"
+        )}>
+        <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
+          <div className="flex items-center justify-between px-2 py-2">
+            <CollapsibleTrigger asChild>
+              <Button
+                variant="ghost"
+                className="flex-1 justify-between h-10 px-2 hover:bg-accent group/trigger dark:text-white">
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 text-primary dark:text-white">
+                    <Layers className="h-4 w-4" />
+                  </div>
+                  <span className="font-semibold text-sm dark:text-white">
+                    {chrome.i18n.getMessage("sidebar_groups")}
+                  </span>
+                  {groups.length > 0 && (
+                    <Badge
+                      variant="secondary"
+                      className="text-xs font-normal ml-1">
+                      {groups.length}
+                    </Badge>
+                  )}
+                </div>
+                <ChevronRight
+                  className={`h-4 w-4 text-muted-foreground transition-transform duration-200 dark:text-white/70 ${
+                    isOpen ? "rotate-90" : ""
+                  }`}
                 />
-                <p className="text-xl text-primary dark:text-white">
-                  {chrome.i18n.getMessage("sidebar_groups")}
-                </p>
-              </div>
-            </Button>
-          </CollapsibleTrigger>
+              </Button>
+            </CollapsibleTrigger>
 
-          <Button
-            onClick={() => window.open("https://groupify.dev/dashboard/groups")}
-            variant="ghost">
-            <BiFolderPlus size={16} className="text-primary dark:text-white" />
-          </Button>
-        </div>
-        <CollapsibleContent className="space-y-2">
-          {!sortedGroups?.length && (
-            <span className="flex flex-row justify-between items-center px-4 my-2 text-sm text-primary dark:text-white">
-              {chrome.i18n.getMessage("sidebar_groups_not_found")}
-            </span>
-          )}
-          {sortedGroups?.map?.((g) => (
-            <div key={g.id} className={`pl-${g.nestingLevel * 8}`}>
-              <GroupItem {...g} toggleExpand={toggleExpand} />
-            </div>
-          ))}
-        </CollapsibleContent>
-      </Collapsible>
-    </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 ml-1 shrink-0 dark:text-white"
+                  onClick={() =>
+                    window.open("https://groupify.dev/dashboard/groups")
+                  }>
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="top">
+                <p className="dark:text-white">Create new group</p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
+
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+            <Separator className="mb-2 dark:bg-white/10" />
+            <ScrollArea className="max-h-[60vh]">
+              <div className="px-1 pb-2 space-y-0.5">
+                {!groups?.length ? (
+                  <EmptyState
+                    onCreate={() =>
+                      window.open("https://groupify.dev/dashboard/groups")
+                    }
+                  />
+                ) : (
+                  rootGroups
+                    .sort((a, b) => {
+                      // If displayOrder is 0, treat it as Infinity (put at end)
+                      const orderA =
+                        a.displayOrder === 0 ? Infinity : a.displayOrder
+                      const orderB =
+                        b.displayOrder === 0 ? Infinity : b.displayOrder
+                      return orderA - orderB
+                    })
+                    .map((group) => (
+                      <div
+                        key={group.id}
+                        style={{ paddingLeft: `${group.nestingLevel * 12}px` }}
+                        className="animate-in fade-in slide-in-from-left-2 duration-200">
+                        <GroupItem
+                          id={group.id}
+                          name={group.name}
+                          icon={group.icon}
+                          channelCount={group.channelCount}
+                        />
+                        {groups
+                          .filter((g) => g.parentId === group.id)
+                          .sort((a, b) => {
+                            const orderA =
+                              a.displayOrder === 0 ? Infinity : a.displayOrder
+                            const orderB =
+                              b.displayOrder === 0 ? Infinity : b.displayOrder
+                            return orderA - orderB
+                          })
+                          .map((childGroup) => (
+                            <div
+                              key={childGroup.id}
+                              style={{
+                                paddingLeft: `${childGroup.nestingLevel * 12}px`
+                              }}
+                              className="animate-in fade-in slide-in-from-left-2 duration-200">
+                              <GroupItem
+                                id={childGroup.id}
+                                name={childGroup.name}
+                                icon={childGroup.icon}
+                                channelCount={childGroup.channelCount}
+                              />
+                            </div>
+                          ))}
+                      </div>
+                    ))
+                )}
+              </div>
+            </ScrollArea>
+          </CollapsibleContent>
+        </Collapsible>
+      </div>
+    </TooltipProvider>
   )
 }
-
 
 function SidebarWithProvider() {
   return (
     <QueryClientProvider client={queryClient}>
       <Sidebar />
     </QueryClientProvider>
-  );
+  )
 }
 
-export default SidebarWithProvider;
+export default SidebarWithProvider

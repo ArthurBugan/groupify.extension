@@ -44,6 +44,9 @@
 		14E1B8522CA2595C00B8ED7A /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8402CA2595C00B8ED7A /* _locales */; };
 		14E1B8532CA2595C00B8ED7A /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8412CA2595C00B8ED7A /* assets */; };
 		14E1B8542CA2595C00B8ED7A /* options.032735ed.js in Resources */ = {isa = PBXBuildFile; fileRef = 14E1B8422CA2595C00B8ED7A /* options.032735ed.js */; };
+		8EC3D6D72EA59F3700C51C4D /* manifest 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3D6D62EA59F3700C51C4D /* manifest 2.json */; };
+		8EC3D6D82EA59F3700C51C4D /* manifest 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3D6D62EA59F3700C51C4D /* manifest 2.json */; };
+		8EC3D6D92EA59F3700C51C4D /* manifest 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 8EC3D6D62EA59F3700C51C4D /* manifest 2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,28 @@
 		14E1B8402CA2595C00B8ED7A /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; name = _locales; path = "../../build/safari-mv3-prod/_locales"; sourceTree = "<group>"; };
 		14E1B8412CA2595C00B8ED7A /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = "../../build/safari-mv3-prod/assets"; sourceTree = "<group>"; };
 		14E1B8422CA2595C00B8ED7A /* options.032735ed.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.032735ed.js; path = "../../build/safari-mv3-prod/options.032735ed.js"; sourceTree = "<group>"; };
+		8EC3D6B92EA59E8A00C51C4D /* icon32.plasmo.cc527bf5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon32.plasmo.cc527bf5.png; path = "../build/safari-mv3-prod/icon32.plasmo.cc527bf5.png"; sourceTree = "<group>"; };
+		8EC3D6BA2EA59E8A00C51C4D /* sidepanel.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = sidepanel.html; path = "../build/safari-mv3-prod/sidepanel.html"; sourceTree = "<group>"; };
+		8EC3D6BB2EA59E8A00C51C4D /* sidepanel.191f6b5d.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = sidepanel.191f6b5d.js; path = "../build/safari-mv3-prod/sidepanel.191f6b5d.js"; sourceTree = "<group>"; };
+		8EC3D6BC2EA59E8A00C51C4D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		8EC3D6BE2EA59E8A00C51C4D /* messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		8EC3D6C02EA59E8A00C51C4D /* messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		8EC3D6C22EA59E8A00C51C4D /* messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		8EC3D6C42EA59E8A00C51C4D /* messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = messages.json; sourceTree = "<group>"; };
+		8EC3D6C72EA59E8A00C51C4D /* GroupItem.24343618.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = GroupItem.24343618.js; path = "../build/safari-mv3-prod/GroupItem.24343618.js"; sourceTree = "<group>"; };
+		8EC3D6C82EA59E8A00C51C4D /* content.36a6f38f.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.36a6f38f.js; path = "../build/safari-mv3-prod/content.36a6f38f.js"; sourceTree = "<group>"; };
+		8EC3D6C92EA59E8A00C51C4D /* options.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = options.html; path = "../build/safari-mv3-prod/options.html"; sourceTree = "<group>"; };
+		8EC3D6CA2EA59E8A00C51C4D /* icon64.plasmo.ec092b5f.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon64.plasmo.ec092b5f.png; path = "../build/safari-mv3-prod/icon64.plasmo.ec092b5f.png"; sourceTree = "<group>"; };
+		8EC3D6CB2EA59E8A00C51C4D /* options.91762761.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; name = options.91762761.css; path = "../build/safari-mv3-prod/options.91762761.css"; sourceTree = "<group>"; };
+		8EC3D6CC2EA59E8A00C51C4D /* SyncChannels.a643ceb7.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = SyncChannels.a643ceb7.js; path = "../build/safari-mv3-prod/SyncChannels.a643ceb7.js"; sourceTree = "<group>"; };
+		8EC3D6CD2EA59E8A00C51C4D /* icon128.plasmo.8ab6c1f7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon128.plasmo.8ab6c1f7.png; path = "../build/safari-mv3-prod/icon128.plasmo.8ab6c1f7.png"; sourceTree = "<group>"; };
+		8EC3D6CE2EA59E8A00C51C4D /* options.4fec7b5c.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = options.4fec7b5c.js; path = "../build/safari-mv3-prod/options.4fec7b5c.js"; sourceTree = "<group>"; };
+		8EC3D6CF2EA59E8A00C51C4D /* icon16.plasmo.104a31dc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon16.plasmo.104a31dc.png; path = "../build/safari-mv3-prod/icon16.plasmo.104a31dc.png"; sourceTree = "<group>"; };
+		8EC3D6D02EA59E8A00C51C4D /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = "../build/safari-mv3-prod/manifest.json"; sourceTree = "<group>"; };
+		8EC3D6D12EA59E8A00C51C4D /* icon48.plasmo.a904eb76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon48.plasmo.a904eb76.png; path = "../build/safari-mv3-prod/icon48.plasmo.a904eb76.png"; sourceTree = "<group>"; };
+		8EC3D6D22EA59E8A00C51C4D /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		8EC3D6D52EA59E8A00C51C4D /* Sidebar.c6b59d75.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = Sidebar.c6b59d75.js; path = "../build/safari-mv3-prod/Sidebar.c6b59d75.js"; sourceTree = "<group>"; };
+		8EC3D6D62EA59F3700C51C4D /* manifest 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "manifest 2.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +189,24 @@
 		14E1B7CE2CA2595B00B8ED7A = {
 			isa = PBXGroup;
 			children = (
+				8EC3D6C62EA59E8A00C51C4D /* _locales */,
+				8EC3D6BD2EA59E8A00C51C4D /* assets */,
+				8EC3D6C82EA59E8A00C51C4D /* content.36a6f38f.js */,
+				8EC3D6C72EA59E8A00C51C4D /* GroupItem.24343618.js */,
+				8EC3D6CF2EA59E8A00C51C4D /* icon16.plasmo.104a31dc.png */,
+				8EC3D6B92EA59E8A00C51C4D /* icon32.plasmo.cc527bf5.png */,
+				8EC3D6D12EA59E8A00C51C4D /* icon48.plasmo.a904eb76.png */,
+				8EC3D6CA2EA59E8A00C51C4D /* icon64.plasmo.ec092b5f.png */,
+				8EC3D6CD2EA59E8A00C51C4D /* icon128.plasmo.8ab6c1f7.png */,
+				8EC3D6D02EA59E8A00C51C4D /* manifest.json */,
+				8EC3D6C92EA59E8A00C51C4D /* options.html */,
+				8EC3D6CE2EA59E8A00C51C4D /* options.4fec7b5c.js */,
+				8EC3D6CB2EA59E8A00C51C4D /* options.91762761.css */,
+				8EC3D6D52EA59E8A00C51C4D /* Sidebar.c6b59d75.js */,
+				8EC3D6BA2EA59E8A00C51C4D /* sidepanel.html */,
+				8EC3D6BB2EA59E8A00C51C4D /* sidepanel.191f6b5d.js */,
+				8EC3D6D42EA59E8A00C51C4D /* static */,
+				8EC3D6CC2EA59E8A00C51C4D /* SyncChannels.a643ceb7.js */,
 				14E1B7D32CA2595B00B8ED7A /* Shared (App) */,
 				14E1B7DC2CA2595C00B8ED7A /* Shared (Extension) */,
 				14E1B7E42CA2595C00B8ED7A /* iOS (App) */,
@@ -241,6 +284,7 @@
 		14E1B8052CA2595C00B8ED7A /* iOS (Extension) */ = {
 			isa = PBXGroup;
 			children = (
+				8EC3D6D62EA59F3700C51C4D /* manifest 2.json */,
 				14E1B8062CA2595C00B8ED7A /* Info.plist */,
 			);
 			path = "iOS (Extension)";
@@ -277,6 +321,76 @@
 			name = Resources;
 			path = "Shared (Extension)";
 			sourceTree = SOURCE_ROOT;
+		};
+		8EC3D6BD2EA59E8A00C51C4D /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6BC2EA59E8A00C51C4D /* icon.png */,
+			);
+			name = assets;
+			path = "../build/safari-mv3-prod/assets";
+			sourceTree = "<group>";
+		};
+		8EC3D6BF2EA59E8A00C51C4D /* en */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6BE2EA59E8A00C51C4D /* messages.json */,
+			);
+			path = en;
+			sourceTree = "<group>";
+		};
+		8EC3D6C12EA59E8A00C51C4D /* fr */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6C02EA59E8A00C51C4D /* messages.json */,
+			);
+			path = fr;
+			sourceTree = "<group>";
+		};
+		8EC3D6C32EA59E8A00C51C4D /* it */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6C22EA59E8A00C51C4D /* messages.json */,
+			);
+			path = it;
+			sourceTree = "<group>";
+		};
+		8EC3D6C52EA59E8A00C51C4D /* pt */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6C42EA59E8A00C51C4D /* messages.json */,
+			);
+			path = pt;
+			sourceTree = "<group>";
+		};
+		8EC3D6C62EA59E8A00C51C4D /* _locales */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6BF2EA59E8A00C51C4D /* en */,
+				8EC3D6C12EA59E8A00C51C4D /* fr */,
+				8EC3D6C32EA59E8A00C51C4D /* it */,
+				8EC3D6C52EA59E8A00C51C4D /* pt */,
+			);
+			name = _locales;
+			path = "../build/safari-mv3-prod/_locales";
+			sourceTree = "<group>";
+		};
+		8EC3D6D32EA59E8A00C51C4D /* background */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6D22EA59E8A00C51C4D /* index.js */,
+			);
+			path = background;
+			sourceTree = "<group>";
+		};
+		8EC3D6D42EA59E8A00C51C4D /* static */ = {
+			isa = PBXGroup;
+			children = (
+				8EC3D6D32EA59E8A00C51C4D /* background */,
+			);
+			name = static;
+			path = "../build/safari-mv3-prod/static";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -411,6 +525,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC3D6D82EA59F3700C51C4D /* manifest 2.json in Resources */,
 				14E1B8142CA2595C00B8ED7A /* Icon.png in Resources */,
 				14E1B7EB2CA2595C00B8ED7A /* LaunchScreen.storyboard in Resources */,
 				14E1B8122CA2595C00B8ED7A /* Main.html in Resources */,
@@ -425,6 +540,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC3D6D72EA59F3700C51C4D /* manifest 2.json in Resources */,
 				14E1B8152CA2595C00B8ED7A /* Icon.png in Resources */,
 				14E1B8172CA2595C00B8ED7A /* Style.css in Resources */,
 				14E1B7FA2CA2595C00B8ED7A /* Main.storyboard in Resources */,
@@ -438,6 +554,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EC3D6D92EA59F3700C51C4D /* manifest 2.json in Resources */,
 				14E1B84E2CA2595C00B8ED7A /* icon64.plasmo.2d281304.png in Resources */,
 				14E1B8532CA2595C00B8ED7A /* assets in Resources */,
 				14E1B8512CA2595C00B8ED7A /* options.html in Resources */,
@@ -727,6 +844,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
@@ -753,6 +871,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
 				PRODUCT_NAME = "Groupify YT";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -765,6 +884,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = UM6SZWPURL;
@@ -791,6 +911,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.arthurbugan.groupify;
 				PRODUCT_NAME = "Groupify YT";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
