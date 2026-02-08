@@ -24,7 +24,7 @@
     "description": "Texto para indicar que o usuário precisa fazer login"
   },
   "sidebar_groups": {
-    "message": "Meus grupos",
+    "message": "Grupos",
     "description": "Text principal da barra lateral"
   },
   "sidebar_groups_shortcut": {

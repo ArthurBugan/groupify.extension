@@ -6,6 +6,8 @@ import {
   Plus,
   ExternalLink,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   Layers,
   AlertCircle
 } from "lucide-react"
@@ -23,7 +25,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip"
 import { Badge } from "@/components/ui/badge"
-import { ScrollArea } from "@/components/ui/scroll-area"
+
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 import { sleep, cn } from "@/lib/utils"
@@ -160,6 +162,8 @@ const Sidebar = () => {
   const [groups, setGroups] = useState<TableGroup[]>([])
   const [isOpen, setIsOpen] = useState(true)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [allExpanded, setAllExpanded] = useState(false)
+  const [expandTrigger, setExpandTrigger] = useState(0)
 
   useEffect(() => {
     if (groupsData?.data) {
@@ -234,6 +238,30 @@ const Sidebar = () => {
                   variant="ghost"
                   size="icon"
                   className="h-8 w-8 ml-1 shrink-0 dark:text-white"
+                  onClick={() => {
+                    setAllExpanded(!allExpanded)
+                    setExpandTrigger((prev) => prev + 1)
+                  }}>
+                  {allExpanded ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="top">
+                <p className="dark:text-white">
+                  {allExpanded ? "Collapse all groups" : "Expand all groups"}
+                </p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-8 w-8 ml-1 shrink-0 dark:text-white"
                   onClick={() =>
                     window.open("https://groupify.dev/dashboard/groups")
                   }>
@@ -248,64 +276,66 @@ const Sidebar = () => {
 
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
             <Separator className="mb-2 dark:bg-white/10" />
-            <ScrollArea className="max-h-[60vh]">
-              <div className="px-1 pb-2 space-y-0.5">
-                {!groups?.length ? (
-                  <EmptyState
-                    onCreate={() =>
-                      window.open("https://groupify.dev/dashboard/groups")
-                    }
-                  />
-                ) : (
-                  rootGroups
-                    .sort((a, b) => {
-                      // If displayOrder is 0, treat it as Infinity (put at end)
-                      const orderA =
-                        a.displayOrder === 0 ? Infinity : a.displayOrder
-                      const orderB =
-                        b.displayOrder === 0 ? Infinity : b.displayOrder
-                      return orderA - orderB
-                    })
-                    .map((group) => (
-                      <div
-                        key={group.id}
-                        style={{ paddingLeft: `${group.nestingLevel * 12}px` }}
-                        className="animate-in fade-in slide-in-from-left-2 duration-200">
-                        <GroupItem
-                          id={group.id}
-                          name={group.name}
-                          icon={group.icon}
-                          channelCount={group.channelCount}
-                        />
-                        {groups
-                          .filter((g) => g.parentId === group.id)
-                          .sort((a, b) => {
-                            const orderA =
-                              a.displayOrder === 0 ? Infinity : a.displayOrder
-                            const orderB =
-                              b.displayOrder === 0 ? Infinity : b.displayOrder
-                            return orderA - orderB
-                          })
-                          .map((childGroup) => (
-                            <div
-                              key={childGroup.id}
-                              style={{
-                                paddingLeft: `${childGroup.nestingLevel * 12}px`
-                              }}
-                              className="animate-in fade-in slide-in-from-left-2 duration-200">
-                              <GroupItem
-                                id={childGroup.id}
-                                name={childGroup.name}
-                                icon={childGroup.icon}
-                                channelCount={childGroup.channelCount}
-                              />
-                            </div>
-                          ))}
-                      </div>
-                    ))
-                )}
-              </div>
-            </ScrollArea>
+            <div className="overflow-y-auto max-h-[60vh] px-1 pb-2 space-y-0.5">
+              {!groups?.length ? (
+                <EmptyState
+                  onCreate={() =>
+                    window.open("https://groupify.dev/dashboard/groups")
+                  }
+                />
+              ) : (
+                rootGroups
+                  .sort((a, b) => {
+                    // If displayOrder is 0, treat it as Infinity (put at end)
+                    const orderA =
+                      a.displayOrder === 0 ? Infinity : a.displayOrder
+                    const orderB =
+                      b.displayOrder === 0 ? Infinity : b.displayOrder
+                    return orderA - orderB
+                  })
+                  .map((group) => (
+                    <div
+                      key={group.id}
+                      style={{ paddingLeft: `${group.nestingLevel * 12}px` }}
+                      className="animate-in fade-in slide-in-from-left-2 duration-200">
+                      <GroupItem
+                        id={group.id}
+                        name={group.name}
+                        icon={group.icon}
+                        channelCount={group.channelCount}
+                        forceExpand={allExpanded}
+                        expandTrigger={expandTrigger}
+                      />
+                      {groups
+                        .filter((g) => g.parentId === group.id)
+                        .sort((a, b) => {
+                          const orderA =
+                            a.displayOrder === 0 ? Infinity : a.displayOrder
+                          const orderB =
+                            b.displayOrder === 0 ? Infinity : b.displayOrder
+                          return orderA - orderB
+                        })
+                        .map((childGroup) => (
+                          <div
+                            key={childGroup.id}
+                            style={{
+                              paddingLeft: `${childGroup.nestingLevel * 12}px`
+                            }}
+                            className="animate-in fade-in slide-in-from-left-2 duration-200">
+                            <GroupItem
+                              id={childGroup.id}
+                              name={childGroup.name}
+                              icon={childGroup.icon}
+                              channelCount={childGroup.channelCount}
+                              forceExpand={allExpanded}
+                              expandTrigger={expandTrigger}
+                            />
+                          </div>
+                        ))}
+                    </div>
+                  ))
+              )}
+            </div>
           </CollapsibleContent>
         </Collapsible>
       </div>

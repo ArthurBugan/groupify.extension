@@ -1,12 +1,6 @@
 import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useState } from "react"
-import {
-  ChevronRight,
-  Pencil,
-  Loader2,
-  Users,
-  FolderKanban
-} from "lucide-react"
+import { useEffect, useState, useCallback } from "react"
+import { ChevronRight, Pencil, Loader2, Users } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -21,7 +15,7 @@ import {
   TooltipTrigger
 } from "@/components/ui/tooltip"
 import { Badge } from "@/components/ui/badge"
-import { useGroupifyStorage } from "@/lib/hooks"
+import { getGroup, type Channel } from "@/hooks/useQuery/useGroups"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
   return null
@@ -37,6 +31,8 @@ export interface GroupItemProps {
   name: string
   icon?: string
   channelCount?: number
+  forceExpand?: boolean
+  expandTrigger?: number
 }
 
 const getChannelUrl = (c: any) => {
@@ -61,23 +57,46 @@ const GroupItem: React.FC<GroupItemProps> = ({
   id,
   name,
   icon = "lucide:folder-kanban",
-  channelCount = 0
+  channelCount = 0,
+  forceExpand = false,
+  expandTrigger = 0
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [localData, setLocalData] = useState<any[]>([])
-  const { data, loading } = useGroupifyStorage("channels", id, isOpen)
+  const [channels, setChannels] = useState<Channel[]>([])
+  const [loading, setLoading] = useState(false)
+  const [hasFetched, setHasFetched] = useState(false)
+
+  const fetchChannels = useCallback(async () => {
+    if (hasFetched || !id) return
+
+    try {
+      setLoading(true)
+      const response = await getGroup(String(id))
+      setChannels(response.channels || [])
+      setHasFetched(true)
+    } catch (err) {
+      console.error("Error fetching channels:", err)
+      setChannels([])
+    } finally {
+      setLoading(false)
+    }
+  }, [id, hasFetched])
 
   useEffect(() => {
-    if (!loading && localData.length === 0) {
-      setLocalData(data)
+    if (isOpen && !hasFetched) {
+      fetchChannels()
     }
-  }, [loading, data])
+  }, [isOpen, hasFetched, fetchChannels])
 
+  // Handle expand/collapse all
   useEffect(() => {
-    if (!isOpen) {
-      setLocalData([])
+    if (expandTrigger > 0) {
+      setIsOpen(forceExpand)
+      if (forceExpand && !hasFetched) {
+        fetchChannels()
+      }
     }
-  }, [isOpen])
+  }, [expandTrigger, forceExpand, hasFetched, fetchChannels])
 
   const getIconUrl = (iconName: string) => {
     if (iconName.startsWith("http")) {
@@ -113,7 +132,9 @@ const GroupItem: React.FC<GroupItemProps> = ({
                       "https://api.iconify.design/lucide/folder-kanban.svg"
                   }}
                 />
-                <span className="text-sm truncate dark:text-white">{name}</span>
+                <span className="text-sm truncate dark:text-white max-w-[120px]">
+                  {name}
+                </span>
               </div>
               {channelCount > 0 && (
                 <Badge
@@ -151,7 +172,7 @@ const GroupItem: React.FC<GroupItemProps> = ({
               </div>
             )}
 
-            {!loading && !data.length && (
+            {!loading && channels.length === 0 && (
               <div className="flex items-center gap-2 px-2 py-2 text-muted-foreground dark:text-white/60">
                 <Users className="h-3.5 w-3.5" />
                 <span className="text-xs dark:text-white/60">
@@ -161,7 +182,7 @@ const GroupItem: React.FC<GroupItemProps> = ({
             )}
 
             {!loading &&
-              localData.map((c) => (
+              channels.map((c) => (
                 <a
                   key={c.id}
                   href={getChannelUrl(c)}
