@@ -38,10 +38,11 @@ export interface GroupItemProps {
 const getChannelUrl = (c: any) => {
   const isIOS = /iPad|iPhone/.test(navigator.platform)
 
-  if (c.content_type === "anime") {
-    const animeId = c.url || c.channelId?.split("/")[1] || c.channelId || ""
+  // If contentType is not 'youtube', send to crunchyroll
+  if (c.contentType !== "youtube" && c.content_type !== "youtube") {
+    const contentId = c.url || c.channelId?.split("/")[1] || c.channelId || ""
     const baseUrl = isIOS ? "crunchyroll://" : "https://www.crunchyroll.com"
-    return `${baseUrl}/series/${animeId}`
+    return `${baseUrl}/series/${contentId}`
   }
 
   const isHandle = c.channelId?.includes("@")
