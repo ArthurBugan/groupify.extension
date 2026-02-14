@@ -1,11 +1,12 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "Groupify Youtube Organize",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Organize your youtube channels into groups and lists. Access them from Crunchyroll and Youtube the sidebar",
   "author": "arthurbugan",
   "scripts": {
     "dev": "plasmo dev --verbose",
+    "dev-firefox": "plasmo dev --target=firefox-mv2 --verbose",
     "build": "plasmo build",
     "build-firefox": "plasmo build --target=firefox-mv2 --hoist",
     "build-ios": "plasmo build --target=safari-mv3 --hoist",
