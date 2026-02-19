@@ -67,23 +67,45 @@ const GroupItem: React.FC<GroupItemProps> = ({
   const [loading, setLoading] = useState(false)
   const [hasFetched, setHasFetched] = useState(false)
 
+  // Reset hasFetched when id changes (new group)
+  useEffect(() => {
+    console.log("[Groupify] Group id changed to:", id, "resetting hasFetched")
+    setHasFetched(false)
+    setChannels([])
+  }, [id])
+
   const fetchChannels = useCallback(async () => {
-    if (hasFetched || !id) return
+    if (!id) {
+      console.log("[Groupify] No id provided, skipping fetch")
+      return
+    }
+
+    console.log("[Groupify] Fetching channels for group:", id)
 
     try {
       setLoading(true)
+      console.log("[Groupify] Calling getGroup API for:", id)
       const response = await getGroup(String(id))
+      console.log("[Groupify] Got response for group", id, ":", response)
       setChannels(response.channels || [])
       setHasFetched(true)
     } catch (err) {
-      console.error("Error fetching channels:", err)
+      console.error("[Groupify] Error fetching channels:", err)
       setChannels([])
     } finally {
       setLoading(false)
     }
-  }, [id, hasFetched])
+  }, [id])
 
   useEffect(() => {
+    console.log(
+      "[Groupify] isOpen effect - isOpen:",
+      isOpen,
+      "hasFetched:",
+      hasFetched,
+      "id:",
+      id
+    )
     if (isOpen && !hasFetched) {
       fetchChannels()
     }
@@ -91,6 +113,16 @@ const GroupItem: React.FC<GroupItemProps> = ({
 
   // Handle expand/collapse all
   useEffect(() => {
+    console.log(
+      "[Groupify] expandTrigger effect - trigger:",
+      expandTrigger,
+      "forceExpand:",
+      forceExpand,
+      "hasFetched:",
+      hasFetched,
+      "id:",
+      id
+    )
     if (expandTrigger > 0) {
       setIsOpen(forceExpand)
       if (forceExpand && !hasFetched) {
@@ -111,7 +143,10 @@ const GroupItem: React.FC<GroupItemProps> = ({
     <TooltipProvider delayDuration={300}>
       <Collapsible
         open={isOpen}
-        onOpenChange={setIsOpen}
+        onOpenChange={(open) => {
+          console.log("[Groupify] Group", id, "opening:", open)
+          setIsOpen(open)
+        }}
         className="group/item">
         <div className="flex items-center gap-1 px-2 py-1 hover:bg-accent/50 dark:hover:bg-white/10 rounded-md transition-colors">
           <CollapsibleTrigger asChild>

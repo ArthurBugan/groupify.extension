@@ -1,7 +1,7 @@
 {
   "name": "youtube-channels-manager",
   "displayName": "Groupify Youtube Organize",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Organize your youtube channels into groups and lists. Access them from Crunchyroll and Youtube the sidebar",
   "author": "arthurbugan",
   "scripts": {
