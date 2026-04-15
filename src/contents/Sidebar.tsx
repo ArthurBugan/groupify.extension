@@ -1,40 +1,38 @@
-import cssText from "data-text:../style.css"
-import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
-import { useEffect, useState } from "react"
-import {
-  FolderOpen,
-  Plus,
-  ExternalLink,
-  ChevronRight,
-  ChevronDown,
-  ChevronUp,
-  Layers,
-  AlertCircle
-} from "lucide-react"
-
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger
 } from "@/components/ui/collapsible"
+import { Separator } from "@/components/ui/separator"
+import { Skeleton } from "@/components/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from "@/components/ui/tooltip"
-import { Badge } from "@/components/ui/badge"
-
-import { Separator } from "@/components/ui/separator"
-import { Skeleton } from "@/components/ui/skeleton"
-import { sleep, cn } from "@/lib/utils"
+import { useGroups } from "@/hooks/useQuery/useGroups"
 import { useUser } from "@/hooks/useQuery/useUser"
+import { queryClient } from "@/hooks/utils/queryClient"
+import { cn, sleep } from "@/lib/utils"
+import { QueryClientProvider } from "@tanstack/react-query"
+import cssText from "data-text:../style.css"
+import {
+  AlertCircle,
+  ChevronDown,
+  ChevronRight,
+  ChevronUp,
+  ExternalLink,
+  FolderOpen,
+  Layers,
+  Plus
+} from "lucide-react"
+import type { PlasmoCSConfig, PlasmoGetInlineAnchor } from "plasmo"
+import { useEffect, useState } from "react"
 
 import GroupItem from "./GroupItem"
-import { useGroups } from "@/hooks/useQuery/useGroups"
-import { QueryClientProvider } from "@tanstack/react-query"
-import { queryClient } from "@/hooks/utils/queryClient"
 
 interface ApiGroup {
   id: string
@@ -86,70 +84,53 @@ export const getInlineAnchor: PlasmoGetInlineAnchor = async () => {
 
 const SidebarSkeleton = () => (
   <div className="flex flex-col mt-2 w-full animate-in fade-in duration-300">
-    <Separator className="mb-4 dark:bg-white/10" />
-    <div className="px-3 py-2 space-y-3">
-      <div className="flex items-center gap-3">
-        <Skeleton className="h-5 w-5 rounded dark:bg-white/10" />
-        <Skeleton className="h-5 w-24 dark:bg-white/10" />
+    <div className="px-2 py-1.5 space-y-2">
+      <div className="flex items-center gap-2">
+        <Skeleton className="h-4 w-4 rounded" />
+        <Skeleton className="h-4 w-16" />
       </div>
-      <div className="space-y-2 pl-4">
-        <Skeleton className="h-9 w-full dark:bg-white/10" />
-        <Skeleton className="h-9 w-full dark:bg-white/10" />
-        <Skeleton className="h-9 w-[85%] dark:bg-white/10" />
+      <div className="space-y-1 pl-4">
+        <Skeleton className="h-7 w-full" />
+        <Skeleton className="h-7 w-[85%]" />
       </div>
     </div>
   </div>
 )
 
 const EmptyState = ({ onCreate }: { onCreate: () => void }) => (
-  <div className="flex flex-col items-center justify-center px-4 py-6 text-center animate-in fade-in slide-in-from-bottom-2 duration-300">
-    <div className="rounded-full bg-muted dark:bg-white/10 p-3 mb-3">
-      <FolderOpen className="h-6 w-6 text-muted-foreground dark:text-white/70" />
-    </div>
-    <p className="text-sm font-medium text-foreground dark:text-white mb-1">
-      {chrome.i18n.getMessage("sidebar_groups_not_found")}
-    </p>
-    <p className="text-xs text-muted-foreground dark:text-white/60 mb-3">
-      Create your first group to organize your channels
+  <div className="flex flex-col items-center justify-center px-3 py-4 text-center">
+    <FolderOpen className="h-5 w-5 text-muted-foreground/50 dark:text-white/30 mb-2" />
+    <p className="text-xs text-muted-foreground dark:text-white/50 mb-2">
+      No groups yet
     </p>
     <Button
-      variant="outline"
+      variant="ghost"
       size="sm"
       onClick={onCreate}
-      className="gap-2 text-xs dark:border-white/20 dark:text-white dark:hover:bg-white/10">
-      <Plus className="h-3.5 w-3.5" />
-      Create Group
+      className="text-xs gap-1.5 h-7 dark:text-white/70 dark:hover:bg-white/10">
+      <Plus className="h-3 w-3" />
+      Create
     </Button>
   </div>
 )
 
 const UnauthorizedState = () => (
-  <div className="flex flex-col w-full animate-in fade-in duration-300">
-    <Separator className="mb-4 dark:bg-white/10" />
-    <div className="px-4 py-4">
-      <div className="rounded-lg border border-destructive/20 dark:border-red-400/30 bg-destructive/5 dark:bg-red-400/10 p-4">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-destructive dark:text-red-400 mt-0.5 shrink-0" />
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-destructive dark:text-red-400 mb-1">
-              Sign in required
-            </p>
-            <p className="text-xs text-destructive/80 dark:text-red-400/70 mb-3">
-              Please sign in to access your groups
-            </p>
-            <Button
-              variant="destructive"
-              size="sm"
-              className="w-full text-xs dark:bg-red-500 dark:hover:bg-red-600 dark:text-white"
-              onClick={() =>
-                window.open("https://groupify.dev/dashboard/groups")
-              }>
-              <ExternalLink className="h-3.5 w-3.5 mr-2" />
-              {chrome.i18n.getMessage("sidebar_unauthorized")}
-            </Button>
-          </div>
-        </div>
+  <div className="flex flex-col w-full animate-in fade-in duration-300 p-3">
+    <div className="rounded-md border border-destructive/20 dark:border-red-500/20 bg-destructive/5 dark:bg-red-500/10 p-3">
+      <div className="flex items-center gap-2 mb-2">
+        <AlertCircle className="h-4 w-4 text-destructive dark:text-red-400 shrink-0" />
+        <p className="text-xs font-medium text-destructive dark:text-red-400">
+          Sign in required
+        </p>
       </div>
+      <Button
+        variant="ghost"
+        size="sm"
+        className="w-full text-xs h-7 dark:text-red-300/70 dark:hover:bg-red-500/20"
+        onClick={() => window.open("https://groupify.dev/dashboard/groups")}>
+        <ExternalLink className="h-3 w-3 mr-1.5" />
+        Sign in
+      </Button>
     </div>
   </div>
 )
@@ -196,6 +177,31 @@ const Sidebar = () => {
     (g) => g.parentId === null || !groups.some((x) => x.id === g.parentId)
   )
 
+  const getChildren = (parentId: string): TableGroup[] => {
+    return groups.filter((g) => g.parentId === parentId)
+  }
+
+  const renderGroup = (group: TableGroup): React.ReactNode => {
+    const children = getChildren(group.id)
+
+    return (
+      <div
+        key={group.id}
+        style={{ paddingLeft: `${group.nestingLevel * 12}px` }}
+        className="animate-in fade-in slide-in-from-left-2 duration-200">
+        <GroupItem
+          id={group.id}
+          name={group.name}
+          icon={group.icon}
+          channelCount={group.channelCount}
+          forceExpand={allExpanded}
+          expandTrigger={expandTrigger}
+        />
+        {children.map((child) => renderGroup(child))}
+      </div>
+    )
+  }
+
   return (
     <TooltipProvider delayDuration={200}>
       <div
@@ -204,79 +210,65 @@ const Sidebar = () => {
           isDarkMode && "dark text-white"
         )}>
         <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
-          <div className="flex items-center justify-between px-2 py-2">
+          <div className="flex items-center justify-between px-2 py-1.5">
             <CollapsibleTrigger asChild>
               <Button
                 variant="ghost"
-                className="flex-1 justify-between h-10 px-2 hover:bg-accent group/trigger dark:text-white">
+                className="flex-1 justify-between h-8 px-1.5 hover:bg-accent/50 dark:hover:bg-white/5 group/trigger dark:text-white/90">
                 <div className="flex items-center gap-2">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 text-primary dark:text-white">
-                    <Layers className="h-4 w-4" />
+                  <div className="flex items-center justify-center w-6 h-6 rounded bg-primary/10 dark:bg-white/10">
+                    <Layers className="h-3.5 w-3.5 dark:text-white/80" />
                   </div>
-                  <span className="font-semibold text-sm dark:text-white">
+                  <span className="text-sm font-medium dark:text-white/90">
                     {chrome.i18n.getMessage("sidebar_groups")}
                   </span>
                   {groups.length > 0 && (
                     <Badge
                       variant="secondary"
-                      className="text-xs font-normal ml-1">
+                      className="text-[10px] h-4 px-1 font-medium dark:bg-white/10 dark:text-white/70">
                       {groups.length}
                     </Badge>
                   )}
                 </div>
                 <ChevronRight
-                  className={`h-4 w-4 text-muted-foreground transition-transform duration-200 dark:text-white/70 ${
+                  className={`h-3.5 w-3.5 text-muted-foreground/70 dark:text-white/50 transition-transform duration-200 ${
                     isOpen ? "rotate-90" : ""
                   }`}
                 />
               </Button>
             </CollapsibleTrigger>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 ml-1 shrink-0 dark:text-white"
-                  onClick={() => {
-                    setAllExpanded(!allExpanded)
-                    setExpandTrigger((prev) => prev + 1)
-                  }}>
-                  {allExpanded ? (
-                    <ChevronUp className="h-4 w-4" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4" />
-                  )}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="top">
-                <p className="dark:text-white">
-                  {allExpanded ? "Collapse all groups" : "Expand all groups"}
-                </p>
-              </TooltipContent>
-            </Tooltip>
+            <div className="flex items-center gap-0.5">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 shrink-0 dark:text-white/60 dark:hover:text-white dark:hover:bg-white/10"
+                onClick={() => {
+                  setAllExpanded(!allExpanded)
+                  setExpandTrigger((prev) => prev + 1)
+                }}>
+                {allExpanded ? (
+                  <ChevronUp className="h-3.5 w-3.5" />
+                ) : (
+                  <ChevronDown className="h-3.5 w-3.5" />
+                )}
+              </Button>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 ml-1 shrink-0 dark:text-white"
-                  onClick={() =>
-                    window.open("https://groupify.dev/dashboard/groups")
-                  }>
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="top">
-                <p className="dark:text-white">Create new group</p>
-              </TooltipContent>
-            </Tooltip>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 shrink-0 dark:text-white/60 dark:hover:text-white dark:hover:bg-white/10"
+                onClick={() =>
+                  window.open("https://groupify.dev/dashboard/groups")
+                }>
+                <Plus className="h-3.5 w-3.5" />
+              </Button>
+            </div>
           </div>
 
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-            <Separator className="mb-2 dark:bg-white/10" />
-            <div className="overflow-y-auto max-h-[60vh] px-1 pb-2 space-y-0.5">
+            <div className="border-t border-border/50 dark:border-white/5 mx-2 mb-1" />
+            <div className="overflow-y-auto max-h-[50vh] px-1 py-1">
               {!groups?.length ? (
                 <EmptyState
                   onCreate={() =>
@@ -284,56 +276,7 @@ const Sidebar = () => {
                   }
                 />
               ) : (
-                rootGroups
-                  .sort((a, b) => {
-                    // If displayOrder is 0, treat it as Infinity (put at end)
-                    const orderA =
-                      a.displayOrder === 0 ? Infinity : a.displayOrder
-                    const orderB =
-                      b.displayOrder === 0 ? Infinity : b.displayOrder
-                    return orderA - orderB
-                  })
-                  .map((group) => (
-                    <div
-                      key={group.id}
-                      style={{ paddingLeft: `${group.nestingLevel * 12}px` }}
-                      className="animate-in fade-in slide-in-from-left-2 duration-200">
-                      <GroupItem
-                        id={group.id}
-                        name={group.name}
-                        icon={group.icon}
-                        channelCount={group.channelCount}
-                        forceExpand={allExpanded}
-                        expandTrigger={expandTrigger}
-                      />
-                      {groups
-                        .filter((g) => g.parentId === group.id)
-                        .sort((a, b) => {
-                          const orderA =
-                            a.displayOrder === 0 ? Infinity : a.displayOrder
-                          const orderB =
-                            b.displayOrder === 0 ? Infinity : b.displayOrder
-                          return orderA - orderB
-                        })
-                        .map((childGroup) => (
-                          <div
-                            key={childGroup.id}
-                            style={{
-                              paddingLeft: `${childGroup.nestingLevel * 12}px`
-                            }}
-                            className="animate-in fade-in slide-in-from-left-2 duration-200">
-                            <GroupItem
-                              id={childGroup.id}
-                              name={childGroup.name}
-                              icon={childGroup.icon}
-                              channelCount={childGroup.channelCount}
-                              forceExpand={allExpanded}
-                              expandTrigger={expandTrigger}
-                            />
-                          </div>
-                        ))}
-                    </div>
-                  ))
+                rootGroups.map((group) => renderGroup(group))
               )}
             </div>
           </CollapsibleContent>

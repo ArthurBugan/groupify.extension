@@ -1,23 +1,13 @@
 import React from "react"
-import { useGroup } from "@/hooks/useQuery/useGroups" // Assuming this path
+import { useGroup } from "@/hooks/useQuery/useGroups"
 import { Loader2, Youtube } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, getChannelUrl } from "@/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-// Define the type for a single channel
-interface ChannelType {
-  id: string
-  name: string
-  link: string
-  // Add other channel properties as needed
-}
-
-// Define the type for the group prop
 interface GroupType {
   id: string
   name: string
   nestingLevel: number
-  // Add other group properties as needed
 }
 
 interface ExpandedGroupProps {
@@ -29,8 +19,8 @@ export const ExpandedGroup: React.FC<ExpandedGroupProps> = ({ group }) => {
 
   if (isLoadingChannels) {
     return (
-      <div className="flex justify-center items-center py-2">
-        <Loader2 className="animate-spin h-4 w-4 text-gray-500 dark:text-white/70" />
+      <div className="flex justify-center items-center py-1.5">
+        <Loader2 className="animate-spin h-3.5 w-3.5 text-muted-foreground/50 dark:text-white/30" />
       </div>
     )
   }
@@ -39,40 +29,32 @@ export const ExpandedGroup: React.FC<ExpandedGroupProps> = ({ group }) => {
 
   if (channels.length === 0) {
     return (
-      <div
-        className={cn(
-          "text-xl text-gray-500 dark:text-white/60 py-1",
-          `pl-${(group.nestingLevel + 1) * 8}`
-        )}>
-        No channels found for this group.
+      <div className="text-xs text-muted-foreground/50 dark:text-white/30 px-2 py-1">
+        No channels
       </div>
     )
   }
 
   return (
-    <div className="space-y-1">
+    <div className="space-y-0.5">
       {channels.map((channel) => (
         <div
           key={channel.id}
           onClick={() =>
-            window.open(
-              `${channel.contentType === "anime" ? "https://crunchyroll.com/series/" : "https://youtube.com/channel/"}${channel.url}`
-            )
+            window.open(getChannelUrl(channel.contentType, channel.url))
           }
-          className={cn(
-            "flex items-center gap-2 p-2 rounded-md hover:bg-accent dark:hover:bg-white/10 cursor-pointer",
-            `pl-${(group.nestingLevel + 2) * 16}` // Indent channels further than their parent group
-          )}>
-          <Avatar className="h-9 w-9">
+          className="flex items-center gap-2 px-2 py-1 rounded hover:bg-accent/50 dark:hover:bg-white/5 cursor-pointer">
+          <Avatar className="h-5 w-5">
             <AvatarImage
               src={channel.thumbnail || "/placeholder.svg"}
               alt={channel.name}
+              className="object-cover"
             />
-            <AvatarFallback className="dark:bg-gray-800">
-              <Youtube className="h-9 w-9 dark:text-white/70" />
+            <AvatarFallback className="dark:bg-white/10">
+              <Youtube className="h-3 w-3 dark:text-white/50" />
             </AvatarFallback>
           </Avatar>
-          <span className="text-lg text-gray-700 dark:text-white">
+          <span className="text-xs truncate dark:text-white/70">
             {channel.name}
           </span>
         </div>
