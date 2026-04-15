@@ -1,5 +1,20 @@
-if (typeof chrome !== "undefined" && chrome.sidePanel) {
+declare const browser: any
+
+if (typeof browser !== "undefined") {
+  if (browser.sidebarAction) {
+    browser.sidebarAction
+      .setPanel({ panel: "sidepanel.html" })
+      .catch((e: any) => console.error(e))
+  }
+  if (browser.browserAction) {
+    browser.browserAction.onClicked.addListener(() => {
+      if (browser.sidebarAction) {
+        browser.sidebarAction.open()
+      }
+    })
+  }
+} else if (typeof chrome !== "undefined" && chrome.sidePanel) {
   chrome.sidePanel
     .setPanelBehavior({ openPanelOnActionClick: true })
-    .catch((error) => console.error(error))
+    .catch((e) => console.error(e))
 }
