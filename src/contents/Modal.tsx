@@ -1,3 +1,4 @@
+import type { PlasmoCSConfig } from "plasmo"
 import { useState, useEffect } from "react"
 import { createRoot } from "react-dom/client"
 
@@ -63,6 +64,10 @@ const getIconUrl = (iconName: string) => {
 
 interface ModalProps {
   onClose: () => void
+}
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://groupify.dev/*", "https://www.youtube.com/*", "https://youtube.com/*"]
 }
 
 const Modal = ({ onClose }: ModalProps) => {
