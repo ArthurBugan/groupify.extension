@@ -541,6 +541,8 @@ const QuickAddButton = () => {
       setTimeout(() => notification.remove(), 3000)
     } catch (error) {
       console.error("Error adding channel:", error)
+      setIsModalOpen(false)
+      setSelectedGroup("")
 
       const notification = document.createElement("div")
       notification.className = cn(
@@ -612,17 +614,14 @@ const QuickAddButton = () => {
           size="sm"
           onClick={() => setIsModalOpen(true)}
           className={cn(
-            "gap-3 h-11 px-4 text-base font-medium rounded-xl shadow-sm hover:shadow-md",
+            "gap-3 h-11 px-4 text-base font-medium rounded-xl shadow-sm hover:shadow-md mt-4",
             "bg-background dark:bg-card border-input dark:border-input/50",
             "hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white",
             "border-emerald-200 dark:border-emerald-800/30 hover:border-emerald-300 dark:hover:border-emerald-700",
             "transition-all duration-200 flex items-center justify-center"
           )}>
-          <div className="flex items-center justify-center w-6 h-6 rounded-md bg-gradient-to-br from-red-500/20 to-pink-500/20 dark:from-red-500/30 dark:to-pink-500/30 shrink-0">
-            <Layers className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
-          </div>
           <div className="flex items-center gap-2">
-            <UserPlus className="h-4 w-4" />
+            <Layers className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
             <span>Add to Group</span>
           </div>
         </Button>
