@@ -1,37 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useQuery } from "@tanstack/react-query"
+import { apiClient } from "@/hooks/api/api-client"
+
+export interface User {
+  id: string
+  email: string
+  name: string
+}
 
 export const useUser = () => {
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {
+    data: userData,
+    isLoading: loading,
+    error,
+    refetch
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      return await apiClient.get<User>("/me")
+    },
+    retry: false,
+    staleTime: Infinity
+  })
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`${process.env.PLASMO_PUBLIC_GROUPIFY_URL}/me`, {
-          credentials: 'include',
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setUserData(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
-
-  return { userData, loading, error };
-};
+  return { userData, loading, error, refetch }
+}

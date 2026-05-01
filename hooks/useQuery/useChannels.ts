@@ -37,6 +37,7 @@ export interface CreateChannelRequest {
   thumbnail?: string
   subscriberCount?: number
   videoCount?: number
+  contentType?: string
   groupId: string
 }
 

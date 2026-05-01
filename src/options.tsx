@@ -6,7 +6,7 @@ import { useStorage } from "@plasmohq/storage/hook"
 
 import { Button } from "@/components/ui/button"
 
-import "@/style.css"
+import "./style.css"
 import { useUser } from "@/hooks/useQuery/useUser"
 
 const schema = z.object({
@@ -21,7 +21,7 @@ export const config: PlasmoCSConfig = {
 }
 
 function Options() {
-	const { userData, loading: isLoadingUser, error: userError } = useUser();
+  const { userData, loading: isLoadingUser, error: userError } = useUser()
 
   useEffect(() => {
     if (document.querySelector("html[dark]") != null) {
