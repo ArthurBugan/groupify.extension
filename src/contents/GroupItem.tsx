@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/collapsible"
 import { Badge } from "@/components/ui/badge"
 import { getGroup, type Channel } from "@/hooks/useQuery/useGroups"
-import { getChannelUrl } from "@/lib/utils"
+import { getChannelUrl, cn } from "@/lib/utils"
 
 export const getInlineAnchor: PlasmoGetInlineAnchor = async () => null
 
@@ -26,6 +26,7 @@ export interface GroupItemProps {
   channelCount?: number
   forceExpand?: boolean
   expandTrigger?: number
+  children?: React.ReactNode
 }
 
 const GroupItem: React.FC<GroupItemProps> = ({
@@ -34,7 +35,8 @@ const GroupItem: React.FC<GroupItemProps> = ({
   icon = "lucide:folder-kanban",
   channelCount = 0,
   forceExpand = false,
-  expandTrigger = 0
+  expandTrigger = 0,
+  children
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [channels, setChannels] = useState<Channel[]>([])
@@ -79,18 +81,19 @@ const GroupItem: React.FC<GroupItemProps> = ({
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="group/item">
-      <div className="flex items-center gap-1 px-2 py-1.5 hover:bg-accent/50 dark:hover:bg-white/5 rounded-md transition-colors">
+      <div className="flex items-center gap-1.5 px-1 py-1 rounded-lg hover:bg-accent/50 dark:hover:bg-white/[0.04] transition-colors duration-150">
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="flex-1 justify-start h-8 px-2 gap-2 font-normal hover:bg-transparent dark:text-white/90 dark:hover:text-white">
+            className="flex-1 justify-start h-9 px-2.5 gap-2 font-normal hover:bg-transparent dark:text-white/80 dark:hover:text-white rounded-lg">
             <ChevronRight
-              className={`h-3.5 w-3.5 text-muted-foreground/70 dark:text-white/50 transition-transform duration-200 shrink-0 ${
-                isOpen ? "rotate-90" : ""
-              }`}
+              className={cn(
+                "h-3.5 w-3.5 text-muted-foreground/50 dark:text-white/30 transition-transform duration-200 shrink-0",
+                isOpen && "rotate-90 text-muted-foreground/70 dark:text-white/50"
+              )}
             />
             <img
-              className="w-4 h-4 shrink-0 opacity-70"
+              className="w-4 h-4 shrink-0 opacity-70 dark:opacity-80"
               src={getIconUrl(icon)}
               alt=""
               onError={(e) => {
@@ -98,11 +101,11 @@ const GroupItem: React.FC<GroupItemProps> = ({
                   "https://api.iconify.design/lucide/folder-kanban.svg"
               }}
             />
-            <span className="text-sm truncate dark:text-white/90">{name}</span>
+            <span className="text-sm truncate dark:text-white/80">{name}</span>
             {channelCount > 0 && (
               <Badge
                 variant="secondary"
-                className="text-[10px] h-5 px-1.5 shrink-0 font-medium dark:bg-white/10 dark:text-white/80">
+                className="text-[11px] h-5 px-1.5 shrink-0 font-medium rounded-md dark:bg-white/8 dark:text-white/50">
                 {channelCount}
               </Badge>
             )}
@@ -112,23 +115,27 @@ const GroupItem: React.FC<GroupItemProps> = ({
         <Button
           variant="ghost"
           size="icon"
-          className="h-6 w-6 shrink-0 opacity-0 group-hover/item:opacity-100 transition-opacity dark:text-white/70 dark:hover:text-white"
+          className="h-7 w-7 shrink-0 opacity-0 group-hover/item:opacity-100 transition-all duration-150 rounded-md dark:text-white/40 dark:hover:text-white dark:hover:bg-white/[0.06]"
           onClick={() => window.open("https://groupify.dev/dashboard/groups")}>
           <Pencil className="h-3 w-3" />
         </Button>
       </div>
 
       <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
-        <div className="pl-7 pr-2 py-1 space-y-0.5">
+        {/* Subgroups */}
+        {children}
+
+        {/* Channels */}
+        <div className="pl-9 pr-2 py-1 space-y-0.5">
           {loading && (
-            <div className="flex items-center justify-center py-3">
-              <Loader2 className="h-4 w-4 animate-spin text-muted-foreground/50 dark:text-white/30" />
+            <div className="flex items-center justify-center py-4">
+              <Loader2 className="h-4 w-4 animate-spin text-muted-foreground/40 dark:text-white/20" />
             </div>
           )}
 
           {!loading && channels.length === 0 && (
-            <div className="flex items-center gap-2 px-2 py-2 text-xs text-muted-foreground/60 dark:text-white/40">
-              <Users className="h-3 w-3" />
+            <div className="flex items-center gap-2 px-3 py-2.5 text-xs text-muted-foreground/50 dark:text-white/30">
+              <Users className="h-3.5 w-3.5" />
               No channels
             </div>
           )}
@@ -141,13 +148,13 @@ const GroupItem: React.FC<GroupItemProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 data-external-id={c.id}
-                className="flex items-center gap-2 px-2 py-1.5 rounded text-sm hover:bg-accent/50 dark:hover:bg-white/5 transition-colors group/channel">
+                className="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-sm hover:bg-accent/40 dark:hover:bg-white/[0.04] transition-colors duration-150 group/channel">
                 <img
-                  className="rounded-full w-4 h-4 shrink-0"
+                  className="rounded-full w-5 h-5 shrink-0 ring-1 ring-border/50 dark:ring-white/5"
                   src={c.thumbnail}
                   alt=""
                 />
-                <span className="truncate text-muted-foreground/80 dark:text-white/60 group-hover/channel:text-foreground dark:group-hover/channel:text-white/90 transition-colors text-xs">
+                <span className="truncate text-muted-foreground/70 dark:text-white/50 group-hover/channel:text-foreground/90 dark:group-hover/channel:text-white/80 transition-colors duration-150 text-xs font-medium">
                   {c.name}
                 </span>
               </a>

@@ -1,5 +1,11 @@
 declare const browser: any
 
+if (typeof chrome !== "undefined" && chrome.sidePanel) {
+  chrome.sidePanel
+    .setPanelBehavior({ openPanelOnActionClick: true })
+    .catch((error) => console.error(error))
+}
+
 if (typeof browser !== "undefined") {
   if (browser.sidebarAction) {
     browser.sidebarAction
@@ -13,8 +19,4 @@ if (typeof browser !== "undefined") {
       }
     })
   }
-} else if (typeof chrome !== "undefined" && chrome.sidePanel) {
-  chrome.sidePanel
-    .setPanelBehavior({ openPanelOnActionClick: true })
-    .catch((e) => console.error(e))
 }
